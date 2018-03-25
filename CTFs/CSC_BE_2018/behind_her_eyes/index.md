@@ -1,5 +1,7 @@
 # Behind her eyes
 
+### [~$ cd ..](../)
+
 Actually, I do not remember the exact name and the statement of the challenge, but it was about two Roman people who sent messages. The goal was to extract a hidden picture.
 The [text](data.txt) we had was obviously not written with roman characters, and then we guessed that it was about encoding, and more specifically Latin1, because of the statement.
 (We tried to translate the russian text, and it was only a Lorem ipsum. Wrong path)

@@ -1,5 +1,7 @@
 # PDF weak encryption
 
+### [~$ cd ..](../)
+
 The statement of the challenges tells us that the PDF file has been encrypted with a 32 bytes random password. The goal is not to guess the password, but 
 to break the weak PDF encryption. A hint is given: the first byte of the key is 0x30
 

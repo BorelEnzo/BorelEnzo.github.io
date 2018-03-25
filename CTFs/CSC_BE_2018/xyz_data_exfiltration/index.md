@@ -1,5 +1,7 @@
 # XYZ Data Exfiltration
 
+### [~$ cd ..](../)
+
 We spent several hours on this challenge, and the solution was finally quite simple... The statement tells that someone tries to exfiltrate some confidential data, the goal is then to recover it.
 The [pcap](XYZ-Adventures.com_Data_Exfiltration.zip) file is quite big (285 Mo), the analyze will take some time...
 

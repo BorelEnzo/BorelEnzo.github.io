@@ -1,5 +1,7 @@
 # Pew pew
 
+### [~$ cd ..](../)
+
 The goal was to retrieve a key in the binary. The command `strings` gave us nothing, and then we called our good friend GDB. Old school way, but still efficient!
 > ```bash
 > pew_pew: ELF 32-bit LSB shared object, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=7d8f1bd18e24ccf884a3e5df27b5868cd38d4281, stripped

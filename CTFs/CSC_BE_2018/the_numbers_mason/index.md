@@ -1,5 +1,7 @@
 # The numbers, Mason!
 
+### [~$ cd ..](../)
+
 The challenge consists of an [APK file](notes.apk). As usual, we renamed it as a ".zip" in order to extract files. We then found the well-known [classes.dex](classes.dex) and used `dex2jar` to decompile.
 ## Step 1
 The code we got was quite messy, but we located the two interesting classes [LoginActivity](LoginActivity.java) and [SuccessActivity](SuccessActivity.java) (shown as they appear in `jd-gui`).

@@ -1,5 +1,7 @@
 # Dungeon master
 
+### [~$ cd ..](../)
+
 We are given a URL, and found a old 2D game running on port 1337. The game engine is PIXI.js, then we downloaded all sources.
 ![game.png](game.png)
 The goal is to find a hidden stone, and get the flag. We first started a static analysis of the code in order to see where could be hidden this stone.
