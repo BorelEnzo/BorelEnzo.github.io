@@ -7,7 +7,8 @@ The [text](data.txt) we had was obviously not written with roman characters, and
 (We tried to translate the russian text, and it was only a Lorem ipsum. Wrong path)
 
 We wrote a first Python script to decode the text,
-> ```Python
+
+> ```python
 >file = open('data.txt', 'rb')
 >text = file.read()
 >file1 = open('out.txt', 'wb')
@@ -19,9 +20,11 @@ We wrote a first Python script to decode the text,
 >file.close()
 >file1.close()
 > ```
+
 and saw that there was only white spaces, "o"s, and "p"s. Since the goal was to extract a picture, and since we had only two characters (except blank spaces), we guessed that
 we should interpret it as binary data. We then modified our script (okay, it's quite dirty, but does the job):
-> ```
+
+> ```python
 >file = open('data.txt', 'rb')
 >text = file.read()
 >file1 = open('out.txt', 'wb')
@@ -39,12 +42,16 @@ we should interpret it as binary data. We then modified our script (okay, it's q
 >file.close()
 >file1.close()
 > ```
+
 We then typed this in our shell:
+
 > ```bash
 > % file out.txt 
 >out.txt: SVG Scalable Vector Graphics image
 > ```
-We got the [following picture](out.svg)
+
+We got the [following picture](out.svg).
+
 Nice, but we were not done, because there was no visible flag! We opened the file with a text editor and saw that there was 2 embedded pictures, the first one with the barcode, and the second one with the girl.
 Even if the barcode has been added abover the first picture, it is not useful (it's only the ISBN13 of the book "Behind here eyes").
 Actually, the solution was mush simpler: we only had to remove the picture with the girl, and we got:

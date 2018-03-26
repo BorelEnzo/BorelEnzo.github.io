@@ -9,7 +9,7 @@ This write-up covers some challenges proposed during the Cyber Security Challeng
 * [Water you talking about ? / Mad with power](mad_with_power/)
 * [Pew pew](pew_pew/)
 * [Behind her eyes](behind_her_eyes/)
-* [Bit by bit](bt_by_bit)
+* [Bit by bit](bit_by_bit/)
 * [XYZ Data exfiltration](xyz_data_exfiltration/)
 * [Dungeon master](dungeon_master/)
 * [Shooting tones](shooting_tones/)

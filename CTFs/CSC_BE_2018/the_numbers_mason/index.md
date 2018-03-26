@@ -13,6 +13,7 @@ In LoginActivity, we saw that some strings were generated using a weird algorith
 >private static final String[] o = { a.a.a.a.a(126), a.a.a.a.a(127) };
 >private static String y = a.a.a.a.a(128);
 > ```
+
 We then looked into the class [a.a.a.a](a.a.a.a.java) and tried to retrieve all possible strings by recreating the [file](Decode.java) and got a list of 129 strings:
 
 > ```
@@ -102,18 +103,22 @@ We then looked into the class [a.a.a.a](a.a.a.a.java) and tried to retrieve all 
 
 However, a big part of the code was absolutely incomprehensible, since we didn't have the source of the libraries used by the app.
 Fortunately, there was a directory named "okhttp3" among the files given by the zip. We then downloaded it, and began to rebuild the
-project in AndroidStudio (okhttp3, okio, and conscrypt were also necessary to run the program). Once done, it was easier to debug andunderstand what this weird APK did.
+project in AndroidStudio (okhttp3, okio, and conscrypt were also necessary to run the program). Once done, it was easier to debug and understand what this weird APK did.
 However, "easier" doesn't mean "easy"!
 We began with `onCreate()`, and tried to rewrite a readable code:
 > ```java
 >this.z = new w.a().a(new g.a().a(a.a.a.a.a(103), new String[] { a.a.a.a.a(104) }).a()).a();
 > ```
+
 stands for:
+
 > ```java
 >this.client = new OkHttpClient.Builder().certificatePinner(new CertificatePinner.Builder().add("notes.challenges.cybersecuritychallenge.be", new String[] { "sha256/MaQXQRucvxgWT5IVeVwJvaq8Jz+tI7MyQPp8/LxTsco="}).build()).build();
 > ```
+
 which is a crucial element of the code.
 We then did the same for the routine `n()` (called in `onCreate()` line 475):
+
 > ```java
 >private void n() {
 >	Request req = new Request.Builder().url("https://notes.challenges.cybersecuritychallenge.be/init").build();
@@ -128,18 +133,22 @@ We then did the same for the routine `n()` (called in `onCreate()` line 475):
 >		}
 >	});
 >}
-> ̀```
+> ```
+
 By making a GET request on this URL, we get something like this:
+
 > ```
 >{
 >  "key": "24253af5eb005eef448b3f4311125118", 
 >  "session": "172fc591068b73a709527cd2ce6e294d"
 >}
 > ```
+
 Quite interesting, because we have the strings "KEY" and "SESSION"!
 We then continued to analyze the code by rewriting the validation process in the callback routine (line 479).
 We knew that the app used the library android-pinpad [(com.hextremelabs.pinpad)](https://github.com/hextremelabs/android-pinpad), and then we rewrote the 
 following piece of code:
+
 > ```java
 >this.pinpad.setCallback(new PinpadView.Callback() {
 >	public void onHelpRequest() {}
@@ -155,12 +164,16 @@ following piece of code:
 >	}
 >});
 > ```
+
 We guessed that the two first parameters were the key and the session we previously got, because in the routine `a(...)̀ / `login(...)`  we had:
+
 > ```java
 >this.w = paramString1;
 >this.x = paramString2;
 >```
-and in another routine l() (line 143):
+
+and in another routine `l()` (line 143):
+
 > ```java
 >private void l(){
 >    Intent localIntent = new Intent(this, SuccessActivity.class);
@@ -169,7 +182,9 @@ and in another routine l() (line 143):
 >    startActivity(localIntent);
 >}
 > ```
+
 We had then to recover the routine `a(...)̀  / ̀ login(...)`, which became:
+
 > ```java
 >public void login(String key, String session, String login, String pin){
 >	this.key = key;
@@ -181,7 +196,9 @@ We had then to recover the routine `a(...)̀  / ̀ login(...)`, which became:
 >	FormBody form = new FormBody.Builder().add("m", res).build();
 >	Request req = new Request.Builder().url("https://notes.challenges.cybersecuritychallenge.be/" + "login").addHeader("session", session).method("POST", form).build();
 > ```
+
 where `cipher()` is (modified version; the 2nd parameter was always the constant "12AV59BC29IE02CD"):
+
 > ```java
 >public static String cipher(String keyString, String text, boolean encrypt){
 >	try {
@@ -202,10 +219,11 @@ where `cipher()` is (modified version; the 2nd parameter was always the constant
 >	return "nope";
 >}
 > ```
+
 Okay, at this moment we knew that:
-- the app sends a GET on /init to get a key and a session ID
-- these two strings are used to encrypt the credentials
-- in case of success, the `SuccessActivity` is launched. Let's rewrite it:
+* the app sends a GET on /init to get a key and a session ID
+* these two strings are used to encrypt the credentials
+* in case of success, the `SuccessActivity` is launched. Let's rewrite it:
 
 > ```java
 >public class SuccessActivity extends Activity {
@@ -239,20 +257,25 @@ Okay, at this moment we knew that:
 >	}
 >}
 > ```
+
 ## Step 2
 We tried the PIN code `0000`, and got the following response:
+
 > ```
 > {
 >	"m": "8ZYvqiUnfwU+ooyhp7PbHH/PYoNDyxAco7N/NkVL4pXPtGMymVqjusuzOsjHp42k\n"
 >}
 > ```
+
 It didn't give us an ASCII string, so we tried to decrypt the answer (changed every time) using the key 
 
 Output:
+
 > ```
 >I/Response: +MBNwo2pf/xbXJo1Z/Cm6xwdMrc43rnGKkwD3gyMaOl1H/D6TpcQrg9p3U9PYzEU
 >I/Decoded: {"key": "0940537021d8023a1ead1477b8157622"}
 > ```
+
 We then tried to reach the page `super-awesome-notes-v2`:
 * init: get the first key and session ID
 * encrypt credentials using the first key and send it to `/login`
@@ -261,6 +284,7 @@ We then tried to reach the page `super-awesome-notes-v2`:
 * use the second key to decrypt the response
 
 Output:
+
 > ```
 >I/1st key: {
 >	"key": "bfd947f44a846380d89a8d29d75b5cb8", 
@@ -275,8 +299,9 @@ Output:
 >}
 >I/Next page: {"status": "access denied"} <- decrypted
 > ```
+
 We received an "Access denied", because the PIN code was wrong. We assumed that he username was "admin", and then tried to bruteforce the PIN code (only 10'000 possible codes),
 and with 7169, we finally got:
 **{"flag": "Note to self: Buy more dogecoin. It can only go up. CSCBE{SSLPinBruteForceRootEvasion}"}**
 
-See [Whole Android code](MainActivity.java)
+See [Full Android code](MainActivity.java)

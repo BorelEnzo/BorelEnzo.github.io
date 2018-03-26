@@ -7,7 +7,8 @@ We are given a URL, and found a old 2D game running on port 1337. The game engin
 The goal is to find a hidden stone, and get the flag. We first started a static analysis of the code in order to see where could be hidden this stone.
 
 *requestmanager.js*
-> ```Javascript
+
+> ```javascript
 >function RequestManager(){
 >    this.baseUrl = "http://54.171.88.202:8000";
 >}
@@ -28,7 +29,9 @@ The goal is to find a hidden stone, and get the flag. We first started a static 
 > ```
 
 When then tried to locate where this routine was called to see which parameter was set.
+
 *gameStage.js*
+
 > ```Javascript
 >GameStage.prototype.verifyThePossibilityToMove = function(requestManager){
 >    let isInsideTheLimits = this.actualLevel.verifyLimits(this.player);
@@ -48,7 +51,8 @@ When then tried to locate where this routine was called to see which parameter w
 > ```
 
 And in the same file:
-> ```Javascript
+
+> ```javascript
 >breakKey.press = () => {
 >         let nearStone = this.actualLevel.findNearStone(this.player); 
 >         if(nearStone != undefined){
@@ -74,9 +78,11 @@ And in the same file:
 >         }
 >    }
 > ```
+
 Okay, then we know that the most interesting URL is given by the attribute `afterDestruction`.
 
 When a game is launched, a request is made to http://...:8000/easy/start to fetch game data. For the first stage, it is:
+
 > ```JSON
 > {  
 >   "stones":[  
@@ -141,6 +147,7 @@ When a game is launched, a request is made to http://...:8000/easy/start to fetc
 >   "name":"1x1"
 >}
 > ```
+
 ![stage](stage.png)
 
 We noticed 4 things:
@@ -151,7 +158,8 @@ We noticed 4 things:
 
 We guessed that all stages would be stored in a file whose name is a md5 of the location in the grid.
 We then wrote a small [script](dungeon.py) to download all files:
-> ```Python
+
+> ```python
 >import requests
 >import json
 >url = 'http://54.171.88.202:8000/easy/'
@@ -171,7 +179,9 @@ We then wrote a small [script](dungeon.py) to download all files:
 >call(s)
 >print gates
 > ```
+
 Output:
+
 > ```
 >[u'0d0bd32f934762ea407d5766f5942ed9',
 >u'83318d6bceb030aa91808964ca4ec00f',
@@ -198,8 +208,10 @@ Output:
 >u'3c805e894e7b0e33ee3eaaef41ca4e2d',
 >u'2f293c4d2e4649bdcb4faf949b3b477e']
 > ```
+
 We then used these hashes to download all stages, but the attribute `afterDestruction` was always null.
 However, once we reversed hashes, we noticed that 3x3 was missing
+
 > ```	
 >0d0bd32f934762ea407d5766f5942ed9 MD5 : 2x1
 >83318d6bceb030aa91808964ca4ec00f MD5 : 3x1
@@ -226,7 +238,9 @@ However, once we reversed hashes, we noticed that 3x3 was missing
 >3c805e894e7b0e33ee3eaaef41ca4e2d MD5 : 2x4
 >2f293c4d2e4649bdcb4faf949b3b477e MD5 : 3x4
 > ```
+
 The MD5 hash of "3x3" is 106a3b51dace02cbed6f1a1928e5927b, and sending a GET on http://54.171.88.202:8000/easy/106a3b51dace02cbed6f1a1928e5927b gave us:
+
 > ```
 >{  
 >   "stones":[  

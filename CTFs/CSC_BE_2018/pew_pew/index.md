@@ -3,9 +3,11 @@
 ### [~$ cd ..](../)
 
 The goal was to retrieve a key in the binary. The command `strings` gave us nothing, and then we called our good friend GDB. Old school way, but still efficient!
+
 > ```bash
 > pew_pew: ELF 32-bit LSB shared object, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=7d8f1bd18e24ccf884a3e5df27b5868cd38d4281, stripped
 > ```
+
 The binary is stripped, it would be not so easy.
 First thing we did was to dump the code with `objdump -x -D pew_pew` [here](objdump.txt)
 We first looked for the entry point:
@@ -39,8 +41,10 @@ We first looked for the entry point:
 >(gdb) stepi
 >0x56555849 in ?? ()
 > ```
+
 Okay, nice we are now in a new routine. We can now get the code using the 3 last digits of the address (849) in objdump.txt.
 The program reads 128 chars from the stdin, and replaces the carriage return with a null byte. The interesting code starts here:
+
 > ```
 >907:	8d 85 48 ff ff ff    	lea    -0xb8(%ebp),%eax
 >90d:	50                   	push   %eax
@@ -50,7 +54,8 @@ The program reads 128 chars from the stdin, and replaces the carriage return wit
 ## Find the right format
 
 We can see that the address of our string ( `$ebp-0xb8` ) is passed as parameter to a custom routine (not the `atoi` actually)
-The located at this address is as follows:
+The code located at this address is as follows:
+
 > ```
 >65d:	55                   	push   %ebp
 >65e:	89 e5                	mov    %esp,%ebp
@@ -70,8 +75,10 @@ The located at this address is as follows:
 >68a:	c9                   	leave  
 >68b:	c3                   	ret 
 > ```
+
 Okay, nice! Because of the line 0x67e, we can deduce that the routine will return true if `strlen` returns 0x18 (24), so we can guess that our string should be 24 chars long.
 Indeed, in the main routine, we have this after the call to 0x65d:
+
 > ```
 >913:	83 c4 10             	add    $0x10,%esp
 >916:	85 c0                	test   %eax,%eax
@@ -81,7 +88,9 @@ Indeed, in the main routine, we have this after the call to 0x65d:
 >923:	50                   	push   %eax
 >924:	e8 63 fd ff ff       	call   68c <atoi@plt+0x18c>
 > ```
+
 If the routine returns 0, a jump is done (will print that the key is not correct and exit). However, if the key is 24 chars long (without the carriage return), another routine is called:
+
 > ```
 >68c:	55                   	push   %ebp
 >68d:	89 e5                	mov    %esp,%ebp
@@ -142,8 +151,10 @@ If the routine returns 0, a jump is done (will print that the key is not correct
 >72a:	c9                   	leave  
 >72b:	c3                   	ret    
 > ```
+
 We guess that is a for loop. The pseudo code is something like this:
-> ```Python
+
+> ```python
 >i = 0
 >if len(key) == 0:
 >	exit
@@ -155,6 +166,7 @@ We guess that is a for loop. The pseudo code is something like this:
 >		if !is_number(string[i]) //0x6ed -> 0x6fc
 >			exit
 > ```
+
 We know then that we should submit something like this: ????-????-????-???? where ? is a number. Indeed, we'll receive the message "Wrong key format" if the format doesn't match.
 Let's go back to the main routine, after this first check:
 
@@ -166,7 +178,9 @@ Let's go back to the main routine, after this first check:
 >95c:	50                   	push   %eax
 >95d:	e8 8e fb ff ff       	call   4f0 <strtok@plt>
 > ```
+
 The call to `strtok` will split the key using the character '-':
+
 > ```
 >Breakpoint 4, 0x5655595d in ?? ()
 >(gdb) x/2x $esp
@@ -180,10 +194,13 @@ The call to `strtok` will split the key using the character '-':
 ## Part 1
 
 Each block of the key will be checked with a different routine. Their address are not known, since the their are resolved at this line:
+
 > ```
 > 98a:	ff d6                	call   *%esi
 > ```
+
 Then we break juste before, and use `stepi`:
+
 > ```
 >(gdb) break *0x5655598a
 	Breakpoint 5 at 0x5655598a
@@ -194,7 +211,9 @@ Then we break juste before, and use `stepi`:
 >(gdb) stepi
 >0x5655572c in ?? ()
 > ```
+
 In 0x72c we can find this code:
+
 > ```
 >72c:	55                   	push   %ebp
 >72d:	89 e5                	mov    %esp,%ebp
@@ -208,15 +227,18 @@ In 0x72c we can find this code:
 >74c:	5d                   	pop    %ebp
 >74d:	c3                   	ret  
 > ```
+
 Nice, the first part of the key is compared against a constant:
 * eax = 0x2710
 * eax -= key
 * eax == 0x163 ?
+
 To satisfy the condition, the first part of the key has to be: 0x2710-0x163 = **9645**
 
 ## Part 2
 
 To find the next check location, we repeated the same process: reach the call to $esi, skip the first check, and jump with the command `stepi`:
+
 > ```
 >74e:	55                   	push   %ebp
 >74f:	89 e5                	mov    %esp,%ebp
@@ -246,9 +268,11 @@ To find the next check location, we repeated the same process: reach the call to
 >79d:	5d                   	pop    %ebp
 >79e:	c3                   	ret    
 > ```
+
 We can guess that the second part should be between 0x167a and 0x16a7 (5754 - 5799). Some computations are done, and the result should be 0x23.
 We then wrote this pseudo code:
-> ```Python
+
+> ```python
 > edx = 0x51eb851f
 > edx = ((key * edx) & 0xffff00000000) >> 36
 > eax = edx - msb(key)
@@ -256,8 +280,10 @@ We then wrote this pseudo code:
 > eax = key - eax
 > eax == 0x23 ?
 > ```
+
 Let our friend Python search the solution for us:
-> ```Python
+
+> ```python
 >def brute(i):
 >	edx = 0x51eb851f
 >	edx = ((i * edx) & 0xffff00000000) >> 36
@@ -272,6 +298,7 @@ Let our friend Python search the solution for us:
 >		print i
 >		exit(0)
 > ```
+
 The answer appears: **5785**
 
 ## Step 3
@@ -287,6 +314,7 @@ The answer appears: **5785**
 >7b9:	5d                   	pop    %ebp
 >7ba:	c3                   	ret
 > ```
+
 Pretty straightforward! The third part is then **3312** (0xcf0)
 
 ## Step 4
@@ -327,6 +355,7 @@ Pretty straightforward! The third part is then **3312** (0xcf0)
 >827:	c9                   	leave  
 >828:	c3                   	ret
 > ```
+
 Once again, we have a for loop, and at each round, the key is divided by the number located at $ebp+(4*i)-16. If the remainder is not 0, the routine returns false.
 It's therefore quite simple to guess the correct value, since $ebp-8, $ebp-12 and $ebp-16 are known: 0x2, 0x11 and 0x107. The answer is therefore the product: **8942**.
 
@@ -345,8 +374,10 @@ It's therefore quite simple to guess the correct value, since $ebp-8, $ebp-12 an
 >847:	5d                   	pop    %ebp
 >848:	c3   					ret
 >```
+
 The value is then shifted by 8 bits, and the result is compared against the constant 0x1c8d00. The correct value is then 0x1c8d00 >> 8 = **7309**.
 If we run the once again with the key, we get:
+
 > ```
 >Good job! The flag is CSCBE{9645-5785-3312-8942-7309}
 > ```

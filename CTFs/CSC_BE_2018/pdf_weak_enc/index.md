@@ -2,7 +2,7 @@
 
 ### [~$ cd ..](../)
 
-The statement of the challenges tells us that the PDF file has been encrypted with a 32 bytes random password. The goal is not to guess the password, but 
+The statement of the challenge tells us that the PDF file has been encrypted with a 32 bytes random password. The goal is not to guess the password, but 
 to break the weak PDF encryption. A hint is given: the first byte of the key is 0x30
 
 By looking inside the document using `nano`, we found the following elements:
@@ -37,9 +37,11 @@ By reading the [PDF file specification ](https://www.adobe.com/content/dam/acom/
 >		3 (PDF 1.4) An unpublished algorithm that permits encryption key lengths ranging from 40 to 128 bits; see  implementation note 22 in Appendix H. 
 >		4 (PDF 1.5) The security handler defines the use of encryption and decryption in  the document, using the rules specified by the *CF*, *StmF*, and *StrF* entries. 
 > ```
-Here, it was also a 40bits-key encryption using RC4 algorithm, and we already knew that the first byte of the key was 0x30.
-We then used the tool [RC4-40-brute-pdf](https://github.com/kholia/RC4-40-brute-pdf), and modified the loop in ```RC4-40-brute.c```:
-> ```C
+
+Here, it was also a 40-bits key encryption using RC4 algorithm, and we already knew that the first byte of the key was 0x30.
+We then used the tool [RC4-40-brute-pdf](https://github.com/kholia/RC4-40-brute-pdf), and modified the loop in `RC4-40-brute.c`:
+
+> ```c
 >for(i = is; i <= 255; i++) { /* time = 256 * 2.23 * 256 seconds ~= 40.6 hours ~= 1.7 days days */
 >	for(j = js; j <= 255; j++) {
 >		gettimeofday(&tv, NULL);
@@ -64,10 +66,13 @@ We then used the tool [RC4-40-brute-pdf](https://github.com/kholia/RC4-40-brute-
 >	}
 >}
 > ```
+
 We let the program run for a while, and it finally gave us the following key **306462dce4**. However, we had then to decrypt the file...
 Didier Stevens gave us the solution in [one of his blog posts](https://blog.didierstevens.com/2017/12/28/cracking-encrypted-pdfs-part-3/). In order to
 decrypt, he modified the source of QPDF, and since it's a very nice guy, he published his patch. We only had to recompile and run it:
+
 > ```bash
 > qpdf-8.0.2/qpdf-8.0.2/qpdf/build/qpdf --decrypt --password=key:306462dce4 do_not_use_weak_encryption.pdf out.pdf
 > ```
+
 and finally, we got the flag **CSCBE{EFD75D1FBC103B39A9D71F8C56754178}**
