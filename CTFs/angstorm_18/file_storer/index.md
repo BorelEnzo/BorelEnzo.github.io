@@ -142,7 +142,7 @@ Then, I knew that the solution was to send a POST request on http://web2.angstro
 "__password", with the trailing underscores is a private variable, and it was impossible to read it with
 
 > ```bash
->~$ curl http://web2.angstromctf.com:8899/user/admin -d "field=_user__password"
+>~$ curl http://web2.angstromctf.com:8899/user/admin -d "field=__password"
 > ```
 
 According to the [documentation](https://docs.python.org/3/tutorial/classes.html#tut-private), these variables are textually replaced with `_classname__var`. Then, I sent:
