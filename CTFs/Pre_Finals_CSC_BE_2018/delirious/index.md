@@ -38,7 +38,7 @@ We started with the last column:
 1st column:
 * 1st row: O or B, but O doesn't appear in the column => B
 * 2nd row: an L already appears, so it means that the second group has been reached. The first groupe is FO or FA => F
-* 3rd row: the 4th row is reserved by the third group (\[UF\]). This third slot has to match the second group: (B|FK|U). F has been placed in the second row => K
+* 3rd row: the 4th row is reserved by the third group (\[UF\]). This third slot has to match the second group: (B\|FK\|U). F has been placed in the second row => K
 * 4th row: don't know yet
 
 2nd column:
@@ -51,7 +51,7 @@ The remaining slot contains therefore the letter U.
 
 The final grid is then:
 
-BOKJKA
-FOLZOP
-KNRTKN
-UOCVVV
+BOKJKA  
+FOLZOP  
+KNRTKN  
+UOCVVV  

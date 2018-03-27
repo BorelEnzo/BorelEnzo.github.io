@@ -8,7 +8,7 @@
 
 ![braille](braille.png)
 
-We were given this sret of black and white dots, and we had to find out
+We were given this set of black and white dots, and we had to find out
 which kind of code it was. We first thought about binary or morse, but,
 but it didn't gave us readable informations.
 

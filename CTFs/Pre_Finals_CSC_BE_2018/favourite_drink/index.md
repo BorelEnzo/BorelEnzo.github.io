@@ -10,6 +10,7 @@
 ![sudoku](sudoku.png)
 
 We were too lazy to solve hand by ourselves, therefore we let [dcode](https://www.dcode.fr/wordoku-solver) do it for us.
+
 PDF: [Solution](solution.pdf):
 
 ![solution_png](solution.png)
