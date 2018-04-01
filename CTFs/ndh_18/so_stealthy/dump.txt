@@ -1,0 +1,459 @@
+WARNING: The runtime version supported by this application is unavailable.
+Using default runtime: v4.0.30319
+.assembly extern mscorlib
+{
+  .ver 2:0:0:0
+  .publickeytoken = (B7 7A 5C 56 19 34 E0 89 ) // .z\V.4..
+}
+.assembly extern System.Windows.Forms
+{
+  .ver 2:0:0:0
+  .publickeytoken = (B7 7A 5C 56 19 34 E0 89 ) // .z\V.4..
+}
+.assembly extern System.Drawing
+{
+  .ver 2:0:0:0
+  .publickeytoken = (B0 3F 5F 7F 11 D5 0A 3A ) // .?_....:
+}
+.assembly 'AingeiRai5HahfeiThe2'
+{
+  .custom instance void class [mscorlib]System.Runtime.CompilerServices.CompilationRelaxationsAttribute::'.ctor'(int32) =  (01 00 08 00 00 00 00 00 ) // ........
+
+  .custom instance void class [mscorlib]System.Runtime.CompilerServices.RuntimeCompatibilityAttribute::'.ctor'() =  (
+		01 00 01 00 54 02 16 57 72 61 70 4E 6F 6E 45 78   // ....T..WrapNonEx
+		63 65 70 74 69 6F 6E 54 68 72 6F 77 73 01       ) // ceptionThrows.
+
+  .custom instance void class [mscorlib]System.Diagnostics.DebuggableAttribute::'.ctor'(valuetype [mscorlib]System.Diagnostics.DebuggableAttribute/DebuggingModes) =  (01 00 07 01 00 00 00 00 ) // ........
+
+  .custom instance void class [mscorlib]System.Reflection.AssemblyTitleAttribute::'.ctor'(string) =  (
+		01 00 0F 45 78 61 6D 70 6C 65 41 73 73 65 6D 62   // ...ExampleAssemb
+		6C 79 00 00                                     ) // ly..
+
+  .custom instance void class [mscorlib]System.Reflection.AssemblyDescriptionAttribute::'.ctor'(string) =  (
+		01 00 24 45 78 61 6D 70 6C 65 20 41 73 73 65 6D   // ..$Example Assem
+		62 6C 79 20 66 6F 72 20 44 6F 74 4E 65 74 54 6F   // bly for DotNetTo
+		4A 53 63 72 69 70 74 00 00                      ) // JScript..
+
+  .custom instance void class [mscorlib]System.Reflection.AssemblyConfigurationAttribute::'.ctor'(string) =  (01 00 00 00 00 ) // .....
+
+  .custom instance void class [mscorlib]System.Reflection.AssemblyCompanyAttribute::'.ctor'(string) =  (01 00 00 00 00 ) // .....
+
+  .custom instance void class [mscorlib]System.Reflection.AssemblyProductAttribute::'.ctor'(string) =  (
+		01 00 0F 45 78 61 6D 70 6C 65 41 73 73 65 6D 62   // ...ExampleAssemb
+		6C 79 00 00                                     ) // ly..
+
+  .custom instance void class [mscorlib]System.Reflection.AssemblyCopyrightAttribute::'.ctor'(string) =  (
+		01 00 1F 43 6F 70 79 72 69 67 68 74 20 C2 A9 20   // ...Copyright .. 
+		4A 61 6D 65 73 20 46 6F 72 73 68 61 77 20 32 30   // James Forshaw 20
+		31 37 00 00                                     ) // 17..
+
+  .custom instance void class [mscorlib]System.Reflection.AssemblyTrademarkAttribute::'.ctor'(string) =  (01 00 00 00 00 ) // .....
+
+  .custom instance void class [mscorlib]System.Runtime.InteropServices.ComVisibleAttribute::'.ctor'(bool) =  (01 00 00 00 00 ) // .....
+
+  .custom instance void class [mscorlib]System.Runtime.InteropServices.GuidAttribute::'.ctor'(string) =  (
+		01 00 24 35 36 35 39 38 66 31 63 2D 36 64 38 38   // ..$56598f1c-6d88
+		2D 34 39 39 34 2D 61 33 39 32 2D 61 66 33 33 37   // -4994-a392-af337
+		61 62 65 35 37 37 37 00 00                      ) // abe5777..
+
+  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 07 31 2E 30 2E 30 2E 30 00 00 ) // ...1.0.0.0..
+
+  .hash algorithm 0x00008004
+  .ver  1:0:0:0
+}
+.mresource public 'AingeiRai5HahfeiThe2.resources'
+{
+}
+.module AingeiRai5HahfeiThe2.dll // GUID = {3B6074DF-714F-4105-BC14-49801EE8A52C}
+
+
+  .class public auto ansi beforefieldinit AingeiRai5HahfeiThe2
+  	extends [System.Windows.Forms]System.Windows.Forms.Form
+  {
+    .custom instance void class [mscorlib]System.Runtime.InteropServices.ComVisibleAttribute::'.ctor'(bool) =  (01 00 01 00 00 ) // .....
+
+    .field  private  <BROKEN CLASS token_ 1000010 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> Aof0roo2eej3ahSh1eis
+    .field  private  <BROKEN CLASS token_ 1000011 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> ta4vo2Ahk5yaep2oShuu
+    .field  private  <BROKEN CLASS token_ 1000012 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> Xahhu2ieSh5ieFohPiGh
+    .field  private  string Tai8Aip0ua3ULi6zo1je
+    .field  private  int32[] az5nieghahj0Iekah0ph
+
+    // method line 1
+    .method public hidebysig specialname rtspecialname 
+           instance default void '.ctor' ()  cil managed 
+    {
+        // Method begins at RVA 0x2050
+	// Code size 40 (0x28)
+	.maxstack 8
+	IL_0000:  ldarg.0 
+	IL_0001:  ldc.i4.s 0x16
+	IL_0003:  newarr [mscorlib]System.Int32
+	IL_0008:  dup 
+	IL_0009:  ldtoken field valuetype '<PrivateImplementationDetails>'/'__StaticArrayInitTypeSize=88' '<PrivateImplementationDetails>'::420EECB6FB2A94DB2C60DF98AA929635D43B594B
+	IL_000e:  call void class [mscorlib]System.Runtime.CompilerServices.RuntimeHelpers::InitializeArray(class [mscorlib]System.Array, valuetype [mscorlib]System.RuntimeFieldHandle)
+	IL_0013:  stfld int32[] AingeiRai5HahfeiThe2::az5nieghahj0Iekah0ph
+	IL_0018:  ldarg.0 
+	IL_0019:  call instance void [System.Windows.Forms]System.Windows.Forms.Form::.ctor()
+	IL_001e:  nop 
+	IL_001f:  nop 
+	IL_0020:  ldarg.0 
+	IL_0021:  call instance void()
+	IL_0026:  nop 
+	IL_0027:  ret 
+    } // end of method AingeiRai5HahfeiThe2::.ctor
+
+    // method line 2
+    .method public hidebysig 
+           instance default void Aa6bi4uidan4shahSee9 (string ain7aek2Thae3Boh7ohh)  cil managed 
+    {
+        // Method begins at RVA 0x2079
+	// Code size 23 (0x17)
+	.maxstack 8
+	IL_0000:  nop 
+	IL_0001:  ldarg.0 
+	IL_0002:  ldarg.1 
+	IL_0003:  ldarg.1 
+	IL_0004:  callvirt instance int32 string::get_Length()
+	IL_0009:  ldc.i4.s 0x16
+	IL_000b:  sub 
+	IL_000c:  callvirt instance string string::Substring(int32)
+	IL_0011:  stfld string AingeiRai5HahfeiThe2::Tai8Aip0ua3ULi6zo1je
+	IL_0016:  ret 
+    } // end of method AingeiRai5HahfeiThe2::Aa6bi4uidan4shahSee9
+
+    // method line 3
+    .method public hidebysig 
+           instance default void Joh8achoo1aepahjeiy9 ()  cil managed 
+    {
+        // Method begins at RVA 0x2091
+	// Code size 9 (0x9)
+	.maxstack 8
+	IL_0000:  nop 
+	IL_0001:  ldarg.0 
+	IL_0002:  call void [System.Windows.Forms]System.Windows.Forms.Application::Run(<BROKEN CLASS token_ 100000f due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>>)
+	IL_0007:  nop 
+	IL_0008:  ret 
+    } // end of method AingeiRai5HahfeiThe2::Joh8achoo1aepahjeiy9
+
+    // method line 4
+    .method private hidebysig 
+           instance default void Jojei5ahyah2yah5laeK ()  cil managed 
+    {
+        // Method begins at RVA 0x209c
+	// Code size 451 (0x1c3)
+	.maxstack 3
+	IL_0000:  nop 
+	IL_0001:  ldarg.0 
+	IL_0002:  newobj instance void [System.Windows.Forms]System.Windows.Forms.Button::.ctor()
+	IL_0007:  stfld <BROKEN CLASS token_ 1000010 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> AingeiRai5HahfeiThe2::Aof0roo2eej3ahSh1eis
+	IL_000c:  ldarg.0 
+	IL_000d:  newobj instance void [System.Windows.Forms]System.Windows.Forms.TextBox::.ctor()
+	IL_0012:  stfld <BROKEN CLASS token_ 1000011 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> AingeiRai5HahfeiThe2::ta4vo2Ahk5yaep2oShuu
+	IL_0017:  ldarg.0 
+	IL_0018:  newobj instance void [System.Windows.Forms]System.Windows.Forms.Label::.ctor()
+	IL_001d:  stfld <BROKEN CLASS token_ 1000012 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> AingeiRai5HahfeiThe2::Xahhu2ieSh5ieFohPiGh
+	IL_0022:  ldarg.0 
+	IL_0023:  call instance void [System.Windows.Forms]System.Windows.Forms.Control::SuspendLayout()
+	IL_0028:  nop 
+	IL_0029:  ldarg.0 
+	IL_002a:  ldfld <BROKEN CLASS token_ 1000010 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> AingeiRai5HahfeiThe2::Aof0roo2eej3ahSh1eis
+	IL_002f:  ldc.i4.s 0x0c
+	IL_0031:  ldc.i4.s 0x66
+	IL_0033:  newobj instance void [System.Drawing]System.Drawing.Point::.ctor(int32, int32)
+	IL_0038:  callvirt instance void [System.Windows.Forms]System.Windows.Forms.Control::set_Location(<BROKEN CLASS token_ 100001e due to Could not load file or assembly or one of its dependencies. assembly:System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a type:<unknown type> member:<none>>)
+	IL_003d:  nop 
+	IL_003e:  ldarg.0 
+	IL_003f:  ldfld <BROKEN CLASS token_ 1000010 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> AingeiRai5HahfeiThe2::Aof0roo2eej3ahSh1eis
+	IL_0044:  ldstr "btnOk"
+	IL_0049:  callvirt instance void [System.Windows.Forms]System.Windows.Forms.Control::set_Name(string)
+	IL_004e:  nop 
+	IL_004f:  ldarg.0 
+	IL_0050:  ldfld <BROKEN CLASS token_ 1000010 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> AingeiRai5HahfeiThe2::Aof0roo2eej3ahSh1eis
+	IL_0055:  ldc.i4 259
+	IL_005a:  ldc.i4.s 0x17
+	IL_005c:  newobj instance void [System.Drawing]System.Drawing.Size::.ctor(int32, int32)
+	IL_0061:  callvirt instance void [System.Windows.Forms]System.Windows.Forms.Control::set_Size(<BROKEN CLASS token_ 100001f due to Could not load file or assembly or one of its dependencies. assembly:System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a type:<unknown type> member:<none>>)
+	IL_0066:  nop 
+	IL_0067:  ldarg.0 
+	IL_0068:  ldfld <BROKEN CLASS token_ 1000010 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> AingeiRai5HahfeiThe2::Aof0roo2eej3ahSh1eis
+	IL_006d:  ldc.i4.0 
+	IL_006e:  callvirt instance void [System.Windows.Forms]System.Windows.Forms.Control::set_TabIndex(int32)
+	IL_0073:  nop 
+	IL_0074:  ldarg.0 
+	IL_0075:  ldfld <BROKEN CLASS token_ 1000010 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> AingeiRai5HahfeiThe2::Aof0roo2eej3ahSh1eis
+	IL_007a:  ldstr "Validate"
+	IL_007f:  callvirt instance void [System.Windows.Forms]System.Windows.Forms.Control::set_Text(string)
+	IL_0084:  nop 
+	IL_0085:  ldarg.0 
+	IL_0086:  ldfld <BROKEN CLASS token_ 1000010 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> AingeiRai5HahfeiThe2::Aof0roo2eej3ahSh1eis
+	IL_008b:  ldc.i4.1 
+	IL_008c:  callvirt instance void [System.Windows.Forms]System.Windows.Forms.ButtonBase::set_UseVisualStyleBackColor(bool)
+	IL_0091:  nop 
+	IL_0092:  ldarg.0 
+	IL_0093:  ldfld <BROKEN CLASS token_ 1000010 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> AingeiRai5HahfeiThe2::Aof0roo2eej3ahSh1eis
+	IL_0098:  ldarg.0 
+	IL_0099:  ldftn instance void class AingeiRai5HahfeiThe2::Eey4jie0raer7Miiphuo(object, class [mscorlib]System.EventArgs)
+	IL_009f:  newobj instance void class [mscorlib]System.EventHandler::'.ctor'(object, native int)
+	IL_00a4:  callvirt instance void [System.Windows.Forms]System.Windows.Forms.Control::add_Click(class [mscorlib]System.EventHandler)
+	IL_00a9:  nop 
+	IL_00aa:  ldarg.0 
+	IL_00ab:  ldfld <BROKEN CLASS token_ 1000011 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> AingeiRai5HahfeiThe2::ta4vo2Ahk5yaep2oShuu
+	IL_00b0:  ldc.i4.s 0x0c
+	IL_00b2:  ldc.i4.s 0x27
+	IL_00b4:  newobj instance void [System.Drawing]System.Drawing.Point::.ctor(int32, int32)
+	IL_00b9:  callvirt instance void [System.Windows.Forms]System.Windows.Forms.Control::set_Location(<BROKEN CLASS token_ 100001e due to Could not load file or assembly or one of its dependencies. assembly:System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a type:<unknown type> member:<none>>)
+	IL_00be:  nop 
+	IL_00bf:  ldarg.0 
+	IL_00c0:  ldfld <BROKEN CLASS token_ 1000011 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> AingeiRai5HahfeiThe2::ta4vo2Ahk5yaep2oShuu
+	IL_00c5:  ldstr "magicTxt"
+	IL_00ca:  callvirt instance void [System.Windows.Forms]System.Windows.Forms.Control::set_Name(string)
+	IL_00cf:  nop 
+	IL_00d0:  ldarg.0 
+	IL_00d1:  ldfld <BROKEN CLASS token_ 1000011 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> AingeiRai5HahfeiThe2::ta4vo2Ahk5yaep2oShuu
+	IL_00d6:  ldc.i4 259
+	IL_00db:  ldc.i4.s 0x14
+	IL_00dd:  newobj instance void [System.Drawing]System.Drawing.Size::.ctor(int32, int32)
+	IL_00e2:  callvirt instance void [System.Windows.Forms]System.Windows.Forms.Control::set_Size(<BROKEN CLASS token_ 100001f due to Could not load file or assembly or one of its dependencies. assembly:System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a type:<unknown type> member:<none>>)
+	IL_00e7:  nop 
+	IL_00e8:  ldarg.0 
+	IL_00e9:  ldfld <BROKEN CLASS token_ 1000011 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> AingeiRai5HahfeiThe2::ta4vo2Ahk5yaep2oShuu
+	IL_00ee:  ldc.i4.1 
+	IL_00ef:  callvirt instance void [System.Windows.Forms]System.Windows.Forms.Control::set_TabIndex(int32)
+	IL_00f4:  nop 
+	IL_00f5:  ldarg.0 
+	IL_00f6:  ldfld <BROKEN CLASS token_ 1000012 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> AingeiRai5HahfeiThe2::Xahhu2ieSh5ieFohPiGh
+	IL_00fb:  ldc.i4.1 
+	IL_00fc:  callvirt instance void [System.Windows.Forms]System.Windows.Forms.Control::set_AutoSize(bool)
+	IL_0101:  nop 
+	IL_0102:  ldarg.0 
+	IL_0103:  ldfld <BROKEN CLASS token_ 1000012 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> AingeiRai5HahfeiThe2::Xahhu2ieSh5ieFohPiGh
+	IL_0108:  ldc.i4.s 0x09
+	IL_010a:  ldc.i4.s 0x09
+	IL_010c:  newobj instance void [System.Drawing]System.Drawing.Point::.ctor(int32, int32)
+	IL_0111:  callvirt instance void [System.Windows.Forms]System.Windows.Forms.Control::set_Location(<BROKEN CLASS token_ 100001e due to Could not load file or assembly or one of its dependencies. assembly:System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a type:<unknown type> member:<none>>)
+	IL_0116:  nop 
+	IL_0117:  ldarg.0 
+	IL_0118:  ldfld <BROKEN CLASS token_ 1000012 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> AingeiRai5HahfeiThe2::Xahhu2ieSh5ieFohPiGh
+	IL_011d:  ldstr "magicLbl"
+	IL_0122:  callvirt instance void [System.Windows.Forms]System.Windows.Forms.Control::set_Name(string)
+	IL_0127:  nop 
+	IL_0128:  ldarg.0 
+	IL_0129:  ldfld <BROKEN CLASS token_ 1000012 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> AingeiRai5HahfeiThe2::Xahhu2ieSh5ieFohPiGh
+	IL_012e:  ldc.i4.s 0x6e
+	IL_0130:  ldc.i4.s 0x0d
+	IL_0132:  newobj instance void [System.Drawing]System.Drawing.Size::.ctor(int32, int32)
+	IL_0137:  callvirt instance void [System.Windows.Forms]System.Windows.Forms.Control::set_Size(<BROKEN CLASS token_ 100001f due to Could not load file or assembly or one of its dependencies. assembly:System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a type:<unknown type> member:<none>>)
+	IL_013c:  nop 
+	IL_013d:  ldarg.0 
+	IL_013e:  ldfld <BROKEN CLASS token_ 1000012 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> AingeiRai5HahfeiThe2::Xahhu2ieSh5ieFohPiGh
+	IL_0143:  ldc.i4.2 
+	IL_0144:  callvirt instance void [System.Windows.Forms]System.Windows.Forms.Control::set_TabIndex(int32)
+	IL_0149:  nop 
+	IL_014a:  ldarg.0 
+	IL_014b:  ldfld <BROKEN CLASS token_ 1000012 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> AingeiRai5HahfeiThe2::Xahhu2ieSh5ieFohPiGh
+	IL_0150:  ldstr "Enter the magic word:"
+	IL_0155:  callvirt instance void [System.Windows.Forms]System.Windows.Forms.Control::set_Text(string)
+	IL_015a:  nop 
+	IL_015b:  ldarg.0 
+	IL_015c:  ldc.i4 284
+	IL_0161:  ldc.i4 138
+	IL_0166:  newobj instance void [System.Drawing]System.Drawing.Size::.ctor(int32, int32)
+	IL_016b:  call instance void [System.Windows.Forms]System.Windows.Forms.Form::set_ClientSize(<BROKEN CLASS token_ 100001f due to Could not load file or assembly or one of its dependencies. assembly:System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a type:<unknown type> member:<none>>)
+	IL_0170:  nop 
+	IL_0171:  ldarg.0 
+	IL_0172:  call instance <BROKEN CLASS token_ 1000022 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> [System.Windows.Forms]System.Windows.Forms.Control::get_Controls()
+	IL_0177:  ldarg.0 
+	IL_0178:  ldfld <BROKEN CLASS token_ 1000012 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> AingeiRai5HahfeiThe2::Xahhu2ieSh5ieFohPiGh
+	IL_017d:  callvirt instance void [System.Windows.Forms]System.Windows.Forms.Control/ControlCollection::Add(<BROKEN CLASS token_ 100001d due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>>)
+	IL_0182:  nop 
+	IL_0183:  ldarg.0 
+	IL_0184:  call instance <BROKEN CLASS token_ 1000022 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> [System.Windows.Forms]System.Windows.Forms.Control::get_Controls()
+	IL_0189:  ldarg.0 
+	IL_018a:  ldfld <BROKEN CLASS token_ 1000011 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> AingeiRai5HahfeiThe2::ta4vo2Ahk5yaep2oShuu
+	IL_018f:  callvirt instance void [System.Windows.Forms]System.Windows.Forms.Control/ControlCollection::Add(<BROKEN CLASS token_ 100001d due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>>)
+	IL_0194:  nop 
+	IL_0195:  ldarg.0 
+	IL_0196:  call instance <BROKEN CLASS token_ 1000022 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> [System.Windows.Forms]System.Windows.Forms.Control::get_Controls()
+	IL_019b:  ldarg.0 
+	IL_019c:  ldfld <BROKEN CLASS token_ 1000010 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> AingeiRai5HahfeiThe2::Aof0roo2eej3ahSh1eis
+	IL_01a1:  callvirt instance void [System.Windows.Forms]System.Windows.Forms.Control/ControlCollection::Add(<BROKEN CLASS token_ 100001d due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>>)
+	IL_01a6:  nop 
+	IL_01a7:  ldarg.0 
+	IL_01a8:  ldstr "SoStealthy"
+	IL_01ad:  call instance void [System.Windows.Forms]System.Windows.Forms.Control::set_Name(string)
+	IL_01b2:  nop 
+	IL_01b3:  ldarg.0 
+	IL_01b4:  ldc.i4.0 
+	IL_01b5:  call instance void [System.Windows.Forms]System.Windows.Forms.Control::ResumeLayout(bool)
+	IL_01ba:  nop 
+	IL_01bb:  ldarg.0 
+	IL_01bc:  call instance void [System.Windows.Forms]System.Windows.Forms.Control::PerformLayout()
+	IL_01c1:  nop 
+	IL_01c2:  ret 
+    } // end of method AingeiRai5HahfeiThe2::Jojei5ahyah2yah5laeK
+
+    // method line 5
+    .method private hidebysig 
+           instance default bool MeeBish0iotho9biBuJi (string magicWord)  cil managed 
+    {
+        // Method begins at RVA 0x226c
+	// Code size 83 (0x53)
+	.maxstack 3
+	.locals init (
+		int32	V_0,
+		unsigned int32	V_1,
+		bool	V_2,
+		bool	V_3,
+		bool	V_4)
+	IL_0000:  nop 
+	IL_0001:  ldc.i4.0 
+	IL_0002:  stloc.0 
+	IL_0003:  br.s IL_0039
+
+	IL_0005:  nop 
+	IL_0006:  ldarg.1 
+	IL_0007:  ldloc.0 
+	IL_0008:  callvirt instance char string::get_Chars(int32)
+	IL_000d:  ldarg.0 
+	IL_000e:  ldfld string AingeiRai5HahfeiThe2::Tai8Aip0ua3ULi6zo1je
+	IL_0013:  ldloc.0 
+	IL_0014:  callvirt instance char string::get_Chars(int32)
+	IL_0019:  xor 
+	IL_001a:  stloc.1 
+	IL_001b:  ldloc.1 
+	IL_001c:  conv.u8 
+	IL_001d:  ldarg.0 
+	IL_001e:  ldfld int32[] AingeiRai5HahfeiThe2::az5nieghahj0Iekah0ph
+	IL_0023:  ldloc.0 
+	IL_0024:  ldelem.i4 
+	IL_0025:  conv.i8 
+	IL_0026:  ceq 
+	IL_0028:  ldc.i4.0 
+	IL_0029:  ceq 
+	IL_002b:  stloc.2 
+	IL_002c:  ldloc.2 
+	IL_002d:  brfalse.s IL_0034
+
+	IL_002f:  nop 
+	IL_0030:  ldc.i4.0 
+	IL_0031:  stloc.3 
+	IL_0032:  br.s IL_0051
+
+	IL_0034:  nop 
+	IL_0035:  ldloc.0 
+	IL_0036:  ldc.i4.1 
+	IL_0037:  add 
+	IL_0038:  stloc.0 
+	IL_0039:  ldloc.0 
+	IL_003a:  ldarg.0 
+	IL_003b:  ldfld string AingeiRai5HahfeiThe2::Tai8Aip0ua3ULi6zo1je
+	IL_0040:  callvirt instance int32 string::get_Length()
+	IL_0045:  clt 
+	IL_0047:  stloc.s 4
+	IL_0049:  ldloc.s 4
+	IL_004b:  brtrue.s IL_0005
+
+	IL_004d:  ldc.i4.1 
+	IL_004e:  stloc.3 
+	IL_004f:  br.s IL_0051
+
+	IL_0051:  ldloc.3 
+	IL_0052:  ret 
+    } // end of method AingeiRai5HahfeiThe2::MeeBish0iotho9biBuJi
+
+    // method line 6
+    .method private hidebysig 
+           instance default void Eey4jie0raer7Miiphuo (object ahrah0iwoChohs2dai4a, class [mscorlib]System.EventArgs ahH5eedeiYohquei8goo)  cil managed 
+    {
+        // Method begins at RVA 0x22cc
+	// Code size 134 (0x86)
+	.maxstack 3
+	.locals init (
+		bool	V_0,
+		bool	V_1,
+		bool	V_2)
+	IL_0000:  nop 
+	IL_0001:  call bool class [mscorlib]System.Diagnostics.Debugger::get_IsAttached()
+	IL_0006:  stloc.0 
+	IL_0007:  ldloc.0 
+	IL_0008:  brfalse.s IL_0019
+
+	IL_000a:  nop 
+	IL_000b:  ldstr "Don't try your dirty tricks on me!"
+	IL_0010:  call <BROKEN CLASS token_ 1000025 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> [System.Windows.Forms]System.Windows.Forms.MessageBox::Show(string)
+	IL_0015:  pop 
+	IL_0016:  nop 
+	IL_0017:  br.s IL_0085
+
+	IL_0019:  ldarg.0 
+	IL_001a:  ldfld <BROKEN CLASS token_ 1000011 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> AingeiRai5HahfeiThe2::ta4vo2Ahk5yaep2oShuu
+	IL_001f:  callvirt instance string [System.Windows.Forms]System.Windows.Forms.Control::get_Text()
+	IL_0024:  callvirt instance int32 string::get_Length()
+	IL_0029:  ldc.i4.0 
+	IL_002a:  ceq 
+	IL_002c:  stloc.1 
+	IL_002d:  ldloc.1 
+	IL_002e:  brfalse.s IL_003f
+
+	IL_0030:  nop 
+	IL_0031:  ldstr "You must fill this field!"
+	IL_0036:  call <BROKEN CLASS token_ 1000025 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> [System.Windows.Forms]System.Windows.Forms.MessageBox::Show(string)
+	IL_003b:  pop 
+	IL_003c:  nop 
+	IL_003d:  br.s IL_0085
+
+	IL_003f:  ldarg.0 
+	IL_0040:  ldarg.0 
+	IL_0041:  ldfld <BROKEN CLASS token_ 1000011 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> AingeiRai5HahfeiThe2::ta4vo2Ahk5yaep2oShuu
+	IL_0046:  callvirt instance string [System.Windows.Forms]System.Windows.Forms.Control::get_Text()
+	IL_004b:  call instance bool class AingeiRai5HahfeiThe2::MeeBish0iotho9biBuJi(string)
+	IL_0050:  stloc.2 
+	IL_0051:  ldloc.2 
+	IL_0052:  brfalse.s IL_0078
+
+	IL_0054:  nop 
+	IL_0055:  ldstr "SUCCESS !\nSubmit NDH{"
+	IL_005a:  ldarg.0 
+	IL_005b:  ldfld <BROKEN CLASS token_ 1000011 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> AingeiRai5HahfeiThe2::ta4vo2Ahk5yaep2oShuu
+	IL_0060:  callvirt instance string [System.Windows.Forms]System.Windows.Forms.Control::get_Text()
+	IL_0065:  ldstr "} to validate."
+	IL_006a:  call string string::Concat(string, string, string)
+	IL_006f:  call <BROKEN CLASS token_ 1000025 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> [System.Windows.Forms]System.Windows.Forms.MessageBox::Show(string)
+	IL_0074:  pop 
+	IL_0075:  nop 
+	IL_0076:  br.s IL_0085
+
+	IL_0078:  nop 
+	IL_0079:  ldstr "YOU DIDN'T SAY THE MAGIC WORD !!!"
+	IL_007e:  call <BROKEN CLASS token_ 1000025 due to Could not load file or assembly or one of its dependencies. assembly:System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 type:<unknown type> member:<none>> [System.Windows.Forms]System.Windows.Forms.MessageBox::Show(string)
+	IL_0083:  pop 
+	IL_0084:  nop 
+	IL_0085:  ret 
+    } // end of method AingeiRai5HahfeiThe2::Eey4jie0raer7Miiphuo
+
+  } // end of class AingeiRai5HahfeiThe2
+
+  .class private auto ansi sealed '<PrivateImplementationDetails>'
+  	extends [mscorlib]System.Object
+  {
+    .custom instance void class [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::'.ctor'() =  (01 00 00 00 ) // ....
+
+    .field  assembly static initonly  valuetype '<PrivateImplementationDetails>'/'__StaticArrayInitTypeSize=88' 420EECB6FB2A94DB2C60DF98AA929635D43B594B at D_000032e4
+
+  .class nested private explicit ansi sealed '__StaticArrayInitTypeSize=88'
+  	extends [mscorlib]System.ValueType
+  {
+    .pack 1
+    .size 88
+
+  } // end of class __StaticArrayInitTypeSize=88
+
+  } // end of class <PrivateImplementationDetails>
+
+.data D_000032e4 = bytearray (
+	 15 00 00 00 5B 00 00 00 14 00 00 00 00 00 00 00
+	 7E 00 00 00 00 00 00 00 3D 00 00 00 18 00 00 00
+	 02 00 00 00 52 00 00 00 07 00 00 00 11 00 00 00
+	 58 00 00 00 16 00 00 00 12 00 00 00 15 00 00 00
+	 72 00 00 00 75 00 00 00 0F 00 00 00 50 00 00 00
+	 3B 00 00 00 18 00 00 00) // size: 88
