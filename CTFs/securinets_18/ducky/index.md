@@ -2,7 +2,7 @@
 
 ### [~$ cd ..](../)
 
-We are given a [strange file](unkown.bin), not recognized by the `strings` command. The title of the challenge was quite helpful, and I guessed that it was
+We are given a [strange file](unkown.bin), not recognized by the `file` command. The title of the challenge was quite helpful, and I guessed that it was
 probably about Rubber Ducky. I then uploaded the file on https://ducktoolkit.com/decoder, and downloaded the [answer](duck_text.txt):
 
 > ```

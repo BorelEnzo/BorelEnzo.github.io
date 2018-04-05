@@ -19,9 +19,12 @@ in a 3*2 matrix.
 We translated the first characters, and saw that the message began with "Agent".
 To save time, we then focused on the end of the message. Since we were expected to
 find a hour, we looked for the symbol 
-  .
-  .
-. .
+
+> ```
+>  .
+>  .
+>. .
+> ```
 
 put before numbers.
 By translating, the last line, we can read: "t_h0938++"

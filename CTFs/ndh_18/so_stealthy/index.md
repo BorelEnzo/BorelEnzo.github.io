@@ -1,5 +1,7 @@
 ## So Stealthy
 
+### [~$ cd ..](../)
+
 >During an incident response, we captured the network traffic from a suspected compromised host. Could you help us reverse the installed malware?
 
 We are given a suspicious pcap file, aptly named [suspicious pcap](suspicious.pcap). As usual, we began with HTTP traffic, and found a [suspicious payload](payload.xml) in 

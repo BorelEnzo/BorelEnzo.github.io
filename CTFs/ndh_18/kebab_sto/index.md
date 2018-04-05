@@ -1,5 +1,7 @@
 ## Kebab STO (350 pts)
 
+### [~$ cd ..](../)
+
 >The challenge consists in finding the flag into a network capture.
 >
 >Challenge is listening on port 8888
@@ -111,7 +113,7 @@ It was obviously not the flag, it would be too easy...
 ### Step 2
 
 Because of the first mail exchange, we know that a file with a name beginning with "kd" is sent. We looked for this string and found in packet 345 that this file was sent over HTTP.
-We found it in packet 384, and saw that it was once again a zip archive, with a [tcmdump capture](lkdjflknezcz) inside. We opened it in Wireshark, and saw that it was encrypted 802.11 traffic.
+We found it in packet 384, and saw that it was once again a zip archive, with a [tcpdump capture](lkdjflknezcz) inside. We opened it in Wireshark, and saw that it was encrypted 802.11 traffic.
 
 We first tried to use the decrypted password, but it didn't work as expected. The right way was actually the simplest:
 
