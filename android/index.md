@@ -4,7 +4,7 @@
 
 ### ~$ cat How_an_Android_app_could_escalate_its_privileges.txt
 
-#### About Accessibility Service
+### About Accessibility Service
 
 A few months ago, I heard about the malware Shedun, abusing the Accessibility Service of Android in order to do the bad things malwares do. In my opinion,
 it's as simple as it's clever. As the documentation says:
@@ -21,9 +21,9 @@ On the other hand, as we can easily imagine, there will be some problems in case
 
 Actually, it could be harmless (or at least to a lesser extent), if the service was not able to interact with other applications. Imagine how dangerous an application upgrading its privileges could be... 
 
-Does it seem so unrealistic ? Let's take a close look ...
+Does it seem so unrealistic ? Let's take a closer look ...
 
-#### Setting up an Accessibility Service
+### Setting up an Accessibility Service
 
 To create an Accessibility Service an application has to register it in the Manifest.xml, for example
 
@@ -54,7 +54,7 @@ We can see in the snippet just above three interesting things:
 * two applications will be concerned: mine and Settings
 * the service is allowed to get the content of the current window
 
-#### Java part
+### Java part
 
 It's then time to code the class `CustomAccessibilityService`! The class has to extend `AccessibilityService`:
 
@@ -169,9 +169,9 @@ And finally, in the the main activity, we only have to launch Settings if our ap
 > ```
 
 Where `hasPermission` is a routine returning true if the app has a permission, and `isAccessibilitySettingsOn` is another routine checking if our app is allowed to
-use the accessibility service (inspired by [this solution](https://stackoverflow.com/questions/5081145/android-how-do-you-check-if-a-particular-accessibilityservice-is-enabled)
+use the accessibility service (inspired by [this solution])(https://stackoverflow.com/questions/5081145/android-how-do-you-check-if-a-particular-accessibilityservice-is-enabled)
 
-#### So what ?
+### So what ?
 
 We might think that it's not terrible since the user will see my app do its malicious job, and react quickly. It's true, but I think about 2 things:
 * imagine that the malicious app is designed to do an unrecoverable thing. If the app is fast enough, the damage will be done
