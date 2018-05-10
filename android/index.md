@@ -18,14 +18,13 @@ In other words, it's a kind of component being put between the application and t
 _Note: Although it's beneficial to add accessibility features in your app, you should use them only for the purpose of helping users with disabilities interact with your app._
 
 On the other hand, as we can easily imagine, there will be some problems in case of misuse ... Indeed, a malicious application implementing this service could then "capture" the screen before display and interact with.
-
 Actually, it could be harmless (or at least to a lesser extent), if the service was not able to interact with other applications. Imagine how dangerous an application upgrading its privileges could be... 
 
 Does it seem so unrealistic ? Let's take a closer look ...
 
 ### Setting up an Accessibility Service
 
-To create an Accessibility Service an application has to register it in the Manifest.xml, for example
+To create an Accessibility Service, an application has to register it in the Manifest.xml, for example
 
 > ```xml
 > <service android:name=".services.CustomAccessibilityService"
@@ -71,7 +70,8 @@ It's then time to code the class `CustomAccessibilityService`! The class has to 
 > ```
 
 The routine `onAccessibilityEvent` is the most important here, because it's the one which will allow the developer to catch all events.
-In my application I have to make the difference between events coming from my application, and those coming from Settings.
+I have to make the difference between events coming from my application, and those coming from Settings.
+
 The principle of the application is quite simple:
 * check if my app has privileges. If not, launch the app Settings
 * reach the panel where my app will toggle the right switch
@@ -147,7 +147,7 @@ Then, the job is done by the routine `lookForPermissionsPanel` which recursively
 >}
 > ```
 
-_The routine returns true when a widgets has been clicked_
+_The routine returns true when a widget has been clicked_
 
 And finally, in the the main activity, we only have to launch Settings if our app doesn't have the desired privileges:
 > ```java
@@ -168,7 +168,7 @@ And finally, in the the main activity, we only have to launch Settings if our ap
 >}
 > ```
 
-Where `hasPermission` is a routine returning true if the app has a permission, and `isAccessibilitySettingsOn` is another routine checking if our app is allowed to
+where `hasPermission` is a routine returning true if the app has a permission, and `isAccessibilitySettingsOn` is another routine checking if our app is allowed to
 use the accessibility service (inspired by [this solution])(https://stackoverflow.com/questions/5081145/android-how-do-you-check-if-a-particular-accessibilityservice-is-enabled)
 
 ### So what ?
