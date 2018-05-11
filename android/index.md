@@ -2,6 +2,11 @@
 
 ### [~$ cd ..](../)
 
+### ~$ ls
+
+* How_an_Android_app_could_escalate_its_privileges.txt
+* [How_an_Android_app_could_escalate_its_privileges_Part2.txt](./part2)
+
 ### ~$ cat How_an_Android_app_could_escalate_its_privileges.txt
 
 ### About Accessibility Service
@@ -18,7 +23,7 @@ In other words, it's a kind of component being put between the application and t
 _Note: Although it's beneficial to add accessibility features in your app, you should use them only for the purpose of helping users with disabilities interact with your app._
 
 On the other hand, as we can easily imagine, there will be some problems in case of misuse ... Indeed, a malicious application implementing this service could then "capture" the screen before display and interact with.
-Actually, it could be harmless (or at least to a lesser extent), if the service was not able to interact with other applications. Imagine how dangerous an application upgrading its privileges could be... 
+Actually, it could be harmless (or to a lesser extent), if the service was not able to interact with other applications. Imagine how dangerous an application upgrading its privileges could be... 
 
 Does it seem so unrealistic ? Let's take a closer look ...
 
@@ -104,9 +109,7 @@ the right path.
 >		case Constants.PACKAGE_SETTINGS:
 >			AccessibilityNodeInfo info = accessibilityEvent.getSource();
 >			if (info != null && this.stack != null) {
->				for (int i = 0; i < info.getChildCount(); i++) {
->					lookForPermissionsPanel(info.getChild(i));
->				}
+>				lookForPermissionsPanel(info);
 >			}
 >		break;
 >	}
