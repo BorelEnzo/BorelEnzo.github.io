@@ -1,4 +1,4 @@
-## About Android security
+## About Android Accessibility Service
 
 ### [~$ cd ..](../)
 
@@ -6,6 +6,7 @@
 
 * How_an_Android_app_could_escalate_its_privileges.txt
 * [How_an_Android_app_could_escalate_its_privileges_Part2.txt](./part2)
+* [How_an_Android_app_could_escalate_its_privileges_Part3.txt](./part3)
 
 ### ~$ cat How_an_Android_app_could_escalate_its_privileges.txt
 
