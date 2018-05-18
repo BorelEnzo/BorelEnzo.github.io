@@ -7,6 +7,7 @@
 * [How_an_Android_app_could_escalate_its_privileges.txt](./index)
 * [How_an_Android_app_could_escalate_its_privileges_Part2.txt](./part2)
 * How_an_Android_app_could_escalate_its_privileges_Part3.txt
+* [How_an_Android_app_could_escalate_its_privileges_Part4.txt](./part4)
 
 ### ~$ cat How_an_Android_app_could_escalate_its_privileges_Part3.txt
 
