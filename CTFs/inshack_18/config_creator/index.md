@@ -57,7 +57,7 @@ We noticed that the option '1. Register a new config entry' was vulnerable to co
 >]
 > ```
 
-Our idea idea was then to execute 'cat <flag>'. It was possible to call `exec` but execute `exec('import subprocess;subprocess.call("cat flag.txt")')` didn't work since `exec` gave us `None`, and
+Our idea idea was then to execute 'cat flag.txt'. It was possible to call `exec` but execute `exec('import subprocess;subprocess.call("cat flag.txt")')` didn't work since `exec` gave us `None`, and
 the output was not displayed. Our idea was then to call the routine `subprocess.check_output`. The easiest way was to call the routine directly without making an explicit `import`.
 
 We then registered our command in a first entry, because entries name could not contain some bad chars, such as quotes. We registered a second entry, in order to evaluate our command:
