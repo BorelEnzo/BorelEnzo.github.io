@@ -4,7 +4,7 @@
 
 We are given the following Python [script](server.py):
 
-> ```
+> ```python
 >import socket
 >import threading
 >import random

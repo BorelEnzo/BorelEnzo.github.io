@@ -5,6 +5,7 @@
 We are given this [file](BlinDate.jpeg), which is supposed to be a JPEG picture.
 However, the file is invalid
 
+> ```sh
 >$ xxd BlindDate.jpeg
 >00000000: e0ff d8ff 464a 1000 0100 4649 6000 0101  ....FJ....FI`...
 >00000010: 0000 6000 2200 e1ff 6669 7845 4d4d 0000  ..`."...fixEMM..
@@ -48,6 +49,8 @@ However, the file is invalid
 >000097f0: 1ff0 ae6f 22d3 d301 0199 0700 0100 4145  ...o".........AE
 >00009800: 0308 0050 4b05 0600 0000 0001 0001 0065  ...PK..........e
 >00009810: 0000 00c4 0000 0000
+> ```
+
 
 We immediately saw tgat each 4-byte were reversed, and wrote a small python
 script to recover the file:
@@ -73,11 +76,13 @@ We obtained the following picture:
 
 We also noticed the long suspicious string. We guessed to is was a base64-encoded string:
 
+> ```sh
 >base64 -d 
 >Li4gICAuICAuLiAgLi4gICAuICAuLiAgLi4gICAuICAuLiAgLiAgLi4NCi4gICAgLiAgIC4gICAgICAgLiAgICAgIC4gICAgLiAgIC4gIC4gIA0KICAgIC4uICAgICAgICAgIC4uICAgICAgLiAgIC4uICAgICAgLiAgLgPK
 >..   .  ..  ..   .  ..  ..   .  ..  .  ..
 >.    .   .       .      .    .   .  .  
 >    ..          ..      .   ..      .  .
+> ```
 
 We then guessed that it was braille alphabet (which explains the title), and obtained: **f4c3p4lm**
 

@@ -6,6 +6,7 @@ We are given a [file](message.code) named message.code. We only had to rename it
 
 The file starts with a long obfuscated javascript code, wich does nothing but display a dialog box saying "nope". The file also contains a lot of white spaces and tabulations:
 
+> ```
 > ...
 >00004210: 0a0a 2020 0909 0a20 0a0a 0a09 0a0a 2020  ..  ... ......  
 >00004220: 0920 2020 2020 2020 2020 0920 2020 0920  .         .   . 
@@ -16,6 +17,7 @@ The file starts with a long obfuscated javascript code, wich does nothing but di
 >00004270: 2009 0909 2009 0920 2009 2009 0909 2020   ... ..  . ...  
 >00004280: 200a 0a20 2009 2009 0a20 0a0a 200a 0a0a   ..  . .. .. ...
 >00004290: 090a 0a
+> ```
 
 We ran this simple script to make it more readable:
 
@@ -34,5 +36,5 @@ It gave us: **'}ECAPSETIHWsIkcuFaD{FTCxon'**. We only had to do:
 > ```sh
 >$ echo '}ECAPSETIHWsIkcuFaD{FTCxon'|rev
 >	noxCTF{DaFuckIsWHITESPACE}
-
+> ```
 

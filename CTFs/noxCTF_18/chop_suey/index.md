@@ -17,13 +17,19 @@ The goal here was to use the chinese remainder theorem to decrypt the ciphertext
 * dq = 1/e mod (q-1)
 
 d can be written as a multiple of phi(p) = p-1 plus a remainder:
+
+> ```
 > d = k * phi(p) + (d mod phi(p))
 > => c^d = c^{k * phi(p) + (d mod phi(p))}
 > => 	 = c^{k * phi(p)} * c^{d mod phi(p)}
 > => 	 = c^{phi(p)^k} * c^{d mod phi(p)}
-Since c^phi(p) mod p = 1 (Euler's theorem), we have
-> => c^d =  c^{d mod phi(p)}
+> ```
 
+Since c^phi(p) mod p = 1 (Euler's theorem), we have
+
+> ```
+> => c^d =  c^{d mod phi(p)}
+> ```
 Because of the CRT, we know that we had to find a number m such that:
 
 >m = (c^d mod N) mod p
