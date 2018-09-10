@@ -53,6 +53,6 @@ We then typed this in our shell:
 We got the [following picture](out.svg).
 
 Nice, but we were not done, because there was no visible flag! We opened the file with a text editor and saw that there was 2 embedded pictures, the first one with the barcode, and the second one with the girl.
-Even if the barcode has been added abover the first picture, it is not useful (it's only the ISBN13 of the book "Behind here eyes").
+Even if the barcode has been added above the first picture, it is not useful (it's only the ISBN13 of the book "Behind here eyes").
 Actually, the solution was mush simpler: we only had to remove the picture with the girl, and we got:
 ![flag](flag.svg)

@@ -11,7 +11,7 @@ Wrong path, solution was not there.
 
 We tried several basic tests: spectrogram, change rate, low-pass filter, but found nothing immediately. Finally, we found the solution by setting the rate to 8'000 Hz and displaying the spectrogram:
 ![morse](morse.png)
-We noticed these long and short dashes, the first and the thirs one being similar. We then thought about morse code, and finally found:
+We noticed these long and short dashes, the first and the third one being similar. We then thought about morse code, and finally found:
 
 -.-. ... -.-. -... . .-- . .-.. --- ...- . -- --- .-. ... . or, **cscbewelovemorse**
 

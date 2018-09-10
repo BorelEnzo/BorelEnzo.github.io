@@ -1,8 +1,8 @@
-# Securinets CTF PreQuals 2018
+# Angstorm CTF 2018
 
 ### [~$ cd ..](../)
 
-Last week I played the pre-qualifications for the [CTF Securinets 2018](https://www.ctfsecurinets.com). This write-up covers some challenges I solved.
+Last week I played the Angstorm CTF. This write-up covers some challenges I solved.
 
 ### ~$ ls
 

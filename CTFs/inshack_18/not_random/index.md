@@ -12,7 +12,7 @@ we have to reach a score of 10'000 points.
 
 Bruteforcing the hash could be feasible, but there is a smarter way to complete the task. Actually, the service expects us to send a number, but if we send a letter,
 it prints the 2 random numbers, and proposes a new hash. It means that we can collect a serie of (pseudo)random values, and maybe recover the internal state of the
-pseudo-random generator. Unfortunately, it's as simple as C...
+pseudo-random generator. Unfortunately, it's not as simple as C...
 
 We then started to search how to do this, and found [this tool](https://github.com/eboda/mersenne-twister-recover). It worked perfectly!
 
@@ -28,7 +28,7 @@ We simply modified the routine in [MTRecover.py](MTRecover.py):
 and wrote our script which first collects more than 600 pseudo-random values, and then bruteforce each 10-bits number knowing the hash and send
 it to the service.
 
-(the script was not so siple to write, because we had to be patient...)
+(the script was not so simple to write, because we had to be patient...)
 
 Finally, we got the flag: **INSA{Why_w0ulD_U_Us3_b4s1c_r4nd0m}**
 [See full python code](solve.py)
