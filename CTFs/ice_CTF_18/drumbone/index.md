@@ -18,7 +18,7 @@ A QR code! Unfortunately, we didn't succeed to extract any data, because dots we
 
 We wrote a [python script](drumbone.py) to extend each dot, and got a valid picture:
 
-> ```
+> ```python
 >from PIL import Image
 >im = Image.open('drumbone.new.png')
 >pixels = im.load()

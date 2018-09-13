@@ -74,7 +74,7 @@ We then wrote a [Python script](parsepng.py) to extract data:
 
 However, some lines were duplicated, and we noticed that only the last 48 bytes of each new picture (except the first one) should be appended. Then, we replaced the last three lines of the script by:
 
-> ```
+> ```python
 >res = read_pix(0)
 >for i in xrange(1,110):
 >	res += read_pix(i)[:48]

@@ -12,7 +12,7 @@ We are given the following picture:
 
 Knowing that the flag format was "IceCTF{...}", we thought that it was a monoalphabetic substitution cipher, because of the "IjgJUO".
 
-However, by xoring ths string with the number in the top corner, we got: **IceCTF{P_LFTV_AIRTS_EYQTTFLTD_SKRFB_TWNKCFT}**
+However, by xoring the string with the number in the top corner, we got: **IceCTF{I_DONT_THINK_GRONSFELD_LIKES_MONDAYS}**
 
 Script:
 
@@ -26,7 +26,7 @@ Script:
 >	if letter.isalpha():
 >		newletter = ord(letter)-int(key[j % len(key)])-ord('A')
 >		if newletter < 0:
->			newletter = ord('Z')+newletter+1
+>			newletter = ord('Z')+newletter+1			
 >		else:
 >			newletter = ord(letter)-int(key[j % len(key)])
 >		res += chr(newletter)

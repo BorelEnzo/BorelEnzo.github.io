@@ -8,11 +8,11 @@
 > During the investigation they found this suspicous file.
 > Can you find any evidence that the owner of this laptop is the culprit?
 
-We are given [this file](hardshells), detected ad a zip archive:
+We are given [this file](hardshells), detected as a zip archive:
 
 > ```sh
 > $ file hardshells 
-> hardshells: Zip archive data, at least v1.0 to extrac
+> hardshells: Zip archive data, at least v1.0 to extract
 > ```
 
 Unfortunately, the file is protected by a password ...
