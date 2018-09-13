@@ -9,5 +9,6 @@
 * [Angstorm CTF 2018](angstorm_18/)
 * [Securinets CTF 2018](securinets_18/)
 * [Quals Nuit Du Hack 2k18](ndh_18/)
-* [INS'hAck](inshack_18/)
-* [NoxCTF](noxCTF_18/)
+* [INS'hAck 2018](inshack_18/)
+* [NoxCTF 2018](noxCTF_18/)
+* [IceCTF 2018](ice_CTF_18/)
