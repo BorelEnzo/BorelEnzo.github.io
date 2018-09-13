@@ -28,7 +28,7 @@ We can guess the flag with this picture, but to make it more readable, we can sp
 > $ convert frames/* -background none -flatten result.png
 > ```
 
-The second command will extract all frames, using the format target\{%d\}.png. `convert` will finally merge them properly and give:
+The second command will extract all frames, using the format target{index}.png. `convert` will finally merge them properly and give:
 
 ![result.png](result.png)
 
