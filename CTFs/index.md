@@ -12,3 +12,4 @@
 * [INS'hAck 2018](inshack_18/)
 * [NoxCTF 2018](noxCTF_18/)
 * [IceCTF 2018](ice_CTF_18/)
+* [SECT CTF 2018](sect_CTF_18/)
