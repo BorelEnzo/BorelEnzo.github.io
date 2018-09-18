@@ -4,13 +4,13 @@
 
 >I love these new AR games that have been coming out recently,
 > so I decided that I would make my own with my favorite fruit! The Mango!
-> Can you poke 151 mangos?
+> Can you poke 151 mangoes?
 >
 >NOTE Make sure that you allow the app access to your GPS location and camera
 >otherwise the app will not work. You can do that in App Permissions in Settings.
 
 We are given the [APK file](pokeamango.apk), an Android game similar to the well-known Pokemon Go.
-As usual, we used `apktool` to extract [files](pokeamango.zip) properly in order to analyse how we could trick the game to capture mangos efficiently.
+As usual, we used `apktool` to extract [files](pokeamango.zip) properly in order to analyse how we could trick the game to capture mangoes efficiently.
 
 The app has only four screens:
 
@@ -23,9 +23,9 @@ and then, the useful code was in assets/www/js.
 
 The principle is as follows:
 
-### Where are the mangos ?
+### Where are the mangoes ?
 
-[map.js](map.js): in `updateMap`, the location and the uuid of the user are sent to http://pokeamango.vuln.icec.tf/mango/list to know where are the nearby mangos
+[map.js](map.js): in `updateMap`, the location and the uuid of the user are sent to http://pokeamango.vuln.icec.tf/mango/list to know where are the nearby mangoes
 
 > ```js
 >var updateMap = function() {
@@ -50,7 +50,7 @@ The principle is as follows:
 >};
 > ```
 
-### Capture the mangos
+### Capture the mangoes
 
 [mango.js](mango.js): when a user captures a mango, the routine `catchMango` sends uuid and mango's and user's location to http://pokeamango.vuln.icec.tf/mango/catch.
 Locations would be then compared and if the user is close enough, the mango would be captured:
@@ -75,7 +75,7 @@ Locations would be then compared and if the user is close enough, the mango woul
 
 ### Capture the flag
 
-[store.js](store.js): in `updateMangoCount`, a request is sent in order to know how many mangos have been captured:
+[store.js](store.js): in `updateMangoCount`, a request is sent in order to know how many mangoes have been captured:
 
 > ```js
 >function updateMangoCount(){
@@ -101,9 +101,9 @@ and if the user clicks on "Flag", a request on http://pokeamango.vuln.icec.tf/st
 
 ## Scripting
 
-To get the flag, we have to capture 151 mangos, and then, we have to move all around the world to do it quickly. However, it was harder than expected because
+To get the flag, we have to capture 151 mangoes, and then, we have to move all around the world to do it quickly. However, it was harder than expected because
 of 2 things:
-* we had to find in which cities mangos were. We used [this](cities.txt)list (http://gael-varoquaux.info/images/misc/cities.txt) to iterate over biggest cities
+* we had to find in which cities mangoes were. We used [this](cities.txt)list (http://gael-varoquaux.info/images/misc/cities.txt) to iterate over biggest cities
 * the server often returned an error 500, making the script crash
 * we had to wait some seconds between each request
 
@@ -127,7 +127,7 @@ The [script](solve.py) was probably not the best, but did the job:
 >	data = cities[curr_city].split('\t')
 >	return (data[2], data[1])
 >
->def getmangos():
+>def getmangoes():
 >	global cookies
 >	global currpos
 >	r = requests.post("http://pokeamango.vuln.icec.tf/mango/list", data={"uuid":xuuid,"lat":currpos[0],"long":currpos[1]}, cookies=cookies)
@@ -135,25 +135,25 @@ The [script](solve.py) was probably not the best, but did the job:
 >	# if we receive an error message, the first char is a "<". Otherwise, parse the response
 >	if r.text[0] != "<":
 >		res = ast.literal_eval(r.text)
->		if res['mangos'] != None:
+>		if res['mangoes'] != None:
 >			time.sleep(5)
->			return res['mangos']
+>			return res['mangoes']
 >	#retry
 >	time.sleep(5)
->	return getmangos()
+>	return getmangoes()
 >	
 >curr_city = 0		
->mangos_count = 0
+>mangoes_count = 0
 >currpos = getcurrpos()
 >cookies = {}
 >print currpos
->while mangos_count < 151:
->	mangos = getmangos()
+>while mangoes_count < 151:
+>	mangoes = getmangoes()
 >	currpos = getcurrpos()
->	#capture all mangos at the current location
->	for i in xrange(len(mangos)):
->		mangoLat = str(mangos[i]["lat"])
->		mangoLong = str(mangos[i]["lng"])
+>	#capture all mangoes at the current location
+>	for i in xrange(len(mangoes)):
+>		mangoLat = str(mangoes[i]["lat"])
+>		mangoLong = str(mangoes[i]["lng"])
 >		myLat = mangoLat[:mangoLat.find('.')+5]
 >		myLng = mangoLong[:mangoLong.find('.')+5]
 >		r = requests.post("http://pokeamango.vuln.icec.tf/mango/catch", data={"uuid":xuuid,
@@ -162,14 +162,14 @@ The [script](solve.py) was probably not the best, but did the job:
 >		print r.text
 >		time.sleep(5)
 >	curr_city +=1
->	#check how many mangos have been captured. Counting locally isn't reliable because of server errors.
+>	#check how many mangoes have been captured. Counting locally isn't reliable because of server errors.
 >	r = requests.post("http://pokeamango.vuln.icec.tf/mango/count", data={"uuid":xuuid	})
 >	print r.text
 >	if r.text[0] != "<":
 >		res = ast.literal_eval(r.text)
->		mangos_count = int(res["count"])
->		print 'Count %d' % mangos_count	
->#if 151 mangos have been captured, get the flag		
+>		mangoes_count = int(res["count"])
+>		print 'Count %d' % mangoes_count	
+>#if 151 mangoes have been captured, get the flag		
 >while True:
 >	r = requests.post("http://pokeamango.vuln.icec.tf/store/flag", data={"uuid":xuuid}, cookies=cookies)
 >	print r.text
@@ -179,7 +179,7 @@ The [script](solve.py) was probably not the best, but did the job:
 >	time.sleep(5)
 > ```	
 
-Finally, as we saw that 151 mangos were captured, we didn't wait until the end and sent a request with Postman:
+Finally, as we saw that 151 mangoes were captured, we didn't wait until the end and sent a request with Postman:
 
 ![ctf.png](ctf.png)
 
