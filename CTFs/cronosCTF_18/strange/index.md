@@ -24,4 +24,9 @@ The goal is then to remove this box by erasing some vertices. To do this, one ha
 
 Select the vertices to remove by right-clicking on them, and then hit **Suppr**, and click on **Vertices**
 
+![blender3](blender3.png)
+
 By returning in **Object mode**, we can now see/guess what the flag is: **6QHFGK5AXPUHYF3BBVMC**
+
+![blender4](blender4.png)
+![

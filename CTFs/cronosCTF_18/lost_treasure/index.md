@@ -87,9 +87,9 @@ because `fcrakzip` couldn't handle properly the kind of file:
 >   skipping: f864ae468a              need PK compat. v5.1 (can do v4.6)
 > ```
 
-I looked for a tool is onrder to crack password quickly, but didn't found. I then realized that I didn't have to crack them all:
+I looked for a tool is order to crack password quickly, but didn't found. I then realized that I didn't have to crack them all:
 
-> ```
+> ```sh
 >% md5sum *                    
 >b32697dc1e9e8da35b9732a8e2859657  map10.zip
 >b32697dc1e9e8da35b9732a8e2859657  map11.zip
@@ -269,7 +269,3 @@ And capture the flag
 > ```
 
 FLAG: **AllTreasuremapsLeadToATreasure**
-
-
-flag: AllTreasuremapsLeadToATreasure
-> ```

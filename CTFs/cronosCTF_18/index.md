@@ -18,6 +18,6 @@ It was a really nice CTF, various and with a well-balanced difficulty. The write
 * [PirateNet](piratenet/)
 * [Lost Treasure](lost_treasure/)
 * [Draw Flag](draw_flag/)
-* [Angry Parrot](angry_parrot/)
+* [Angry Parrot](angryparrot/)
 
 
