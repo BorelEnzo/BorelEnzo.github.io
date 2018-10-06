@@ -18,7 +18,7 @@ And finally, as I tried to copy and paste another wrong password, I accidentally
 > ```sh
 >% steghide extract -sf steven/steven-seagull.jpg
 >Entrez la passphrase: 
->�criture des donn�es extraites dans "nostash".
+>Ecriture des données extraites dans "nostash".
 > ```
 
 The passphrase was actually empty ... The rest of the challenge was then quite straightforward.
