@@ -29,8 +29,8 @@ I wrote a first script to browse through all of these URLs, but some of them lea
 > This path leads nowhere, return to a previous path.
 > ```
 
-Many trials-and-errors were needed to write the right script. In fact, fetching some URLs give cookies, and these cookies have to be sent back to the service.
-Once we have the two required cookies, and URL leads to the flag.
+Many trials-and-errors were needed to write the right script. In fact, fetching some URLs gives cookies, and these cookies have to be sent back to the service.
+Once we have the two required cookies, an URL leads to the flag.
 
 Script:
 

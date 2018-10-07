@@ -30,10 +30,13 @@ Since c^phi(p) mod p = 1 (Euler's theorem), we have
 > ```
 > => c^d =  c^{d mod phi(p)}
 > ```
+
 Because of the CRT, we know that we had to find a number m such that:
 
+> ```
 >m = (c^d mod N) mod p
 >m = (c^d mod N) mod q
+> ```
 
 Thanks to Garner's formula, it's quite simple:
 

@@ -7,7 +7,7 @@
 >Note: You can download the binary here
 
 We have an SSH session open on ssh.icec.tf:2222. When we solved this challenge, it was not yet possible to download the binary,
-so we first did:
+so we first base64-encoded it, and unpacked it locally:
 
 > ```
 >[adversary ~]$ ls -l
@@ -51,7 +51,7 @@ First, we took a look at routine:
 >0x00000670  main
 > ```
 
-Only one custom routine, it won't be too difficult. Let's break t main, run the program and disassemble the routine:
+Only one custom routine, it won't be too difficult. Let's break at main, run the program and disassemble the routine:
 
 > ```
 >gdb-peda$ disas main

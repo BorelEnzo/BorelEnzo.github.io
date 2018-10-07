@@ -4,7 +4,7 @@
 
 The write-ups cover some challenge I solved during the [SECT CTF 2018](https://sect.ctf.rocks)
 
-18 challenges were proposed, and some of them we not so easy!
+18 challenges were proposed, and some of them were not so easy!
 
 * [Batou](batou/)
 * [Matry0ska1](Matry0ska1/)

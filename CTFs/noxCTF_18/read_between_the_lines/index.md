@@ -4,7 +4,7 @@
 
 We are given a [file](message.code) named message.code. We only had to rename it as "message.zip" to extract the [message](message).
 
-The file starts with a long obfuscated javascript code, wich does nothing but display a dialog box saying "nope". The file also contains a lot of white spaces and tabulations:
+The file starts with a long obfuscated javascript code, wich does nothing but displaying a dialog box saying "nope". The file also contains a lot of white spaces and tabulations:
 
 > ```
 > ...

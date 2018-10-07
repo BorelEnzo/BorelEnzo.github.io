@@ -87,7 +87,9 @@ Locations would be then compared and if the user is close enough, the mango woul
 >	});
 >}
 > ```
+
 and if the user clicks on "Flag", a request on http://pokeamango.vuln.icec.tf/store/flag is sent:
+
 > ```js
 >$("#buyFlag").click(function(event){
 >	payload = {
@@ -103,8 +105,8 @@ and if the user clicks on "Flag", a request on http://pokeamango.vuln.icec.tf/st
 
 To get the flag, we have to capture 151 mangoes, and then, we have to move all around the world to do it quickly. However, it was harder than expected because
 of 2 things:
-* we had to find in which cities mangoes were. We used [this](cities.txt)list (http://gael-varoquaux.info/images/misc/cities.txt) to iterate over biggest cities
-* the server often returned an error 500, making the script crash
+* we had to find in which cities mangoes were. We used [this](cities.txt) list (http://gael-varoquaux.info/images/misc/cities.txt) to iterate over biggest cities (after the CTF, we actually saw in some write-ups that it was not necessary to do it in this way)
+* the server often returned an error 500, making the script to crash
 * we had to wait some seconds between each request
 
 The [script](solve.py) was probably not the best, but did the job:

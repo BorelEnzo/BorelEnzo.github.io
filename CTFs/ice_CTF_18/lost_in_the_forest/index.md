@@ -95,7 +95,7 @@ We took a look at the file named [hzpxbsklqvboyou](hzpxbsklqvboyou), which conta
 >00000090: 5591 50a0 9993                           U.P...
 > ```
 
-We looked for more clued, when a team mate noticed that there was an interesting thing in the [bash_history](bash_history)
+We looked for more clues, when a team mate noticed that there was an interesting thing in the [bash_history](bash_history)
 
 > ```
 > $ ls -a
@@ -135,10 +135,10 @@ We downloaded the script:
 
 and tried to reverse it, and it was actually quite easy:
 
-* a shit is applied with a hard-coded key
-* a string is base64'ed
+* a shift is applied with a hard-coded key
+* the string is base64'ed
 * \[ ::-1 \] reverses the string
-* the string repeated 5 times
+* the string is repeated 5 times
 
 Hence, we did: 
 > ```sh

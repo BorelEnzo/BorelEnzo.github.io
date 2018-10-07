@@ -52,7 +52,7 @@ However, the file is invalid
 > ```
 
 
-We immediately saw tgat each 4-byte were reversed, and wrote a small python
+We immediately saw that each 4-bytes blocks were reversed, and wrote a small python
 script to recover the file:
 
 > ```python
@@ -72,7 +72,7 @@ script to recover the file:
 
 We obtained the following picture:
 
-![BlindDate_sol.jpeg](BlindDate.jpeg)
+![BlindDate_sol.jpeg](BlindDate_sol.jpeg)
 
 We also noticed the long suspicious string. We guessed to is was a base64-encoded string:
 

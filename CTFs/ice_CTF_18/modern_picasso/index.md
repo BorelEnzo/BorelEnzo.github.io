@@ -9,7 +9,7 @@ We are given the following picture:
 
 ![picasso.gif](picasso.gif)
 
-We guessed that we should merge frames, and that combined colored ares should give us a flag, (or at least a hint). However,
+We guessed that we should merge frames, and that combined colored areas should give us a flag, (or at least a hint). However,
 to merge frames properly, we had to make the background transparent:
 
 > ```sh
