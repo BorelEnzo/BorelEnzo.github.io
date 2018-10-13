@@ -157,7 +157,7 @@ Let's disassemble routines:
 >   0x080487d1 <+16>:    mov    0x804a080(,%eax,4),%eax
 >   0x080487d8 <+23>:    sub    $0x8,%esp
 >   0x080487db <+26>:    push   %eax
->   0x080487dc <+27>:    push   $0x804894c				;"your flag is: picoCTF{%s}\n"
+>   0x080487dc <+27>:    push   $0x804894c				;"your flag is: picoCTF{\%s}\n"
 >   0x080487e1 <+32>:    call   0x8048410 <printf@plt>
 >   0x080487e6 <+37>:    add    $0x10,%esp
 >   0x080487e9 <+40>:    nop
