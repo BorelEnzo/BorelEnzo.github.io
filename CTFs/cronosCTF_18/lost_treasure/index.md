@@ -74,7 +74,7 @@ and the archives:
 I then naively started with a dictionnary attack with rockyou.txt using a for loop on each archive, but realized that it could no work:
 
 > ```
->% for i in {1..16}; do fcrackzip -v -u -D -p /home/enzo/Documents/hacking/rockyou.txt map$i.zip; done
+>% for i in {1..16}; do fcrackzip -v -u -D -p rockyou.txt map$i.zip; done
 > ```
 
 because `fcrakzip` couldn't handle properly the kind of file:
@@ -131,10 +131,10 @@ I then kept only [map12.zip](map12.zip) and [map13.zip](map13.zip) and wrote a (
 > ```
 
 I made the assumption that they were related to the theme of the piracy.
-I then gpep'd rockyou in this way and run the script:
+I then grep'd rockyou in this way and run the script:
 
 > ```sh
->% grep ~/Documents/hacking/rockyou.txt -ie pirate > pirate.txt
+>% grep rockyou.txt -ie pirate > pirate.txt
 >% run brute.py
 > ohs pirate
 > 0 0 0 f864ae468a

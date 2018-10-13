@@ -7,7 +7,7 @@
 
 The given source is as follows:
 
-> ```C
+> ```c
 >#include <stdio.h>
 >#include <stdlib.h>
 >#include <stdint.h>
@@ -51,7 +51,7 @@ The idea here is to replace the address of `puts` in the Global Offset Table (GO
 >Offsets to global variables from dynamic libraries are not known during compile time,
 >this is why they are read from the GOT table during runtime. 
 
-First thing we did was to get the address if `win`:
+First thing we did was to get the address of `win`:
 
 > ```
 >gdb-peda$ print win

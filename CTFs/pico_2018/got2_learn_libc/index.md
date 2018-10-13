@@ -8,7 +8,7 @@
 
 The given source is as follows:
 
-> ```C
+> ```c
 >#include <stdio.h>
 >#include <stdlib.h>
 >#include <string.h>
@@ -136,7 +136,7 @@ The payload will therefore be composed as follows:
 
 160 \* 'X' + @system + @system + @"/bin/sh"
 
-__The second @system is actually the address for the base pointer, could be whatever we want__
+_The second @system is actually the address for the base pointer, could be whatever we want_
 
 ## Find the offset and script it
 

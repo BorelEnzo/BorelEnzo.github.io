@@ -17,14 +17,14 @@ By sending a request to the given service, we can get:
 
 I searchd how to deal with this for a few minutes, and found that it was the next part of the URL:
 
-> ```
+> ```sh
 > % curl 51.68.252.196:8082/wjRjt09
 >["ezDQZ01","w7gx9gI","JGXbfKw","SPt2BnB","5AxzKJm"]
 > ```
 
 I wrote a first script to browse through all of these URLs, but some of them lead to nowhere:
 
-> ```
+> ```sh
 > % curl 51.68.252.196:8082/wjRjt09/ezDQZ01/WMEkfGk/vhrCDjb/cCmPilq
 > This path leads nowhere, return to a previous path.
 > ```

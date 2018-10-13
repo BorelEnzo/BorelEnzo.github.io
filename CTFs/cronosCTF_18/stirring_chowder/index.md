@@ -41,7 +41,7 @@ After a few minutes, the script returns :
 >Password: 'turtle
 > ```
 
-__NB__: make sure to rename the archive, black spaces are not well-handled
+__NB__: make sure to rename the archive, blank spaces are not well-handled
 
 To keep the story short, the extracted file is also a LRZIP archive, which can uncompressed using the same password.
 

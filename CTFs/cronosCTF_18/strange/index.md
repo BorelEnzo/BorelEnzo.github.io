@@ -29,4 +29,3 @@ Select the vertices to remove by right-clicking on them, and then hit **Suppr**,
 By returning in **Object mode**, we can now see/guess what the flag is: **6QHFGK5AXPUHYF3BBVMC**
 
 ![blender4](blender4.png)
-![
