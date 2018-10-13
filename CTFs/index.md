@@ -14,3 +14,4 @@
 * [IceCTF 2018](ice_CTF_18/)
 * [SECT CTF 2018](sect_CTF_18/)
 * [Cronos CTF - BruCON 2018](cronosCTF_18/)
+* [Pico CTF 2018](pico_2018/)

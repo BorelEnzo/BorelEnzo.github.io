@@ -44,7 +44,7 @@ but the goal is not to smash a return address. Actually, the program normally ex
 However, if our string is too long, the translated binary string will overwrite the command. Sending some 'A's, 'C's, 'T's or 'G's in a particular
 order could form an ASCII string, passed as parameter to `system`...
 
-The first found that we need to send 1024 useless bytes (128 * 'ACTG' in our payload), and well chosen 4-bytes blocks translated into valid bash command.  
+We first found that we need to send 1024 useless bytes (128 * 'ACTG' in our payload), and well chosen 4-bytes blocks translated into valid bash command.  
 The most important routine in the binary is `d2b`, which translates our DNA-string into binary. Reverse the code is pretty straightforward.
 
 > ```
