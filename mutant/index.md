@@ -50,9 +50,9 @@ Regarding binaries, it's indeed another story. We can create a [C program](prgm1
 >	"\x48\x8d\x3d\x1e\x00\x00\x00"	//lea    0x1e(%rip),%rdi: rdi = @cmd
 >	"\x6a\x00"		//pushq  $0x0: push null byte
 >	"\x57"			//push   %rdi: push @cmd onto the stack
->	"\x48\x89\xe6"	//mov    %rsp,%rsi: rsi = @[@cmd]
->	"\xba\x00\x00\x00\x00"			//mov    $0x0,%edx: envp = NULL 
->	"\xb8\x3b\x00\x00\x00"			//mov    $0x3b,%eax: execve
+>	"\x48\x89\xe6"		//mov    %rsp,%rsi: rsi = @[@cmd]
+>	"\xba\x00\x00\x00\x00"	//mov    $0x0,%edx: envp = NULL 
+>	"\xb8\x3b\x00\x00\x00"	//mov    $0x3b,%eax: execve
 >	"\x0f\x05"		//syscall : execve(msg, [msg], NULL)
 >	"\x5e"			//pop    %rsi
 >	"\x5e"			//pop    %rsi
@@ -338,7 +338,7 @@ with the code of our shellcode, and put the resulting string in the .data sectio
 >	cmd db '/usr/bin/id', 0
 > ```
 
-Let's compile it with `nasm -f elf64 -o shellcode.o shellcode.asm; ld -o shellcode shellcode.o` and dump its content with `objdump`. Here is the result:
+Let's compile it with `nasm -f elf64 -o shellcode.o shellcode.asm; ld -o shellcode shellcode.o` and dump its content with `objdump` . Here is the result:
 
 > ```sh
 >$ objdump -d -s -j .text shellcode
@@ -376,8 +376,8 @@ Let's compile it with `nasm -f elf64 -o shellcode.o shellcode.asm; ld -o shellco
 >	4000a5:	90                   	nop
 >	4000a6:	90                   	nop
 >	4000a7:	90                   	nop
-
-00000000004000a8 <cmd>:
+>
+>00000000004000a8 <cmd>:
 >	4000a8:	2f                   	(bad)  
 >	4000a9:	75 73                	jne    40011e <cmd+0x76>
 >	4000ab:	72 2f                	jb     4000dc <cmd+0x34>
