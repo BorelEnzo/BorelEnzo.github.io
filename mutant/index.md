@@ -38,39 +38,38 @@ Regarding binaries, it's indeed another story. We can create a [C program](prgm1
 >	foo(); //call the original foo()
 >	
 >	/* Change the permissions of the memory page containing foo() */
->   void* start_page = (void*)((long)foo_ptr & -getpagesize());
->   if(mprotect(start_page, getpagesize(), PROT_READ | PROT_WRITE | PROT_EXEC) < 0) {
+>	void* start_page = (void*)((long)foo_ptr & -getpagesize());
+>	if(mprotect(start_page, getpagesize(), PROT_READ | PROT_WRITE | PROT_EXEC) < 0) {
 >		fprintf(stderr, "Could not mprotect\n");
 >		exit(EXIT_FAILURE);
 >   }
 >   char* shellcode =
->   "\x52"							//push   %rdx: save register on the stack
->   "\x57"							//push   %rdi: save register on the stack
->	"\x56"							//push   %rsi: save register on the stack
+>	"\x52"			//push   %rdx: save register on the stack
+>	"\x57"			//push   %rdi: save register on the stack
+>	"\x56"			//push   %rsi: save register on the stack
 >	"\x48\x8d\x3d\x1e\x00\x00\x00"	//lea    0x1e(%rip),%rdi: rdi = @cmd
->	"\x6a\x00"						//pushq  $0x0: push null byte
->	"\x57"							//push   %rdi: push @cmd onto the stack
->	"\x48\x89\xe6"					//mov    %rsp,%rsi: rsi = @[@cmd]
+>	"\x6a\x00"		//pushq  $0x0: push null byte
+>	"\x57"			//push   %rdi: push @cmd onto the stack
+>	"\x48\x89\xe6"	//mov    %rsp,%rsi: rsi = @[@cmd]
 >	"\xba\x00\x00\x00\x00"			//mov    $0x0,%edx: envp = NULL 
 >	"\xb8\x3b\x00\x00\x00"			//mov    $0x3b,%eax: execve
->	"\x0f\x05"						//syscall : execve(msg, [msg], NULL)
->	"\x5e"							//pop    %rsi
->	"\x5e"							//pop    %rsi
->	"\x5e"							//pop    %rsi: restore register
->	"\x5f"							//pop    %rdi: restore register
->	"\x5a"							//pop    %rdx: restore register
->	"\xc3"							//retq   
->	"\x90"							//nop
->	"\x90"							//nop
->	"\x90"							//nop
->	"\x90"							//nop
->	"\x90"							//nop
->	"\x90"							//nop
+>	"\x0f\x05"		//syscall : execve(msg, [msg], NULL)
+>	"\x5e"			//pop    %rsi
+>	"\x5e"			//pop    %rsi
+>	"\x5e"			//pop    %rsi: restore register
+>	"\x5f"			//pop    %rdi: restore register
+>	"\x5a"			//pop    %rdx: restore register
+>	"\xc3"			//retq   
+>	"\x90"			//nop
+>	"\x90"			//nop
+>	"\x90"			//nop
+>	"\x90"			//nop
+>	"\x90"			//nop
+>	"\x90"			//nop
 >	"\x2f\x75\x73\x72\x2f\x62\x69\x6e\x2f\x69\x64\x00";	// cmd: /usr/bin/id + null byte
->	
->   memmov(foo_ptr, shellcode, 52); // put the shellcode where foo_ptr points to
->   foo(); //call the new foo()
->   return 0;
+>	memmov(foo_ptr, shellcode, 52); // put the shellcode where foo_ptr points to
+>	foo(); //call the new foo()
+>	return 0;
 >}
 >
 >void foo(){
@@ -339,7 +338,7 @@ with the code of our shellcode, and put the resulting string in the .data sectio
 >	cmd db '/usr/bin/id', 0
 > ```
 
-Let's compile it with `nasm -f elf64 -o shellcode.o shellcode.asm; ld -o shellcode shellcode.o` and dump its content with `objdump`:
+Let's compile it with `nasm -f elf64 -o shellcode.o shellcode.asm; ld -o shellcode shellcode.o` and dump its content with `objdump`. Here is the result:
 
 > ```sh
 >$ objdump -d -s -j .text shellcode
