@@ -15,4 +15,4 @@
 * [SECT CTF 2018](sect_CTF_18/)
 * [Cronos CTF - BruCON 2018](cronosCTF_18/)
 * [Pico CTF 2018](pico_2018/)
-* [Quals Cyber-security Challenge Belgium 2018](CSC_BE_2019/)
+* [Quals Cyber-security Challenge Belgium 2019](CSC_BE_2019/)
