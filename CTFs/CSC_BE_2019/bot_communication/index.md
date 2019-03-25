@@ -53,7 +53,7 @@ In fact, there was a null byte at the beginning of the token we could not see. T
 >00000040: 7020 2254 3b0a                           p "T;.
 > ```
 
-Knowing the the flag format was `CSC{<string>}``` and that the first byte of the key was also a capital C, it was then clear that we had to xor the token and the key:
+Knowing the the flag format was `CSC{<string>}` and that the first byte of the key was also a capital C, it was then clear that we had to xor the token and the key:
 
 > ```python
 >token = '0063053d262427522475217072087473767126007f737271220722237c7676007f2273237b042225727270087571237d2551232076757001747e707077547f75702022543b'.decode('hex')

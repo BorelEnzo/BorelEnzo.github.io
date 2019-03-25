@@ -15,5 +15,4 @@ We are the secret Agent P, and one of our friends has disappeared. We have 4 hou
 * [Favourite drink](favourite_drink/)
 * [Unlock the safe](unlock_the_safe/)
 * [Delirious](delirious/)
-* [Poison](poison/)
 * [Punched card](punched_card/)

@@ -59,7 +59,7 @@ Unfortunately, none of the plaintext contained more than 95% of printable charac
 One key was made only of letters and numbers. We tried it, and finally, got our reward!
 
 > ```sh
->"xortool-xor -s FzUvdewPTN8gkahU4Vs2Pwd -f message.enc  | base64 -d | grep CSC
+>xortool-xor -s FzUvdewPTN8gkahU4Vs2Pwd -f message.enc  | base64 -d | grep CSC
 >	Flag: CSC{I_w0nd3r_how_DEFLATE_wouId_do}
 >	base64: invalid input
 > ```

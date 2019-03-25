@@ -164,7 +164,7 @@ As the script ended (1h30 later), it left us with a last [password-protected arc
 ![opensesame.jpg](opensesame.jpg)
 
 We used the message given in the image as a password to decrypt the ZIP, and got this [last HTML file](knockknock.html), showing nothing in a web browser.
-However, but taking a look at the source code, we found:
+However, by taking a look at the source code, we found:
 
 > ```javascript
 ><script>

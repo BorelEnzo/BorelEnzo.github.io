@@ -1,5 +1,7 @@
 # CSCBE Qualifiers - 2019
 
+### [~$ cd ..](../)
+
 This week, I took part with 3 team mates to the CSCBE 2019 Qualifiers. The contest was open during 32 hours, and we really enjoyed it- We finally took a tenth place
 
 ![scoreboard](scoreboard.png)
