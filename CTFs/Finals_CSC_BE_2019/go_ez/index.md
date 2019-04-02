@@ -10,7 +10,7 @@ Challenge: [go_ez](go_ez) (go_ez: ELF 64-bit LSB executable, x86-64, version 1 (
 >GO grab a COFFEE and you're able to solve this challenge in no time!
 > ```
 
-GO binaries are often made of a bunch of functions, and it's someties quite hard to have a clear view in this mess. Fortunately, the binary is not stripped, We opened it in GDB and started the analysis.
+GO binaries are often made of a bunch of functions, and it's sometimes quite hard to have a clear view in this mess. Fortunately, the binary is not stripped, so we opened it in GDB and started the analysis.
 The command `info func` returned a serie of routines, hence we reduced it by applying a filter:
 
 > ```
@@ -43,7 +43,7 @@ Thanks to autocompletion, we also found these interesting symbols:
 >main.c                  main.f                  main.initdone·         main.main               main.resources          main.statictmp_2 
 > ```
 
-The symbols `main.keystream` and `main.resources` caught our attention, and without even looking at the code. A keystream made us think about a simple XOR encryption, the cipher text
+The symbols `main.keystream` and `main.resources` caught our attention, without even looking at the code. A keystream made us think about a simple XOR encryption, the cipher text
 being probably the element `main.resources`:
 
 > ```
@@ -63,7 +63,7 @@ being probably the element `main.resources`:
 >$3 = 0x4b6943 "Good job:"
 > ```
 
-We then new what the symbols `main.statictmp_X` represented, and dumped `main.statictmp_2` and `main.statictmp_0` in hex format. First, we set this setting to make GDB print
+We then knew what the symbols `main.statictmp_X` represented, and dumped `main.statictmp_2` and `main.statictmp_0` in hex format. First, we set this setting to make GDB print
 the byte array:
 
 > ```

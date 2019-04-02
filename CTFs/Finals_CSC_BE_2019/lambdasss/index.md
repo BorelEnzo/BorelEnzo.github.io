@@ -41,14 +41,14 @@ Even if we solved this challenge very fast, I decided to provide a more detailed
 
 * Let's take now the first lambda, on the left. We can see on the right that it's been called with `input` as parameter. Let's simplify by rewriting in this way:
 
-```python
+> ```python
 >mainlambda = lambda b:(lambda c:(lambda d:(lambda e:(lambda f:(lambda g:g == b)(f(e)))(''.join))([chr(d(y))for y in c]))(lambda x:x//2))([134,166,164,246,220,96,238,190,200,96,190,98,208,102,190,208,104,228,200,190,96,220,102,66,66,250])
 >if (lambda a:mainlambda(a()))(input):
 > ```
 
 or, even better:
 
-```python
+> ```python
 >mainlambda = lambda b:(lambda c:(lambda d:(lambda e:(lambda f:(lambda g:g == b)(f(e)))(''.join))([chr(d(y))for y in c]))(lambda x:x//2))([134,166,164,246,220,96,238,190,200,96,190,98,208,102,190,208,104,228,200,190,96,220,102,66,66,250])
 >if mainlambda(input()):
 > ```
@@ -68,7 +68,7 @@ or, even better:
 > ...
 > ```
 
-* We can now turn the array of numbers into a constant and use `mainlamnda` as a boolean:
+* We can now turn the array of numbers into a constant and use `mainlambda` as a boolean:
 
 > ```python
 >array = [134,166,164,246,220,96,238,190,200,96,190,98,208,102,190,208,104,228,200,190,96,220,102,66,66,250]
@@ -93,7 +93,7 @@ or
 >mainlambda = (lambda e:(lambda f:(lambda g:g == input())(f(e)))(''.join))([chr(divideme(y))for y in array])
 > ```
 
-* Since `array` is a constant we can immediately compute the result of `[chr(divideme(y))for y in array]`, which is: **['C', 'S', 'R', '{', 'n', '0', 'w', '_', 'd', '0', '_', '1', 'h', '3', '_', 'h', '4', 'r', 'd', '_', '0', 'n', '3', '!', '!', '}']**
+* Since `array` is a constant we can immediately compute the result of `[chr(divideme(y))for y in array]`, which is: `['C', 'S', 'R', '{', 'n', '0', 'w', '_', 'd', '0', '_', '1', 'h', '3', '_', 'h', '4', 'r', 'd', '_', '0', 'n', '3', '!', '!', '}']`
 
 We can now easily guess that these characters are `join`ed and compared against the input !
 
