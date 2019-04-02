@@ -11,7 +11,7 @@ Challenge: [go_ez](go_ez) (go_ez: ELF 64-bit LSB executable, x86-64, version 1 (
 > ```
 
 GO binaries are often made of a bunch of functions, and it's sometimes quite hard to have a clear view in this mess. Fortunately, the binary is not stripped, so we opened it in GDB and started the analysis.
-The command `info func` returned a serie of routines, hence we reduced it by applying a filter:
+The command `info func` returned a series of routines, hence we reduced it by applying a filter:
 
 > ```
 >gdb-peda$ info func main
@@ -34,13 +34,13 @@ The command `info func` returned a serie of routines, hence we reduced it by app
 >void main.init(void);
 > ```
 
-Thanks to autocompletion, we also found these interesting symbols:
+Thanks to auto-completion, we also found these interesting symbols:
 
 > ```
 >gdb-peda$ print main
 >main                    main.d                  main.init               main.keystream          main.offsets            main.statictmp_0        
 >main.b                  main.e                  main.initdone.          main.lengths            main.offsets_keystream  main.statictmp_1        
->main.c                  main.f                  main.initdone·         main.main               main.resources          main.statictmp_2 
+>main.c                  main.f                  main.initdone·         main.main               main.resources          main.statictmp_2
 > ```
 
 The symbols `main.keystream` and `main.resources` caught our attention, without even looking at the code. A keystream made us think about a simple XOR encryption, the cipher text
@@ -49,14 +49,14 @@ being probably the element `main.resources`:
 > ```
 >gdb-peda$ print main.keystream
 >$1 = {
->  array = 0x543e00 <main.statictmp_2> "\330\314\016ϳ\345T\222\260\233\030\237\206\327\336p\346t\371\f\231\300\261\260,\314\"pY\316<_2\256\213\r\264\322\327\307\321*Tւ/\230'\210Q\034\002\027`\237f\357\366Q\315\036<\214\343b\241/\237RQa\323\372\237\242,\355\031Ir\207\227\213\t\a\217\264\346J\367\236\225H.\312\032,\272I\265\247\067\002\254\256b\242\001\340\253}\351f8Ng\261\223DT3?\252Ƈ{\231!\205\003\321\065)8DNd\330\065\223\035\363Da1\035PT\t+\322\376\062\220b\346\253^hZ)\253\263k\302-mA\016c\r\220pM\353\354A\n\250\300F:J\036\254h\230\231\231\262\211`\272H\aN\034ꙓ"..., 
->  len = 0x500, 
+>  array = 0x543e00 <main.statictmp_2> "\330\314\016ϳ\345T\222\260\233\030\237\206\327\336p\346t\371\f\231\300\261\260,\314\"pY\316<_2\256\213\r\264\322\327\307\321*Tւ/\230'\210Q\034\002\027`\237f\357\366Q\315\036<\214\343b\241/\237RQa\323\372\237\242,\355\031Ir\207\227\213\t\a\217\264\346J\367\236\225H.\312\032,\272I\265\247\067\002\254\256b\242\001\340\253}\351f8Ng\261\223DT3?\252Ƈ{\231!\205\003\321\065)8DNd\330\065\223\035\363Da1\035PT\t+\322\376\062\220b\346\253^hZ)\253\263k\302-mA\016c\r\220pM\353\354A\n\250\300F:J\036\254h\230\231\231\262\211`\272H\aN\034ꙓ"...,
+>  len = 0x500,
 >  cap = 0x500
 >}
 >gdb-peda$ print main.resources
 >$2 = {
->  array = 0x5470a0 <main.statictmp_1> "\365\341e\252ǋ=\342\312\365\341i\246ވ1\277\326\367y\370\203\342\363W\251Q", 
->  len = 0x1cee, 
+>  array = 0x5470a0 <main.statictmp_1> "\365\341e\252ǋ=\342\312\365\341i\246ވ1\277\326\367y\370\203\342\363W\251Q",
+>  len = 0x1cee,
 >  cap = 0x1cee
 >}
 >gdb-peda$ print main.statictmp_0
@@ -90,7 +90,7 @@ Python made the job, as usual:
 >                                                                               .;tL088@@@@888@8@@88@8@@88888@@88888888@@@88Gt;.                                           
 >                                                                         :tG888888@88GLti:,.........................,:;tLG8@888880f:                                      
 >                                                                    ,t88@@888C1:..............................................:f088@880i.                                 
->                                                                .f888880t,.........................................................,t888@8G; 
+>                                                                .f888880t,.........................................................,t888@8G;
 > ```
 
 And here is the flag **CSC{espresso_urself_53856935d98}** !

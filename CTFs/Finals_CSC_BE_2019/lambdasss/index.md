@@ -64,7 +64,7 @@ or, even better:
 
 > ```python
 >mainlambda = lambda c:(lambda d:(lambda e:(lambda f:(lambda g:g == input())(f(e)))(''.join))([chr(d(y))for y in c]))(lambda x:x//2)
->if mainlambda([134,166,164,246,220,96,238,190,200,96,190,98,208,102,190,208,104,228,200,190,96,220,102,66,66,250]): 
+>if mainlambda([134,166,164,246,220,96,238,190,200,96,190,98,208,102,190,208,104,228,200,190,96,220,102,66,66,250]):
 > ...
 > ```
 
@@ -99,6 +99,8 @@ We can now easily guess that these characters are `join`ed and compared against 
 
 ## Lambdasss 2
 
+>The lambdas have returned, grown stronger than ever. Subdue them and conquer the flag!
+
 We didn't actually solve this challenge during the contest, but found the solution a couple of days later. We were given another Python script with the following nested lambdas:
 
 > ```python
@@ -118,7 +120,7 @@ The principle we will use it basically always the same. As we have a constructio
 >(lambda x:(lambda y:foo(y))(z))
 > ```
 
-we can try to integrate to rightmost argument ( `z` in this example) in the lambda on its left, and keep only the right part of the lamda:
+we can try to integrate to rightmost argument ( `z` in this example) in the lambda on its left, and keep only the right part of the lambda:
 
 > ```python
 >(lambda x:foo(z))
@@ -253,7 +255,7 @@ The routine `map` takes to arguments. The first one is a callable, and the secon
 >	print("Try again :((")
 > ```
 
-We can now see that each characher is XOR'ed against `sum(range(pow(int(chr(50)), 2)))` , 50 being the 15th character of the array. This can be simplified, as `chr(50)` is '2'. Therefore, it gives us
+We can now see that each character is XOR'ed against `sum(range(pow(int(chr(50)), 2)))` , 50 being the 15th character of the array. This can be simplified, as `chr(50)` is '2'. Therefore, it gives us
 
 > ```python
 >  sum(range(pow(int(chr(50)), 2)))
@@ -284,4 +286,3 @@ Since it's a XOR, we can recover the flag by applying the same computation on ea
 >>>> ''.join(chr(x^6) for x in [69,85,84,125,127,54,115,36,116,53,89,49,110,53,89,107,50,117,114,53,84,89,54,96,89,114,110,53,89,106,50,107,100,98,50,117,89,104,73,81,39,60,66,66,66,123])
 >'CSR{y0u"r3_7h3_m4st3R_0f_th3_l4mbd4s_nOW!:DDD}'
 > ```
-
