@@ -2,7 +2,7 @@
 
 ### [~$ cd ..](../)
 
-On these last March 29th and 30th took place the Pre-Finals and Finals of the [Cybersecurity Challenge Belgium](www.cybersecuritychallenge.be), a contest organized by the company NVISO. We already participated to this
+On these last March 29th and 30th took place the Pre-Finals and Finals of the [Cybersecurity Challenge Belgium](https://www.cybersecuritychallenge.be), a contest organized by the company NVISO. We already participated to this
 context in 2018, and came back with the objective of making it even better. After the qualifiers, 43 teams out of ~200 were qualified and played the Pre-finals on 29th in the morning. At noon, only 16 teams out of
 the 43 qualified teams were allowed to continue the adventure until the evening. Finally, only 12 out of these 16 remaining were allowed to reach the finals, taking place on Saturday.
 

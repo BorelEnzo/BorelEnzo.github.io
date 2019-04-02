@@ -297,7 +297,7 @@ By disassembling the `main` routine. we found an easy code to reverse, where eac
 \           0x000007c5      c3             ret
 ```
 
-We were then able to recover the flag by putting each character at the right place. The principle is as folloas:
+We were then able to recover the flag by putting each character at the right place. The principle is as follows:
 * the address of the input is stored in `eax` by moving `qword [local_8h]`
 * an offset is added, being the position of the character to check
 * a constant is put in `edx`

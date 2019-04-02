@@ -2,7 +2,7 @@
 
 ### [~$ cd ..](../)
 
-This week, I took part with 3 team mates to the CSCBE 2019 Qualifiers. The contest was open during 32 hours, and we really enjoyed it- We finally took a tenth place
+This week, I took part with my 3 team mates [Benjamin](https://nicode.me), [alect096](https://alect096.github.io/) and [renaud11232](https://renaud11232.github.io/) to the CSCBE 2019 Qualifiers. The contest was open during 32 hours, and we really enjoyed it! We finally took a tenth place
 
 ![scoreboard](scoreboard.png)
 
@@ -18,4 +18,3 @@ These write ups cover some challenges we managed to solve.
 * [Ancient Writings 1, 2](ancient_writings/)
 * [Alien object](alien_object/)
 * [Access Denied](access_denied/)
-
