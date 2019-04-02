@@ -40,6 +40,8 @@ We first tried to decrypt it "by hand" this simple substitution cipher, and noti
 
 **INSA{bQ9NYUyAiaXskZDfnnAhtUU01ifeXrOu}**
 
+Easy flag!
+
 ## Step 2
 
 By decrypting the whole message, we found an URL: http://kx4hdh2zo5rstcuj.onion

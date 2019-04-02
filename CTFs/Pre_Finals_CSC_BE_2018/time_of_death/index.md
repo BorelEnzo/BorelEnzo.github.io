@@ -23,7 +23,7 @@ find a hour, we looked for the symbol
 > ```
 >  .
 >  .
->. .
+>..
 > ```
 
 put before numbers.

@@ -78,7 +78,9 @@ The loops makes the sum of some characters, according to the iterator, and retur
 >	return res
 > ```
 
-## Find right codes
+Next step is then to find the expected ouput.
+
+## Find the expected output
 
 The program computes a kind of checksum for each 4-digit number (stored at `$rbp-0x30` ), and compares them against constant values (at `$rbp-0x70`):
 

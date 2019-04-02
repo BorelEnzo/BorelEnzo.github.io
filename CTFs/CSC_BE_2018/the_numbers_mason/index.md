@@ -165,7 +165,7 @@ following piece of code:
 >});
 > ```
 
-We guessed that the two first parameters were the key and the session we previously got, because in the routine `a(...)̀ / `login(...)`  we had:
+We guessed that the two first parameters were the key and the session we previously got, because in the routine `a(...)̀` / `login(...)`  we had:
 
 > ```java
 >this.w = paramString1;
@@ -183,7 +183,7 @@ and in another routine `l()` (line 143):
 >}
 > ```
 
-We had then to recover the routine `a(...)̀  / ̀ login(...)`, which became:
+We had then to recover the routine `a(...)` / `login(...)`, which became:
 
 > ```java
 >public void login(String key, String session, String login, String pin){

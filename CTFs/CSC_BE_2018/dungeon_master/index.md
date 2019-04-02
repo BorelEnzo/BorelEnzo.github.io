@@ -32,7 +32,7 @@ When then tried to locate where this routine was called to see which parameter w
 
 *gameStage.js*
 
-> ```Javascript
+> ```javascript
 >GameStage.prototype.verifyThePossibilityToMove = function(requestManager){
 >    let isInsideTheLimits = this.actualLevel.verifyLimits(this.player);
 >    let canGoThrough = false;

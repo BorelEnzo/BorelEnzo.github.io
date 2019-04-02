@@ -6,7 +6,7 @@ This week, I took part with 3 team mates to the CSCBE 2019 Qualifiers. The conte
 
 ![scoreboard](scoreboard.png)
 
-This write ups cover some challenges we managed to solve.
+These write ups cover some challenges we managed to solve.
 
 * [Jail break 1, 2, 3](jail_break/)
 * [Hacker C4tz 1, 2, 3, 4, 5](hacker_c4tz/)
