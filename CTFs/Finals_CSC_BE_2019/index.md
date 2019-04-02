@@ -19,3 +19,4 @@ These write ups cover some challenges we managed to solve, during the Pre-Finals
 * [Let's dance](lets_dance/)
 * [Ancient Writings #3](ancient_writings/)
 * [Decode me](decode_me/)
+* [Datacube](datacube/)
