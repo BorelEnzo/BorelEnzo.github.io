@@ -71,7 +71,7 @@ the byte array:
 >set pagination off
 > ```
 
-According to the manual, setting it to 0 means "unlimited". Then, we printed the 2 arrays in hex format with the `/x` format:
+According to the manual, setting it to 0 means "unlimited". Then, we printed the 2 arrays in hex format with the `/x` switch:
 
 > ```
 >gdb-peda$ print /x main.statictmp_2

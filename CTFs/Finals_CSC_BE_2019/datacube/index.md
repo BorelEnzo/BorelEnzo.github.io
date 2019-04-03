@@ -1,8 +1,8 @@
-Datacube - Crypto (150 pts)
+# Datacube - Crypto (150 pts)
 
 ### [~$ cd ..](../)
 
-Unfortunately, we didn't manage to solve this challenge during the contest, even if we spotted the vulnerability, but the script we wrote didn't gave us the solution :(
+Unfortunately, we didn't manage to solve this challenge during the contest, even if we spotted the vulnerability, but the script we wrote didn't give us the solution :(
 
 >We uncovered this encrypted datacube, can you recover the contents?
 

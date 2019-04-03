@@ -21,7 +21,7 @@ We are given a file containing the following nested lambdas:
 >    print("Try again :((")
 > ```
 
-This first one was that really difficult and one case easily guess that each number of the array is divided by 2, and that `chr` function takes the result as argument. All chars are then concatenated using `join`, and a comparison is done.
+This first one was not really difficult and one can easily guess that each number of the array is divided by 2, and that `chr` function takes the result as argument. All chars are then concatenated using `join`, and a comparison is done.
 We had then to do the same:
 
 > ```python
@@ -31,7 +31,7 @@ We had then to do the same:
 
 ### More detailed answer
 
-Even if we solved this challenge very fast, I decided to provide a more detailed answer. I will describe each step, taking lambdas one by one:
+Even if we solved this challenge very quickly, I decided to provide a more detailed answer. I will describe each step, taking lambdas one by one:
 
 * In the middle, we can see this really simple lambda: `lambda h:h`, returning what is passed as argument. It can be then removed:
 
@@ -114,7 +114,7 @@ We didn't actually solve this challenge during the contest, but found the soluti
 >    print("Try again :((")
 > ```
 
-The principle we will use it basically always the same. As we have a construction like this:
+The principle we will use is basically always the same. As we have a construction like this:
 
 > ```python
 >(lambda x:(lambda y:foo(y))(z))
@@ -192,13 +192,13 @@ It's now time to integrate the argument `range(f*f)` inside the nested lambda: `
 >if (lambda c:(lambda b:(lambda d:(lambda e:(lambda e:(lambda f:(lambda f:(lambda g:(lambda f:list(d((lambda h:g.__xor__(sum(range(f*f)),h)),e)).__eq__(c))(g(f)))(int))(f(c[16])))(chr))(d(e,b)))(ord))(map))(input()))([69,85,84,125,127,54,115,36,116,53,89,49,110,53,89,107,50,117,114,53,84,89,54,96,89,114,110,53,89,106,50,107,100,98,50,117,89,104,73,81,39,60,66,66,66,123]):
 > ```
 
-Let's continue the integration by simplifying `(lambda g:(lambda f:list(d((lambda h:g.__xor__(sum(range(f*f)),h)),e)).__eq__(c))(g(f)))`. The argument `g(f)` can be intergrated in the second lambda in this way: `(lambda g:list(d((lambda h:g.__xor__(sum(range(pow(g(f), 2))),h)),e)).__eq__(c))`. Pay attention, the `f` in `g(f)` is not part of the simplified lambda!
+Let's continue the integration by simplifying `(lambda g:(lambda f:list(d((lambda h:g.__xor__(sum(range(f*f)),h)),e)).__eq__(c))(g(f)))`. The argument `g(f)` can be integrated in the second lambda in this way: `(lambda g:list(d((lambda h:g.__xor__(sum(range(pow(g(f), 2))),h)),e)).__eq__(c))`. Pay attention, the `f` in `g(f)` is not part of the simplified lambda!
 
 > ```python
 >if (lambda c:(lambda b:(lambda d:(lambda e:(lambda e:(lambda f:(lambda f:(lambda g:list(d((lambda h:g.__xor__(sum(range(pow(g(f), 2))),h)),e)).__eq__(c))(int))(f(c[16])))(chr))(d(e,b)))(ord))(map))(input()))([69,85,84,125,127,54,115,36,116,53,89,49,110,53,89,107,50,117,114,53,84,89,54,96,89,114,110,53,89,106,50,107,100,98,50,117,89,104,73,81,39,60,66,66,66,123]):
 > ```
 
-Let's continue with the integration of `int` by rewrinting `(lambda f:(lambda g:list(d((lambda h:g.__xor__(sum(range(pow(g(f), 2))),h)),e)).__eq__(c))(int))`. It becomes then `(lambda f:list(d((lambda h:int.__xor__(sum(range(pow(int(f), 2))),h)),e)).__eq__(c))`:
+Let's continue with the integration of `int` by rewriting `(lambda f:(lambda g:list(d((lambda h:g.__xor__(sum(range(pow(g(f), 2))),h)),e)).__eq__(c))(int))`. It becomes then `(lambda f:list(d((lambda h:int.__xor__(sum(range(pow(int(f), 2))),h)),e)).__eq__(c))`:
 
 > ```python
 >if (lambda c:(lambda b:(lambda d:(lambda e:(lambda e:(lambda f:(lambda f:list(d((lambda h:int.__xor__(sum(range(pow(int(f), 2))),h)),e)).__eq__(c))(f(c[16])))(chr))(d(e,b)))(ord))(map))(input()))([69,85,84,125,127,54,115,36,116,53,89,49,110,53,89,107,50,117,114,53,84,89,54,96,89,114,110,53,89,106,50,107,100,98,50,117,89,104,73,81,39,60,66,66,66,123]):
@@ -241,7 +241,7 @@ Let's now beautify this last snippet of code without any lambdas. We can see tha
 >	print("Try again :((")
 > ```
 
-The routine `map` takes to arguments. The first one is a callable, and the second one is an iterable, applies this callable on each element of the iterable. Taking the result as argument of `list` returns a list of the results.
+The routine `map` takes to arguments, the first one being a callable, and the second one an iterable. The routine then applies this callable on each element of the iterable. Taking the result as argument of `list` returns a list of the results.
 
 > ```python
 >print("Input flag: ", end="")

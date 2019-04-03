@@ -146,7 +146,7 @@ Contents of section .data:
  2010e0 00000000 00000000 00000000 00000000  ................
 ```
 
-We then ran the binary and obtained the new binary, in our case `tmp/tmp58G3MV`, and started to analyze it with r2:
+We then ran the binary and obtained the new binary, in our case `tmp/tmp58G3MV`, and started to analyze it with `r2`:
 
 ```
 [0x00000530]> aaa
@@ -171,7 +171,7 @@ Invalid instruction of 16114 bytes at 0x110
 0x0000063a   20 396          main
  ```
 
-By disassembling the `main` routine. we found an easy code to reverse, where each character of the flag is compared against a constant value:
+By disassembling the `main` routine, we found an easy code to reverse, where each character of the flag is compared against a constant value:
 
  ```
 [0x00000530]> sf main
