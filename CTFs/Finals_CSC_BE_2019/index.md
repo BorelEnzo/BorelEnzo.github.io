@@ -15,6 +15,7 @@ These write ups cover some challenges we managed to solve, during the Pre-Finals
 * [Go EZ](go_ez/)
 * [Lambdasss 1 & 2](lambdasss/)
 * [Crack_me](crack_me/)
+* [Crack_me 2](crack_me_2/)
 * [Failing for XOR](failing_xor/)
 * [Let's dance](lets_dance/)
 * [Ancient Writings #3](ancient_writings/)
