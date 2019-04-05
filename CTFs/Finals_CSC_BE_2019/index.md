@@ -21,3 +21,4 @@ These write ups cover some challenges we managed to solve, during the Pre-Finals
 * [Ancient Writings #3](ancient_writings/)
 * [Decode me](decode_me/)
 * [Datacube](datacube/)
+* [Not malware](no_malware/)
