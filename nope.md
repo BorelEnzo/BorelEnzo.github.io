@@ -1,4 +1,4 @@
-# Permission denied
+**Permission denied**
 
 Please try the command `~# sudo su` or run the following script to escalate your privileges:
 
