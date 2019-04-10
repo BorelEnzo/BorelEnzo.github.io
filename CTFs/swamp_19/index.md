@@ -14,6 +14,6 @@ This week, the team [0FA](https://0fa.ch/) came back to CTF mode by taking part 
 * [Leap of Faith](leap_of_faith/)
 * [4096](4096/)
 * [We Three Keys](we_3_keys/)
-* [Heap golf](Heap_golf/)
+* [Heap golf](heap_golf/)
 * [Brokerboard](brokerboard/)
 * [Data Vault](data_vault/)
