@@ -3,7 +3,7 @@
 ### [~$ cd ..](../)
 
 The write-ups cover some challenge I solved during the [Red pwn 2019](https://redpwn.net/). 926 teams took part to the competition.  
-Difficulty was well-balanced, and challenges interesting, even if one of them were really frustrating (see `Dedication` ...) or with a lot of guessing 
+Difficulty was well-balanced, and challenges interesting, even if one of them were really frustrating (see `Dedication` ...) or with a lot of guessing
 
 ![scoreboard](scoreboard.png)
 
@@ -20,3 +20,6 @@ Difficulty was well-balanced, and challenges interesting, even if one of them we
 * [Easy Encoding Ever](easy_encoding_ever/)
 * [AUR](aur/)
 * [Java is EZ](java_isez/)
+* [Generic Crackme](generic_crackme/)
+* [Generic Crackme Redux](generic_crackme_redux/)
+* [L-star](l_star/)
