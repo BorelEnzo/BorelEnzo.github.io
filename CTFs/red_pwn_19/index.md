@@ -2,7 +2,7 @@
 
 ### [~$ cd ..](../)
 
-The write-ups cover some challenge I solved during the [Red pwn 2019](https://redpwn.net/). 926 teams took part to the competition.  
+These write-ups cover some challenges I solved during the [Red pwn 2019](https://redpwn.net/). 926 teams took part to the competition.  
 Difficulty was well-balanced, and challenges interesting, even if one of them were really frustrating (see `Dedication` ...) or with a lot of guessing
 
 ![scoreboard](scoreboard.png)
