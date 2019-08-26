@@ -17,7 +17,7 @@ Difficulty was well-balanced, and challenges interesting, even if one of them we
 * [Generic pyjail 2](gen_pyjail2/)
 * [Super hash](super_hash)
 * [Dedication](dedication/)
-* [Easy Encoding Ever](easy_encoding_ever/)
+* [Every Encoding Ever](every_encoding_ever/)
 * [AUR](aur/)
 * [Java is EZ](java_isez/)
 * [Generic Crackme](generic_crackme/)

