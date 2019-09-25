@@ -235,7 +235,7 @@ public class JavaIsEZ
 }
 ```
 
-Instructions from 32 to 80 are particularly interesting as they put some constant values in an array: 97, 71, 94, 89, 90, 121, 72, 53 (all being printable characters). The first guess was that these constant value were XORed (line 329) with the string at 281 (in octal), as it was indeed what we had to do:
+Instructions from 32 to 80 are particularly interesting as they put some constant values in an array: 97, 71, 94, 89, 90, 121, 72, 53 (all being printable characters). The first guess was that these constant value were XORed (line 329) with the string at 281 (in octal), and it was indeed what we had to do:
 
 ```python
 key = ''.join(chr(x) for x in [97, 71, 94, 89, 90, 121, 72, 53])

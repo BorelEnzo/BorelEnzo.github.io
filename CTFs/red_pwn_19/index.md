@@ -24,7 +24,7 @@ Difficulty was well-balanced, and challenges interesting, even if one of them we
 * [Generic Crackme Redux](generic_crackme_redux/)
 * [L-star](l_star/)
 * [Skywriting](skywriting/)
-* [Easy cipher](esay_cipher/)
+* [Easy cipher](easy_cipher/)
 * [Crypt](crypt/)
 * [Ghast](ghast/)
 * [Blueprint](blueprint/)
