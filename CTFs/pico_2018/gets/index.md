@@ -156,7 +156,7 @@ Gadget `pop $edx`: **0x0806f02a**
 >0x080b6ed7: push es ; int 0x80 ;  (1 found)
 > ```
 
-Gadget `pop $edx`: **0x0806f630**
+Gadget `int 0x80`: **0x0806f630**
 
 And finally, the payload becomes:
 

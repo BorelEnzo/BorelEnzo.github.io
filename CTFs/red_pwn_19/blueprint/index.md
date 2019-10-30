@@ -18,6 +18,23 @@ By clicking on the link, we landed on this page, with a form allowing us to publ
 
 The [source code](blueprint.js) and the [package.json](package.json) were also given in the description
 
+Package.json:
+
+```json
+ cat package.json 
+{
+  "name": "blueprint",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "lodash": "4.17.11",
+    "mustache": "^3.0.1",
+    "raw-body": "^2.4.1"
+  }
+}
+
+```
+
 JS source:
 
 ```js
