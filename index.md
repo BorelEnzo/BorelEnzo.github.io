@@ -6,7 +6,6 @@
 ### [~$ cd /home/enzo/malwares](./malwares)
 ### [~$ cd /home/enzo/mutant](./mutant)
 ### [~$ whoami](./about)
-### [~# admin](./nope)
 
 ## Want to send me an email ?
 
