@@ -6,7 +6,6 @@
 ### [~$ cd /home/enzo/malwares](./malwares)
 ### [~$ cd /home/enzo/mutant](./mutant)
 ### [~$ whoami](./about)
-### [~$ GDATA](./gdata.zip)
 ## Want to send me an email ?
 
 PGP Public key [Download](Enzo&#32;Borel&#32;borelenzo@gmail.com&#32;&#40;0x7A50A885E57276EF&#41;&#32;pub.asc)
