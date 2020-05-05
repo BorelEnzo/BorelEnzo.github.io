@@ -1,12 +1,18 @@
-## Welcome
+---
+# Feel free to add content and custom Front Matter to this file.
+# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+layout: home
+title: Welcome !
+---
 
-![avatar](avatar.png)
-### [~$ cd /home/enzo/ctf](./CTFs)
-### [~$ cd /home/enzo/Android](./android)
-### [~$ cd /home/enzo/malwares](./malwares)
-### [~$ cd /home/enzo/mutant](./mutant)
-### [~$ whoami](./about)
-## Want to send me an email ?
+`~$ /usr/bin/whoami`
+
+Cybersecurity enthusiast, passionate by crypto, reverse engineering, serial numbers killing, and pens testing.  
+During my spare time I enjoy capturing flags, programming in `Python2.7`, and shells hunting.  
+
+:fr: :uk: :de:
+
+Want to send me an email ?
 
 PGP Public key [Download](Enzo&#32;Borel&#32;borelenzo@gmail.com&#32;&#40;0x97CA4EC650958CB0&#41;&#32;pub.asc)
 ```
