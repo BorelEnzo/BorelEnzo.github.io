@@ -5,7 +5,7 @@ date:   2020-05-05
 categories: [CTFs, cronosCTF18]
 ---
 
-[~$ cd ..](../)
+[~$ cd ..](/ctfs/cronosctf18/2020/05/05/index.html)
 
 >Polly the pirate parrot is guarding a chest full o' coins,
 >can you get her some cookies, so we get past her?

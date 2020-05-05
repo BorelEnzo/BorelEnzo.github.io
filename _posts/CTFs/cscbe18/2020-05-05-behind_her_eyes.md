@@ -5,7 +5,7 @@ date:   2020-05-05
 categories: [CTFs, cscbe18]
 ---
 
-[~$ cd ..](../)
+[~$ cd ..](/ctfs/cscbe18/2020/05/05/index.html)
 
 Actually, I do not remember the exact name and the statement of the challenge, but it was about two Roman people who sent messages. The goal was to extract a hidden picture.
 The [text](/assets/res/CTFs/cscbe18/behind_her_eyes/data.txt) we had was obviously not written with roman characters, and then we guessed that it was about encoding, and more specifically Latin1, because of the statement.

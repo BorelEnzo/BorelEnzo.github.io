@@ -5,7 +5,7 @@ date:   2020-05-05
 categories: [CTFs, cronosCTF18]
 ---
 
-[~$ cd ..](../)
+[~$ cd ..](ctfs/cronosctf18/2020/05/05/index.html)
 
 >Ahoy! We 'ave lost a booty 'n know that thar be a map available t' find th' booty.
 >Can ye help us find th' booty at <51.68.252.196:8081>.

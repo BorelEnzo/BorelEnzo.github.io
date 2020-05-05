@@ -5,7 +5,7 @@ date:   2020-05-05
 categories: [CTFs, cronosCTF18]
 ---
 
-[~$ cd ..](../)
+[~$ cd ..](ctfs/cronosctf18/2020/05/05/index.html)
 
 >We noticed Steven be surfin' the web quite a lot in silence, we thinks he's been hidin' a stash of the good old booty.
 >Of course we be hanging him or make him walk the plank if it isn't gender neutral!

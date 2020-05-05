@@ -5,7 +5,7 @@ date:   2020-05-05
 categories: [CTFs, cscbe18]
 ---
 
-[~$ cd ..](../)
+[~$ cd ..](/ctfs/cscbe18/2020/05/05/index.html)
 
 The challenge consists of an [APK file](/assets/res/CTFs/cscbe18/the_numbers_mason/notes.apk). As usual, we renamed it as a ".zip" in order to extract files. We then found the well-known [classes.dex](/assets/res/CTFs/cscbe18/the_numbers_mason/classes.dex) and used `dex2jar` to decompile.
 ## Step 1

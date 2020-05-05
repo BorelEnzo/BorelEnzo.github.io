@@ -5,7 +5,7 @@ date:   2020-05-05
 categories: [CTFs, cscbe18]
 ---
 
-[~$ cd ..](../)
+[~$ cd ..](/ctfs/cscbe18/2020/05/05/index.html)
 
 ## Water you talking about ?
 Two challenges were proposed on this website. The first one (water you talking about ?), was about the well-known PHP filter vulnerability. The statement

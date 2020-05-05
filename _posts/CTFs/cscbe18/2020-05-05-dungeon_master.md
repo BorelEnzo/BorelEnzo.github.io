@@ -5,7 +5,7 @@ date:   2020-05-05
 categories: [CTFs, cscbe18]
 ---
 
-[~$ cd ..](../)
+[~$ cd ..](/ctfs/cscbe18/2020/05/05/index.html)
 
 We are given a URL, and found a old 2D game running on port 1337. The game engine is PIXI.js, then we downloaded all sources.
 ![game.png](/assets/res/CTFs/cscbe18/dungeon_master/game.png)

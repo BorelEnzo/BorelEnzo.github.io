@@ -5,7 +5,7 @@ date:   2020-05-05
 categories: [CTFs, cscbe18]
 ---
 
-[~$ cd ..](../)
+[~$ cd ..](/ctfs/cscbe18/2020/05/05/index.html)
 
 The statement of the challenge tells us that [the PDF file](/assets/res/CTFs/cscbe18/pdf_weak_enc/do_not_use_weak_encryption.pdf) has been encrypted with a 32 bytes random password. The goal is not to guess the password, but
 to break the weak PDF encryption. A hint is given: the first byte of the key is 0x30

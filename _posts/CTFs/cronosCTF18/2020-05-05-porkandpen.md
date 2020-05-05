@@ -5,7 +5,7 @@ date:   2020-05-05
 categories: [CTFs, cronosCTF18]
 ---
 
-[~$ cd ..](../)
+[~$ cd ..](ctfs/cronosctf18/2020/05/05/index.html)
 
 >Taken directly from the book: "The history of treasure maps"  ...
 >The ancient art of treasure map sketching and clue writing is frequently

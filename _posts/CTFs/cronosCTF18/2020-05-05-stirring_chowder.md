@@ -5,7 +5,7 @@ date:   2020-05-05
 categories: [CTFs, cronosCTF18]
 ---
 
-[~$ cd ..](../)
+[~$ cd ..](ctfs/cronosctf18/2020/05/05/index.html)
 
 >We be having trouble finding out how to stir the chowder to make it ready,
 >ask our pet animal A'tuin if he knows more!

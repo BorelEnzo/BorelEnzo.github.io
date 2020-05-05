@@ -5,7 +5,7 @@ date:   2020-05-05
 categories: [CTFs, cronosCTF18]
 ---
 
-[~$ cd ..](../)
+[~$ cd ..](ctfs/cronosctf18/2020/05/05/index.html)
 
 >we noticed some RATs in the ship, find out what they're planning!
 
