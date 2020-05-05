@@ -1,0 +1,11 @@
+main:
+  - title: "CTFs"
+    url: /ctf.html
+  - title: "Mutants"
+    url: /mutant.html
+  - title: "Malwares"
+    url: /malwares.html
+  - title: Attacking mobile browsers with extensions
+    url: /thesis/
+  - title: "Android Accessibility Service"
+    url: /android.html
