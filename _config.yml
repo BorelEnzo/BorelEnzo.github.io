@@ -22,7 +22,7 @@ title: "Testeur de stylos"
 name: "Borel Enzo"
 email: borelen@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Computer security enthusiast creating things that do stuff
+
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.
 github_username: BorelEnzo

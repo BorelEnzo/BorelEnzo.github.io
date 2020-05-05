@@ -8,7 +8,7 @@ title: Welcome !
 `~$ /usr/bin/whoami`
 
 Cybersecurity enthusiast, passionate by crypto, reverse engineering, serial numbers killing, and pens testing.  
-During my spare time I enjoy capturing flags, programming in `Python2.7`, and shells hunting.  
+During my spare time I enjoy creating things that do stuff, capturing flags, programming in `Python2.7`, and shells hunting.  
 
 :fr: :uk: :de:
 
@@ -34,3 +34,30 @@ gAAKCRCXyk7GUJWMsPGqAQCMMabKLwHpvwsYbX6wfb8obkN2iAqIksqjKWi2TswB
 =3g1D
 -----END PGP PUBLIC KEY BLOCK-----
 ```
+
+<!--
+ _______________________________
+|``--..__                       |
+|        ``--..__               |
+|                ``--..__       |
+|                        ``--.  |
+|                            |  |
+|                            |  |
+|                            |  |
+|                            |  |
+|                            |  |
+|                            |  |
+|                            |  |
+|                         O= |  |
+|                            |  |
+|                            |  |
+|                            |  |
+|                            |  |
+|                            |  |
+|                            |  |
+``--..__                     |  |
+        ``--..__             |__|
+                ``--..__     |
+                        ``--.|
+Backdoor conveniently left open for all those hackers who like taking a look at the source code
+-->

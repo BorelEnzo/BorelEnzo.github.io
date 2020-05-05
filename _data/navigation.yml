@@ -5,7 +5,7 @@ main:
     url: /mutant.html
   - title: "Malwares"
     url: /malwares.html
-  - title: Attacking mobile browsers with extensions
-    url: /thesis/
   - title: "Android Accessibility Service"
     url: /android.html
+  - title: "Attacking mobile browsers with extensionss"
+    url: /thesis.html
