@@ -16,6 +16,6 @@ Sometimes, I capture flags :checkered_flag:
 <!--[Pico CTF 2018](pico_2018/)  -->
 [Quals Cyber-security Challenge Belgium 2019](ctfs/cscbe19/2019/03/01/index.html)  
 [Pre-Finals & Finals - Cyber-security Challenge Belgium 2019](ctfs/finalscscbe19/2019/03/02/index.html)  
-<!--[Swamp CTF 2019](swamp_19/)  
-[Redpwn CTF 2019](red_pwn_19/)  
-[Quals Cybersecurity Challenge Belgium 2020](CSC_BE_2020/)  -->
+[Swamp CTF 2019](ctfs/swamp19/2019/04/07/index.html)  
+[Redpwn CTF 2019](ctfs/redpwn19/2019/08/12/index.html)  
+<!--[Quals Cybersecurity Challenge Belgium 2020](CSC_BE_2020/)  -->

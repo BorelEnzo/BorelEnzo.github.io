@@ -22,11 +22,12 @@ title: "Testeur de stylos"
 name: "Borel Enzo"
 email: borelen@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-
+ "For lack of a better description"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.
 github_username: BorelEnzo
 logo: "/assets/res/avatar.png"
+image: "/assets/background.jpg"
 # Build settings
 remote_theme: "mmistakes/minimal-mistakes@4.19.2"
 minimal_mistakes_skin: "neon" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum" "sunrise"

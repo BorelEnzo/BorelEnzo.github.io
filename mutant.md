@@ -5,8 +5,8 @@ layout: home
 title: Self-modifying programs
 ---
 
-_A few thoughts about polymorphic code, with examples. The program I wrote hides its payload be generating a new XOR key every time_  
+_A few thoughts about polymorphic code, with examples. The program I wrote hides its payload by generating a new XOR key every time_  
 [A simple polymorphic program](/mutant/2020/05/05/polymorphic1.html)  
 
-_A few thoughts about metamorphic code, with examples. The program I wrote alters its payload by permuting its own instructions and recomputing the relative jumps between instructions_  
+_A few thoughts about metamorphic code, with examples. The program I wrote alters its payload by permuting its own instructions and recomputing the relative jumps between them_  
 [A simple metamorphic program](/mutant/2020/05/05/metamorphic1.html)  

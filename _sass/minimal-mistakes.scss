@@ -186,7 +186,7 @@ html { /* apply a natural box layout model to all elements */ box-sizing: border
 @media (min-width: 80em) { html { font-size: 22px; } }
 
 /* Remove margin */
-body { margin: 0; }
+body { margin: 0;}
 
 /* Selected elements */
 ::-moz-selection { color: #fff; background: #000; }
@@ -196,6 +196,7 @@ body { margin: 0; }
 /* Display HTML5 elements in IE6-9 and FF3 */
 article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section { display: block; }
 
+.initial-content{background-image: url("/assets/background.jpg"); background-repeat: no-repeat;}
 /* Display block in IE6-9 and FF3 */
 audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
 
@@ -1330,7 +1331,8 @@ body { display: -webkit-box; display: -ms-flexbox; display: flex; min-height: 10
 
 .page__hero::after { clear: both; content: ""; display: table; }
 
-.page__hero--overlay { position: relative; margin-bottom: 2em; padding: 3em 0; clear: both; background-size: cover; background-repeat: no-repeat; background-position: center; -webkit-animation: intro 0.3s both; animation: intro 0.3s both; -webkit-animation-delay: 0.25s; animation-delay: 0.25s; }
+.page__hero--overlay { position: relative; margin-bottom: 2em; padding: 3em 0; clear: both; background-size: cover; background-repeat: no-repeat; background-position: center; -webkit-animation: intro 0.3s both; animation: intro 0.3s both; -webkit-animation-delay: 0.25s; animation-delay: 0.25s;
+  background-image: url('/assets/background.jpg');}
 
 .page__hero--overlay::after { clear: both; content: ""; display: table; }
 
