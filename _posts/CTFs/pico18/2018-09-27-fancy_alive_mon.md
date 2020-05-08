@@ -1,13 +1,18 @@
-# fancy-alive-monitoring (Web)
+---
+layout: posts
+title:  Pico CTF 2018 - fancy-alive-monitoring (Web)
+date:   2018-09-27
+categories: [CTFs, pico18]
+---
+
+[~$ cd ..](/ctfs/pico18/2018/09/27/index.html)
 
 >One of my school mate developed an alive monitoring tool.
 >Can you get a flag from http://2018shell1.picoctf.com:43316 (link)?
 
-### [~$ cd ..](../)
-
 We are landed in front of a really simple website:
 
-![site](site.png)
+![site](/assets/res/CTFs/pico18/fancy_alive_mon/site.png)
 
 The source we are given is as follows:
 

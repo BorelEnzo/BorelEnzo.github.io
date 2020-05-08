@@ -1,10 +1,16 @@
-# Got-2-learn-libc
+---
+layout: posts
+title:  Pico CTF 2018 - Got-2-learn-libc
+date:   2018-09-27
+categories: [CTFs, pico18]
+---
+
+[~$ cd ..](/ctfs/pico18/2018/09/27/index.html)
 
 >This program gives you the address of some system calls.
 >Can you get a shell?
->You can find the program in /problems/got-2-learn-libc_3_6e9881e9ff61c814aafaf92921e88e33 on the shell server. Source. 
+>You can find the program in /problems/got-2-learn-libc_3_6e9881e9ff61c814aafaf92921e88e33 on the shell server. Source.
 
-### [~$ cd ..](../)
 
 The given source is as follows:
 
@@ -97,7 +103,7 @@ A first thing we can do is to find how many bytes we need to write before smashi
 >gdb-peda$ break *vuln+54
 >Breakpoint 1 at 0x7d6
 >gdb-peda$ run
->Starting program: .../got-2-learn-libc 
+>Starting program: .../got-2-learn-libc
 >Here are some useful addresses:
 >
 >puts: 0xf7e4f890
@@ -110,7 +116,7 @@ A first thing we can do is to find how many bytes we need to write before smashi
 >AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 > ```
 
-Now, let's count how many bytes there we need to fill the buffer and reach the return address. Our 'A's begin at `0xffffd10c` and 
+Now, let's count how many bytes there we need to fill the buffer and reach the return address. Our 'A's begin at `0xffffd10c` and
 the address to smash is at `$ebp+4=0xffffd1ac`, then we need 160 bytes:
 
 > ```

