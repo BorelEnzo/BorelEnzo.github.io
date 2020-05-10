@@ -5,7 +5,7 @@ layout: home
 title: Resume - EN
 ---
 
-My resume: [resume.pdf](/aeets/res/resume/resume.pdf)
+My resume: [resume.pdf](/assets/res/resume/resume.pdf)
 
 ## Education
 
@@ -75,14 +75,14 @@ common web attacks and defence measures (client and server side), browser extens
 - 2019 - **European Cyber Week**  
 6th place at the ECW CTF Finals   
 Rennes, France  
-2019 - **Cybersecurity Challenge Belgium**  
+- 2019 - **Cybersecurity Challenge Belgium**  
 7th place at the CSC Belgium 2019  
 10 th place at the qualifiers  
 team ~#sudo maso  
 Brussels, Belgium  
 - 2018 - **Cybersecurity Challenge Belgium**  
 14 th place at the CSC Belgium 2018  
-team JM team,
+team JM team  
 Brussels, Belgium  
 - 2018 - **Brucon - Cronos CTF**  
 4 th place at the Cronos CTF  
