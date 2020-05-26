@@ -33,13 +33,13 @@ Supervisor: Prof. Ramin Sadre, UCL
 
 <img src="assets/res/resume/defence.png" alt="" width="10%" float="left" align="left" style="margin: 0 10px 0px 0;">
 
-Feb. - May 2020 Student intern - **Belgian Defence**  
+Feb. - May 2020 - Student intern - **Belgian Defence**  
 Radio-controlled drones pentesting with SDR
 Exploit development (contribution to Dronesploit framework)
 
 <img src="assets/res/resume/somfy.png" alt="" width="10%" float="left" align="left" style="margin: 0 10px 40px 0;">
 
-Jul. 2019 - **Somfy Group**  
+Jul. 2019 -  IT security technician - **Somfy Group**  
 Active Directory security  
 Security best practices drafting  
 Security awareness  
@@ -47,7 +47,7 @@ Security awareness
 
 <img src="assets/res/resume/somfy.png" alt="" width="10%" float="left" align="left" style="margin: 0 10px 70px 0;">
 
-Jul. 2018 - **Somfy Group**  
+Jul. 2018 - IT security technician - **Somfy Group**  
 Linux & Windows servers hardening  
 Security best practices drafting  
 Logs management  
