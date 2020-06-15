@@ -9,3 +9,5 @@ main:
     url: /malwares.html
   - title: "Android Accessibility Service"
     url: /android.html
+  - title: "Attacking mobile browsers with extensions"
+    url: /thesis.html
