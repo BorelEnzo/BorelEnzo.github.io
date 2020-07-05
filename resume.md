@@ -20,13 +20,13 @@ Supervisor: Prof. Dimitri Konstantas, UniGE
 
 <img src="assets/res/resume/ulb.png" alt="" width="10%" float="left" align="left" style="margin: 0 10px 0 0;">
 
-2017 - ? - Master's degree in Cybersecurity - **Free University of Brussels**  
+2017 - 2020 - Master's degree in Cybersecurity - **Free University of Brussels**  
 Main subjects: Information security, Network security, Secure software
 development    
 Inter-school program: Free University of Brussels, University of Namur,
 Catholic University of Louvain, Royal Military Academy, HE2B, HELB  
 
-Title of the Thesis (in progress): Attacking mobile browsers with extensions   
+Title of the Thesis: Attacking mobile browsers with extensions   
 Supervisor: Prof. Ramin Sadre, UCL
 
 ## Experience

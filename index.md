@@ -12,6 +12,9 @@ During my spare time I enjoy creating things that do stuff, capturing flags, pro
 
 :fr: :uk: :de:
 
+<script src="https://www.hackthebox.eu/badge/278713"></script>
+
+
 Want to send me an email ?
 
 PGP Public key [Download](Enzo&#32;Borel&#32;borelenzo@gmail.com&#32;&#40;0x97CA4EC650958CB0&#41;&#32;pub.asc)
