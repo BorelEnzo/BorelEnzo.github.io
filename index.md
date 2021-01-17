@@ -13,7 +13,10 @@ During my spare time I enjoy creating things that do stuff, capturing flags, pro
 :fr: :uk: :de:
 
 <script src="https://www.hackthebox.eu/badge/278713"></script>
+<br/>
+<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="08d07212-1bec-4ebd-a543-66606625522e" data-share-badge-host="https://www.youracclaim.com"></div><script type="text/javascript" async src="//cdn.youracclaim.com/assets/utilities/embed.js"></script>
 
+My resume: [resume.pdf](/assets/res/resume.pdf)  
 
 Want to send me an email ?
 

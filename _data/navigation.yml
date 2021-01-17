@@ -1,6 +1,4 @@
 main:
-  - title: "Resume"
-    url: /resume.html
   - title: "CTFs"
     url: /ctf.html
   - title: "Mutants"
