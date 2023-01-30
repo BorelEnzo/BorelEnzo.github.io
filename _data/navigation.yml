@@ -1,6 +1,6 @@
 main:
-  - title: "CTFs"
-    url: /ctf.html
+  - title: "Random security-related stuff"
+    url: "/stuff.html"
   - title: "Mutants"
     url: /mutant.html
   - title: "Malwares"

@@ -28,6 +28,7 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.
 github_username: BorelEnzo
 logo: "/assets/res/avatar.png"
 image: "/assets/background.jpg"
+repository: BorelEnzo/BorelEnzo.github.io
 # Build settings
 remote_theme: "mmistakes/minimal-mistakes@4.19.2"
 minimal_mistakes_skin: "neon" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum" "sunrise"
