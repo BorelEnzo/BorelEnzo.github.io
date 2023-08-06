@@ -6,7 +6,7 @@ categories: mutant
 ---
 
 **TL;DR**  
-A few experiments about mixed managed/unmanaged assemblies. To begin with, we start by presenting a C# programme that hides a part of its payload in an unmanaged C++ stub as `obj` file, and interact with. Loading it into `dnSpy` will show that part of the code is unmanaged and cannot be displayed properly. We take it one step further by removing the references to the managed code and changing the EXE entry point. The programme then executes the unamanaged code and we leverage the power of `ICLRRuntimeHost` to get back to the C# part. Since there is no reference to the unmanaged code, `dnSpy` shows nothing but the C#.
+A few experiments about mixed managed/unmanaged assemblies. To begin with, we start by presenting a C# programme that hides a part of its payload in an unmanaged C++ stub as `obj` file, and interact with. Loading it into `dnSpy` will show that part of the code is unmanaged and cannot be displayed properly. We take it one step further by removing the references to the UNmanaged code and changing the EXE entry point. The programme then executes the unamanaged code and we leverage the power of `ICLRRuntimeHost` to get back to the C# part. Since there is no reference to the unmanaged code, `dnSpy` shows nothing but the C#.
 
 ## 0. Intro
 
@@ -122,7 +122,7 @@ This command would produce `CInterop.netmodule` (switch `/LN`) and `CInterop.obj
 
 ### 2.2. Managed console application
 
-Let's now create another project in VisualStudio, by choosing this time **Console app (.NET Framework)** as a template. The class `Program.cs` is as follows, calling the wrapped `execwhoami`. One can notice here that since `CInterop` class belongs the namespace `ManagedConsoleApp`, there is no need to put something before:
+Let's now create another project in VisualStudio, by choosing this time **Console app (.NET Framework)** as a template. The class `Program.cs` is as follows, calling the wrapped `execwhoami`. One can notice here that since `CInterop` class belongs TO the namespace `ManagedConsoleApp`, there is no need to put something before:
 
 ```cpp
 namespace ManagedConsoleApp
@@ -145,9 +145,7 @@ Microsoft (R) Visual C# Compiler version 4.6.0-3.23259.8 (c3cc1d0c)
 Copyright (C) Microsoft Corporation. All rights reserved.
 ```
 
-This command instructs the compiler to build a module, adding a reference to `Cinterop.netmodule`.
-
-Now it's time to merge everything with `link.exe`:
+This command instructs the compiler to build a module, adding a reference to `Cinterop.netmodule`. Now it's time to merge everything with `link.exe`:
 
 ```powershell
 PS > link.exe /LTCG /CLRIMAGETYPE:IJW /ENTRY:ManagedConsoleApp.Program.Main /SUBSYSTEM:console /ASSEMBLYMODULE:Cinterop.netmodule .\CInterop.obj .\UnmanagedLib.obj .\Program.netmodule
@@ -278,7 +276,9 @@ Since we did not add the switch `addmodule`, there is no reason that it appears 
 
 However, the challenge is now to "return" to the C# code. Multiple possibilities exist, actually. The one I used here leverages the power of `ICLRRuntimeHost` and friends. Let's now implement the routine `callCSharp` in the unmanaged code.
 
-Thanks to C++/CLI, it is possible to use .NET classes inside C++ code. The technique is not new and even quite well documented (just an example: [https://www.ired.team/offensive-security/code-injection-process-injection/injecting-and-executing-.net-assemblies-to-unmanaged-process](https://www.ired.team/offensive-security/code-injection-process-injection/injecting-and-executing-.net-assemblies-to-unmanaged-process). Or another one: [https://0xpat.github.io/Malware_development_part_9/](https://0xpat.github.io/Malware_development_part_9/). Or yet another one: [https://codingvision.net/calling-a-c-method-from-c-c-native-process](https://codingvision.net/calling-a-c-method-from-c-c-native-process)). Known as _CLR Hosting_ ([https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2008/zaf1h1h5(v=vs.90)](https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2008/zaf1h1h5(v=vs.90))), the trick is to host the .NET CLR in a process of our choice, in order to tweak it. As stated by the documentation, the process is transparent for applications that were meant to run in the CLR, the runtime being automatically started by `mscoree.dl`. However, unmanaged applications can host the CLR to benefit from its capabilities and control its features according to their needs.
+Thanks to C++/CLI, it is possible to use .NET classes inside C++ code. The technique is not new and even quite well documented (just an example: [https://www.ired.team/offensive-security/code-injection-process-injection/injecting-and-executing-.net-assemblies-to-unmanaged-process](https://www.ired.team/offensive-security/code-injection-process-injection/injecting-and-executing-.net-assemblies-to-unmanaged-process). Or another one: [https://0xpat.github.io/Malware_development_part_9/](https://0xpat.github.io/Malware_development_part_9/). Or yet another one: [https://codingvision.net/calling-a-c-method-from-c-c-native-process](https://codingvision.net/calling-a-c-method-from-c-c-native-process)).
+
+Known as _CLR Hosting_ ([https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2008/zaf1h1h5(v=vs.90)](https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2008/zaf1h1h5(v=vs.90))), the trick is to host the .NET CLR in a process of our choice, in order to tweak it. As stated by the documentation, the process is transparent for applications that were meant to run in the CLR, the runtime being automatically started by `mscoree.dll`. However, unmanaged applications can host the CLR to benefit from its capabilities and control its features according to their needs.
 
 To begin with, an instance of the CLR is created:
 
@@ -291,7 +291,7 @@ void callCSharp() {
     ...
 }
 ```
-Once the host created, the runtime can be created inside. To do so, the routine is `metaHost->GetRuntime(LPCWSTR pwzVersion,  REFIID riid, LPVOID *ppRuntime)`. The first argument is supposed to be the version on the runtime. The latter can be obtained in C# through the property `System::Environment::Version`, and to avoid hardcoding it in the binary, it should be computed at runtime. Conversions must be done to retrieve it:
+Once the host created, the runtime can be created inside. To do so, the routine is `metaHost->GetRuntime(LPCWSTR pwzVersion,  REFIID riid, LPVOID *ppRuntime)`. The first argument is supposed to be the version of the runtime. The latter can be obtained in C# through the property `System::Environment::Version`, and to avoid hardcoding it in the binary, it should be computed at runtime. Conversions must be done to retrieve it:
 
 ```cpp
     ...
