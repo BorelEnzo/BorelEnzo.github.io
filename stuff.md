@@ -24,3 +24,7 @@ Read more: [CVE-2023-3031](/stuff/2023/06/01/cve-2023-3031.html)
 **Some CVEs related to Mobatime**\
 _Multiple vulnerabilities affecting Mobatime mobile and web apps_\
 Read more: [CVE-2023-3032](/stuff/2023/06/01/cve-2023-3032.html), [CVE-2023-3033](/stuff/2023/06/01/cve-2023-3033.html), [CVE-2023-3064/5/6](/stuff/2023/06/02/cve-2023-3064_65_66.html)
+
+**127.0.0.1, sweet 127.0.0.1**\
+_An SSRF filter bypass on Tiny File Manager_\
+Read more: [Tiny File Manager Localhost filter bypass](/stuff/2023/09/27/tfm_localhost_bypass.html)
