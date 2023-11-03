@@ -29,6 +29,6 @@ Read more: [CVE-2023-3032](/stuff/2023/06/01/cve-2023-3032.html), [CVE-2023-3033
 _An SSRF filter bypass on Tiny File Manager_\
 Read more: [Tiny File Manager Localhost filter bypass](/stuff/2023/09/27/tfm_localhost_bypass.html)
 
-**Hidden in plain sight**
+**Hidden in plain sight**\
 _A few thoughts about PHP webshells_\
 Read more: [Hidden in plain sight](/stuff/2023/10/31/hidden-in-plain-sight.html)
