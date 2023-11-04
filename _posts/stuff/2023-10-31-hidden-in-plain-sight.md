@@ -234,7 +234,7 @@ The first argument (`$type`) is supposed to be one of **INPUT_GET**, **INPUT_POS
 
 _The 3 does not seem to be defined._
 
-The second argument is the same of the passed parameter, which means that `filter_input(0, "param");` would extract the value of the parameter `param` sent through POST.
+The second argument is the same as the passed parameter, which means that `filter_input(0, "param");` would extract the value of the parameter `param` sent through POST.
 
 ## The routine `file_get_contents`
 
