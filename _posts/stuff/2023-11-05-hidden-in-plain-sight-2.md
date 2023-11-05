@@ -238,7 +238,7 @@ _I'm also aware that a version only uses 5 characters ([mystiz.hk/posts/2021/202
 However, the goal here was not to `eval`uate something arbitrary, but to execute `$_GET['A']($_GET['r])` (you will understand why 'A' and 'r', and not 'a' and 'b'). I therefore had to find a way to call the routine [`filter_input_array`](https://www.php.net/manual/en/function.filter-input-array.php) to extract submitted data:
 
 >
->filter_input_array(int $type, array|int $options = FILTER_DEFAULT, bool $add_empty = true): array|false|null
+>filter_input_array(int $type, array|int $options = FILTER_DEFAULT, bool $add_empty = true): array\|false\|null
 >
 >This function is useful for retrieving many values without repetitively calling filter_input().
 >
