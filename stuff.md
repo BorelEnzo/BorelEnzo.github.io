@@ -35,4 +35,4 @@ Read more: [Hidden in plain sight](/stuff/2023/10/31/hidden-in-plain-sight.html)
 
 **Hidden in plain sight - 2nd part**\
 _A few thoughts about PHP webshells_\
-Read more: [Hidden in plain sight - 2 ](/stuff/2023/11/05/hidden-in-plain-sight-2.htmll)
+Read more: [Hidden in plain sight - 2 ](/stuff/2023/11/05/hidden-in-plain-sight-2.html)
