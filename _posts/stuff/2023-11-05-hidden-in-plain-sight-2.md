@@ -5,8 +5,6 @@ date:   2023-11-05
 categories: stuff
 ---
 
-# Playing with PHP
-
 A few days ago, I published a blog post about PHP webshells, ending with a discussion about filters evasion by getting rid of the pattern `$_`. The latter is commonly used while extracting data submitted by the user, through the variables `$_GET` or `$_POST`. I presented the following five techniques, retrieving POST'ed argument, being a bash command to be executed by `system`.
 
 _The latter could also be dynamically retrieved thanks to a [variable function](https://www.php.net/manual/en/functions.variable-functions.php)_ 
@@ -233,7 +231,7 @@ _NOTE: this technique can obviously be combined to others in order to hide the $
 
 ## Technique #4: Only 7 characters
 
-Ever heard about [BrainF*ck](https://esolangs.org/wiki/Brainfuck) ? This esoteric programming language made only of the symbols `><+-.,[]` is more like a joke than a usable language. Alternatives have been created, such as the infamous [JSF*ck](https://jsfuck.com/), made only of six characters (`()+[]!`). A [PHPf*ck](https://splitline.github.io/PHPFuck/) was also created, using only seven symbols `([+.^])`, but the latter is not compatible with PHP 8 (and later). An [alternative](https://b-viguier.github.io/PhpFk/) exists for PHP 8, but it uses [Foreign Function Interface](https://www.php.net/manual/en/book.ffi.php), that is not always installed. Moreover, PHP8 makes it harder to execute code from string, since `eval` cannot be called as a variable function, `assert` does not evaluate any more the passed argument, `preg_replace`'s `/e` flag is deprecated, and `create_function` too.
+Ever heard about [BrainF\*ck](https://esolangs.org/wiki/Brainfuck) ? This esoteric programming language made only of the symbols `><+-.,[]` is more like a joke than a usable language. Alternatives have been created, such as the infamous [JSF\*ck](https://jsfuck.com/), made only of six characters (`()+[]!`). A [PHPf*ck](https://splitline.github.io/PHPFuck/) was also created, using only seven symbols `([+.^])`, but the latter is not compatible with PHP 8 (and later). An [alternative](https://b-viguier.github.io/PhpFk/) exists for PHP 8, but it uses [Foreign Function Interface](https://www.php.net/manual/en/book.ffi.php), that is not always installed. Moreover, PHP8 makes it harder to execute code from string, since `eval` cannot be called as a variable function, `assert` does not evaluate any more the passed argument, `preg_replace`'s `/e` flag is deprecated, and `create_function` too.
 
 _I'm also aware that a version only uses 5 characters ([mystiz.hk/posts/2021/2021-08-10-uiuctf-phpfuck/](https://mystiz.hk/posts/2021/2021-08-10-uiuctf-phpfuck/)), but I wanted to do it without letters nor numbers. Still, their technique is really clever._
 
