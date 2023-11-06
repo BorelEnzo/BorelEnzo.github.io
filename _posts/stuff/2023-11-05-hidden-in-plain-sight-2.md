@@ -118,7 +118,7 @@ _;
 
 ## Technique #2: One-liner with only two functions
 
-This is an extension of the fourth technique using `get_defined_vars` and `array_keys`, by chaining them in order to dynamically resolve the function name and its argument. Let's first print the result of get_defined_vars()` (no other variables declared):
+This is an extension of the fourth technique using `get_defined_vars` and `array_keys`, by chaining them in order to dynamically resolve the function name and its argument. Let's first print the result of `get_defined_vars()` (no other variables declared):
 
 ```
 Array
@@ -235,7 +235,7 @@ Ever heard about [BrainF\*ck](https://esolangs.org/wiki/Brainfuck) ? This esoter
 
 _I'm also aware that a version only uses 5 characters ([mystiz.hk/posts/2021/2021-08-10-uiuctf-phpfuck/](https://mystiz.hk/posts/2021/2021-08-10-uiuctf-phpfuck/)), but I wanted to do it without letters nor numbers. Still, their technique is really clever._
 
-However, the goal here was not to `eval`uate something arbitrary, but to execute `$_GET['A']($_GET['r])` (you will understand why 'A' and 'r', and not 'a' and 'b'). I therefore had to find a way to call the routine [`filter_input_array`](https://www.php.net/manual/en/function.filter-input-array.php) to extract submitted data:
+However, the goal here was not to `eval`uate something arbitrary, but to execute `$_GET['A']($_GET['r'])` (you will understand why 'A' and 'r', and not 'a' and 'b'). I therefore had to find a way to call the routine [`filter_input_array`](https://www.php.net/manual/en/function.filter-input-array.php) to extract submitted data:
 
 >
 >filter_input_array(int $type, array\|int $options = FILTER_DEFAULT, bool $add_empty = true): array\|false\|null
@@ -340,7 +340,7 @@ By doing magic with the available characters in the set, it is possible to obtai
 'B': 1000010: '0' XOR 'r': (![]^![]).[][!![]] ^ ([].[])[![]]
 'Q': 1010001: '0' XOR 'a': (![]^![]).[][!![]] ^ (![].![].[].[])[![].(![]^![])]
 'I': 1001001: '0' XOR 'y': (![]^![]).[][!![]] ^ (![].[].[])[![].(![]^![])]
-'p': 1110000: '1' XOR 'A': ![].[][!![]] ^ ([].![])[!![]]
+'p': 1110000: '1' XOR 'A': ![].[][!![]] ^ [].![][!![]]
 'C': 1000011: '1' XOR 'r': ![].[][!![]] ^ ([].![])[![]]
 'P': 1010000: '1' XOR 'a': ![].[][!![]] ^ (![].![].[].[])[![].(![]^![])]
 'H': 1001000: '1' XOR 'y': ![].[][!![]] ^ (![].[].[])[![].(![]^![])]
@@ -361,15 +361,15 @@ However, this payload seemed a bit too big (it is only to get an intermediary va
 
 ## The answer to everything
 
-The legend says that _THE ANSWER_ is in the digits of Pi, and indeed, that was my way to go. The [`pi` routine](https://www.php.net/manual/en/function.pi.php) returns the number `3.1415926535898`. Casting this value as a string would make us able to extract the dot (`'.'`) at index 1.
+The legend says that _THE ANSWER_ is in the digits of Pi, and indeed, that was my way to go. Indeed, the letters 'P' and 'i' both belong to the extended charset, making us able to call `pi()`. The [`pi` routine](https://www.php.net/manual/en/function.pi.php) returns the number `3.1415926535898`. Casting this value as a string would make us able to extract the dot (`'.'`) at index 1.
 ```php
-print_r(((((([].![])[!![]]^![].[][!![]]).((![]^![]).[][!![]]^(![].[].[])[![].(![]^![])]))()).[])[![]]); // '.'
+print_r(((  ()).[])[![]]); // '.'
 //because it is the same as:
-print_r(('pi'().'Array')[1]);
+print_r(('pI'().'Array')[1]);
 print_r('3.1415926535898Array'[1]);
 ```
 
-_Another technique would extract the `'4'` instead. This character is at index 3, and we could access it by calling `(pi().[])[pi()]`. The float value would be treated as an integer while acting as an index, indeed returning `(pi().'Array')[3] = '4'`_
+_Another technique would extract the `'4'` instead. This character is at index 3, and we could access it by calling `(pi().[])[pi()]`. The float value would be treated as an integer while acting as an index, indeed returning `(pi().'Array')[3] = '3.1415926535898Array'[3] = '4'`_
 
 Once this value is obtained, the other digits can be computed, and translated as follows:
 
@@ -394,7 +394,7 @@ filter_input_array(0)["A"](filter_input_array(0)["r"]);
 //same as
 filter_input_array(!![])["A"](filter_input_array(!![])["r"]);
 //same as
-filter_input_array(0)[([].![])[!![]]](filter_input_array(0)[([].![])[![]]]);
+filter_input_array(!![])[([].![])[!![]]](filter_input_array(!![])[([].![])[![]]]);
 ```
 
 Since the strings `'A'` and `'r'` are part of the restricted charset, it is easier to use them as POST arguments. Last step is then to rebuild `filter_input_array`. The missing characters are:
