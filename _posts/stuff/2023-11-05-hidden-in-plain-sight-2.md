@@ -422,12 +422,6 @@ Only 7 characters (:
 To ease the process of symbols generation, the following python script has been created:
 
 ```python
-def xorme(arr):
-    acc = 0
-    for i in arr:
-        acc ^= ord(i)
-    return acc
-    
 import itertools
 x = [ord(_) for _ in ['A', 'r', 'a', 'y', '0', '1', '.']]
 dico = {}
@@ -441,7 +435,7 @@ for lim in range(2, 4):
 print(dico)
 ```
 
-After the first round, all symbols in 0-255 are expressed as XOR operations, and some manipulations need to be done to keep only primitives.
+After the first round, all symbols in 0-255 are expressed as XOR operations, and some manipulations still need to be done to keep only primitives.
 
 ## Conclusion
 
