@@ -337,10 +337,10 @@ By doing magic with the available characters in the set, it is possible to obtai
 
 ```
 'q': 1110001: '0' XOR 'A': (![]^![]).[][!![]] ^ ([].![])[!![]]
-'B': 1000010: '0' XOR 'r': (![]^![]).[][!![]] ^ ([].[])[![]]
+'B': 1000010: '0' XOR 'r': (![]^![]).[][!![]] ^ ([].![])[![]]
 'Q': 1010001: '0' XOR 'a': (![]^![]).[][!![]] ^ (![].![].[].[])[![].(![]^![])]
 'I': 1001001: '0' XOR 'y': (![]^![]).[][!![]] ^ (![].[].[])[![].(![]^![])]
-'p': 1110000: '1' XOR 'A': ![].[][!![]] ^ [].![][!![]]
+'p': 1110000: '1' XOR 'A': ![].[][!![]] ^ ([].![])[!![]]
 'C': 1000011: '1' XOR 'r': ![].[][!![]] ^ ([].![])[![]]
 'P': 1010000: '1' XOR 'a': ![].[][!![]] ^ (![].![].[].[])[![].(![]^![])]
 'H': 1001000: '1' XOR 'y': ![].[][!![]] ^ (![].[].[])[![].(![]^![])]
@@ -363,7 +363,7 @@ However, this payload seemed a bit too big (it is only to get an intermediary va
 
 The legend says that _THE ANSWER_ is in the digits of Pi, and indeed, that was my way to go. Indeed, the letters 'P' and 'i' both belong to the extended charset, making us able to call `pi()`. The [`pi` routine](https://www.php.net/manual/en/function.pi.php) returns the number `3.1415926535898`. Casting this value as a string would make us able to extract the dot (`'.'`) at index 1.
 ```php
-print_r(((  ()).[])[![]]); // '.'
+print_r(((((![].[][!![]]^(![].![].[].[])[![].(![]^![])]).((![]^![]).[][!![]]^(![].[].[])[![].(![]^![])]))()).[])[![]]); // '.'
 //because it is the same as:
 print_r(('pI'().'Array')[1]);
 print_r('3.1415926535898Array'[1]);
