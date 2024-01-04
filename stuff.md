@@ -29,6 +29,14 @@ Read more: [CVE-2023-3032](/stuff/2023/06/01/cve-2023-3032.html), [CVE-2023-3033
 _An SSRF filter bypass on Tiny File Manager_\
 Read more: [Tiny File Manager Localhost filter bypass](/stuff/2023/09/27/tfm_localhost_bypass.html)
 
+**Hidden in plain sight**\
+_A few thoughts about PHP webshells_\
+Read more: [Hidden in plain sight](/stuff/2023/10/31/hidden-in-plain-sight.html)
+
+**Hidden in plain sight - 2nd part**\
+_A few thoughts about PHP webshells_\
+Read more: [Hidden in plain sight - 2 ](/stuff/2023/11/05/hidden-in-plain-sight-2.html)
+
 **Come to verify my self-signed token !**\
 _Another JWT abuse, spoofing the ISS claim_\
 Read more: [From SSRF to authentication bypass](/stuff/2023/12/28/jwt_iss.html)
