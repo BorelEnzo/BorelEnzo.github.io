@@ -17,7 +17,7 @@ Read more: [php-ini-rce](/stuff/2023/02/01/php-ini.html)
 _Revisiting FuckFastCGI to create a PHP-only exploit_\
 Read more: [ffcgi-made-simpler](/stuff/2023/02/05/php-ffcgi.html)
 
-**Arbitrary file upload in King-Avis Prestahop module (CVE-2023-3031)**\
+**Arbitrary file read in King-Avis Prestahop module (CVE-2023-3031)**\
 _An arbitrary local file read in the King-Avis Prestahop module_\
 Read more: [CVE-2023-3031](/stuff/2023/06/01/cve-2023-3031.html)
 
