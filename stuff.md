@@ -41,6 +41,10 @@ Read more: [Hidden in plain sight - 2 ](/stuff/2023/11/05/hidden-in-plain-sight-
 _Another JWT abuse, spoofing the ISS claim_\
 Read more: [From SSRF to authentication bypass](/stuff/2023/12/28/jwt_iss.html)
 
+**CVE-2024-27930 - CVE-2024-27937 - Walkthrough**\
+_Please give me the list of the users with their passwords_\
+Read more: [Exploiting flawed access controls in GLPI < 10.0.13](/stuff/2024/02/29/glpi-pwned.html)
+
 **CVE-2024-27096 - GLPI < 10.0.13 SQL injection**\
 _A few thoughts about CVE-2024-27096_\
 Read more: [Exploiting an uncommon SQL injection (CVE-2024-27096)](/stuff/2024/03/24/exploit-CVE-2024-27096.html)
