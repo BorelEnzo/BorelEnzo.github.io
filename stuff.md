@@ -48,3 +48,7 @@ Read more: [Exploiting flawed access controls in GLPI < 10.0.13](/stuff/2024/02/
 **CVE-2024-27096 - GLPI < 10.0.13 SQL injection**\
 _A few thoughts about CVE-2024-27096_\
 Read more: [Exploiting an uncommon SQL injection (CVE-2024-27096)](/stuff/2024/03/24/exploit-CVE-2024-27096.html)
+
+**CVE-2024-29889 and CVE-2024-31456 - GLPI < 10.0.15 SQL injections**\
+_Daemons of the past make GLPI < 10.0.15 vulnerable to SQL injections_\
+Read more: [Exploiting partially patched SQL injections in GLPI < 10.0.15](/stuff/2024/05/09/exploit-CVE-2024-29889-31456.html)
