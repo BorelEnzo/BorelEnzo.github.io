@@ -24,7 +24,7 @@ Wait, what ? 0.o Where do these strings comes from ?! Let's dive into the fabulo
 
 C# is a really handy language (still not my favourite, though, python 2.7 you're still my love) but for malware authors, it has a significant drawback: it is fairly easy to reverse engineer. Tools such as [`dnSpy`](https://github.com/dnSpy/dnSpy) are able to provide a source code version quite akin to the original one, and make analysis much easier than reading bits and bytes. Instead of being directly compiled to machine code, C# is translated into an intermediary language named CIL (formerly named IL, for ...  _Intermediary Language_), and then just-in-time compiled in order to run in the .NET environment.
 
-The code is referred to as _managed code_, meaning that it expects to run under the management of a _Common Language Infrastructure (CLI)_, such as _.NET Framework_ or _Common Language Runtime (CLR)_. _Common Language Infrastructure_ is an open specification that describes how a runtime environment could allow multiple languages to be used on different computing platforms, without being rewritten. To rephrase it with simple words, _managed code_ is just a code whose execution is handled by a runtime (CLR is this case), turning managed code into machine code, and executing it. The advantage of machine code is the interoperability between languages, and the fact that the burden of memory management is not left to the developer (well, not entirely at least).
+The code is referred to as _managed code_, meaning that it expects to run under the management of a _Common Language Infrastructure (CLI)_, such as _.NET Framework_ or _Common Language Runtime (CLR)_. _Common Language Infrastructure_ is an open specification that describes how a runtime environment could allow multiple languages to be used on different computing platforms, without being rewritten. To rephrase it with simple words, _managed code_ is just a code whose execution is handled by a runtime (CLR is this case), turning managed code into machine code, and executing it. The advantage of managed code is the interoperability between languages, and the fact that the burden of memory management is not left to the developer (well, not entirely at least).
 
 On the other hand, the _unmanaged code_ (written in C, C++ for instance), has the advantage that it is directly turned into machine language, and cannot be decompiled into meaningful words, compared to C#. C++ is not supposed to be managed, but the variant C++/CLI came as a means to better connect .NET Framework and C++. Simply said, C++/CLI is a version of C++, modified in order to run in CLI. It therefore provides ways to interact with other .NET languages, such as C#.
 
@@ -122,7 +122,7 @@ This command would produce `CInterop.netmodule` (switch `/LN`) and `CInterop.obj
 
 ### 2.2. Managed console application
 
-Let's now create another project in VisualStudio, by choosing this time **Console app (.NET Framework)** as a template. The class `Program.cs` is as follows, calling the wrapped `execwhoami`. One can notice here that since `CInterop` class belongs TO the namespace `ManagedConsoleApp`, there is no need to put something before:
+Let's now create another project in VisualStudio, by choosing this time **Console app (.NET Framework)** as a template. The class `Program.cs` is as follows, calling the wrapped `execwhoami`. One can notice here that since `CInterop` class belongs to the namespace `ManagedConsoleApp`, there is no need to put something before:
 
 ```cpp
 namespace ManagedConsoleApp
