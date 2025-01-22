@@ -56,3 +56,7 @@ Read more: [Exploiting CVE-2024-29889 and CVE-2024-31456](/stuff/2024/05/09/expl
 **CVE-2024-37148 - GLPI < 10.0.16 authenticated SQL injections**\
 _One vulnerability may hide another_\
 Read more: [Exploiting CVE-2024-37148](/stuff/2024/06/07/exploit-CVE-2024-37148.html)
+
+**VPN-in-the-browser**\
+_Taking Browser-in-the-browser one step further_\
+Read more [VPN-in-the-browser](stuff/2025/01/22/vitb.html)
