@@ -60,3 +60,6 @@ Read more: [Exploiting CVE-2024-37148](/stuff/2024/06/07/exploit-CVE-2024-37148.
 **VPN-in-the-browser**\
 _Taking Browser-in-the-browser one step further_\
 Read more [VPN-in-the-browser](stuff/2025/01/22/vitb.html)
+
+**CVE-2025-0001**\
+Read more [CVE-2025-0001](stuff/2025/02/15/CVE-2025-0001.html)
