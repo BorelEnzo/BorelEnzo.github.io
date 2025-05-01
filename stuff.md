@@ -63,3 +63,7 @@ Read more [VPN-in-the-browser](stuff/2025/01/22/vitb.html)
 
 **CVE-2025-0001**\
 Read more [CVE-2025-0001](stuff/2025/02/15/CVE-2025-0001.html)
+
+**From SSTI to SSTI to RCE - Bypassing Thymeleaf sandbox <= 3.1.3.RELEASE**\
+_How I bypassed Thymeleaf sandbox to turn an SSTI into an RCE_\
+Read more [From SSTI to SSTI to RCE](stuff/2025/04/26/bypassing-thymeleaf-3.1.3-sandbox.html)
